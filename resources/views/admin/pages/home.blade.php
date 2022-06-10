@@ -1,13 +1,9 @@
-@extends('layouts.admin')
-
-@section('title')
-<title>Trang chu</title>
-
+@extends('admin.layouts.admin')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    @include('partials.content-header',[
+    @include('admin.partials.content-header',[
     'name' => 'Home',
     'key' => 'Index'
     ])
@@ -30,3 +26,5 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+</html>

@@ -4,11 +4,9 @@
     <a href="index3.html" class="brand-link">
         <img src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <a href="{{ route('admin.logout') }}" class="brand-text font-weight-light">
+        <a href="" class="brand-text font-weight-light">
             Logout
         </a>
-
-
     </a>
 
     <!-- Sidebar -->
@@ -20,7 +18,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                {{-- <a href="#" class="d-block">{{ auth()->user()->name }}</a> --}}
 
             </div>
         </div>
@@ -43,7 +41,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{route('admin.category.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
 
@@ -106,7 +104,7 @@
                         <p>Tạo dữ liệu bảng role
                         </p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
