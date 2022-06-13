@@ -2,6 +2,7 @@
 
 @section('title')
 <title>Trang chu</title>
+
 @section('js')
 <script src="{{ asset('vendors/alert/sweetalert2@11.js') }}"></script>
 <script type="text/javascript" src="{{ asset('adminn\main.js') }}"></script>

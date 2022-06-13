@@ -14,7 +14,7 @@
 // Route::get('/home', function () {
 //     return view('home');
 // });
-Route::get('/home', 'AdminController@index')->name('admin.index');
+
 //Admin
 Route::namespace('Admin')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
@@ -139,3 +139,12 @@ Route::namespace('Admin')->group(function () {
     });
 
 });
+//Site
+Route::namespace('Site')->group(function () {
+    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+    Route::get('/home', 'HomeController@index')->name('home.index');
+
+});
+
+
+
