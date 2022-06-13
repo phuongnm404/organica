@@ -8,4 +8,5 @@ class Slider extends Model
 {
     //
     protected $guarded = [];
+    protected $table = 'sliders';
 }

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('title')
 
-    {{--
+
     <link rel="shortcut icon" href="/img/favicon.png">
-    <link rel="icon" type="image/x-icon" href="/img/favicon.png" sizes="57x57"> --}}
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png" sizes="57x57">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
