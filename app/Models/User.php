@@ -1,17 +1,16 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Models\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class User extends Model
+class User extends Authenticatable
 {
-    //
-    
-    use SoftDeletes;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -39,23 +38,26 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    // public function roles()
-    // {
-    //     return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
-    // }
-    // public function checkPermissionAccess($permissionCheck) {
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+    }
+    public function checkPermissionAccess($permissionCheck) {
         
-    //     // Bước 1: Lấy được các quyền của user đang login hệ thống
-    //     $roles = auth()->user()->roles;
-    //     // Bước 2: So sánh giá trị đưa vào của router hiện tại xem có tồn tại trong các quyền đã lấy được
-    //     foreach( $roles as $role) {
-    //        $permissions = $role->permissions;
-    //        if( $permissions->contains('key_code',$permissionCheck)) {
-    //            return true;
-    //        }
+        // Bước 1: Lấy được các quyền của user đang login hệ thống
+        $roles = auth()->user()->roles;
+        // Bước 2: So sánh giá trị đưa vào của router hiện tại xem có tồn tại trong các quyền đã lấy được
+        foreach( $roles as $role) {
+           $permissions = $role->permissions;
+           if( $permissions->contains('key_code',$permissionCheck)) {
+               return true;
+           }
           
-    //     }
-    //     return false;
+        }
+        return false;
 
-    // }
+    }
+
+    
 }

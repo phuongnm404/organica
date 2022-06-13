@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-<title>Slide</title>
+<title>User</title>
 
 @section('css')
 

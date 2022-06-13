@@ -26,6 +26,7 @@
                             <label>Chọn tên module</label>
                             <select class="form-control" name="module_parent">
                                 <option value="">--Chọn--</option>
+
                                 @foreach(config('permissions.table_module') as $moduleItem)
                                 <option value="{{ $moduleItem }}">{{ $moduleItem }}</option>
                                 @endforeach

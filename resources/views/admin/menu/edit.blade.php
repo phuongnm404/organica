@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-<title>Them danh muc</title>
+<title>Sua menu</title>
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
