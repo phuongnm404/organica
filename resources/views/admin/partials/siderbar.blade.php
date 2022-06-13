@@ -3,10 +3,8 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <a href="" class="brand-text font-weight-light">
-            Logout
-        </a>
+            class="brand-image img-circle elevation-3" style="opacity: .8"> Admin LTE-3
+
     </a>
 
     <!-- Sidebar -->
@@ -19,7 +17,6 @@
             </div>
             <div class="info">
                 {{-- <a href="#" class="d-block">{{ auth()->user()->name }}</a> --}}
-
             </div>
         </div>
 
@@ -50,7 +47,7 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{route('admin.menu.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-compass"></i>
                         <p>Menu</p>
@@ -104,7 +101,7 @@
                         <p>Tạo dữ liệu bảng role
                         </p>
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

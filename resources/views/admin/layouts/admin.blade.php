@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('title')
 
+    {{--
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png" sizes="57x57"> --}}
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,6 +19,8 @@
     <link rel="stylesheet" href="{{asset ('adminlte/dist/css/adminlte.min.css')}}">
 
     <link rel="stylesheet" href="{{asset ('css/app.css')}}">
+
+
 
     @yield('css')
 </head>
@@ -40,6 +46,7 @@
     <script src=" {{asset('/adminlte/dist/js/adminlte.min.js')}}"></script>
 
     @yield('js')
+
 </body>
 
 </html>

@@ -1,8 +1,11 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 // Variables
-@import 'variables';
-
+@import "variables";
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+@import "./admin/product/add.scss";
+@import "./admin/product/indexList.scss";
+@import "./admin/slider/list.scss";
+@import "./admin/setting/list.scss";
+@import "./admin/slider/edit.scss";

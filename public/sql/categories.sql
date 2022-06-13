@@ -34,14 +34,13 @@ CREATE TABLE `categories` (
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `parent_id`, `slug`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `categories` (`id`, `name`, `parent_id`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Rau củ quả', '0', 'rau-cu-qua', NULL, NULL, NULL),
 (2, 'Trái cây', '0', 'trai-cay', NULL, NULL, NULL),
 (3, 'Thức uống', '0', 'thuc-uong', NULL, NULL, NULL),

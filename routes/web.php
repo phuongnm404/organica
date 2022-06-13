@@ -11,14 +11,20 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
+Route::get('/home', 'AdminController@index')->name('admin.index');
 //Admin
 Route::namespace('Admin')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'AdminController@index')->name('admin.home');
+        Route::get('/', 'AdminController@loginAdmin')->name('admin.login');
+        Route::post('/', 'AdminController@postLoginAdmin')->name('admin.post-login');
+        Route::get('/logout', 'AdminController@logout')->name('admin.logout');
+
+        Route::get('/home', 'AdminController@index')->name('admin.index');
+
 
         Route::prefix('category')->group(function() {
 
@@ -128,6 +134,8 @@ Route::namespace('Admin')->group(function () {
                 'uses'=> 'PermissionsController@store',
             ]);
         });
+
+       
     });
 
 });

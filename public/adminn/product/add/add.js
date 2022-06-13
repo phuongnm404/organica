@@ -1,8 +1,9 @@
 $(".tags_select_choose").select2({
+    placeholder: "Select tag", //placeholder
     tags: true,
-    tokenSeparators: [","],
+    tokenSeparators: ["/", ",", ";"],
 });
 $(".select2_init").select2({
     allowClear: true,
-    placeholder: "select",
+    placeholder: "Chọn danh mục",
 });
