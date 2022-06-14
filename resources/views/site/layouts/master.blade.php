@@ -14,7 +14,8 @@
     <link href="{{ asset('eshopper/css/price-range.css') }}" rel="stylesheet">
     <link href="{{ asset('eshopper/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('eshopper/css/main.css') }}" rel="stylesheet">
-
+    {{--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> --}}
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -44,6 +45,8 @@
     <script src="{{ asset('eshopper/js/price-range.js') }}"></script>
     <script src="{{ asset('eshopper/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('eshopper/js/main.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> --}}
+
     @yield('js')
 </body>
 

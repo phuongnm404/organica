@@ -16,7 +16,10 @@ class HomeController extends Controller
         $categorys = Category::where('parent_id', 0)->get();
         $products = Product::latest()->take(12)->get();      //lấy sản phẩm mới nhất
         $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
-        return view('site.home.home', compact('sliders', 'categorys', 'products', 'productRecommends'));
+
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
+
+        return view('site.home.home', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit'));
     }
 
 }

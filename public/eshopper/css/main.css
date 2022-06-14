@@ -239,8 +239,11 @@ a#scrollUp i {
 }
 
 .shop-menu ul li a:hover {
-    color: #22b24c;
-    background: #fff;
+    border: solid 1px #696763;
+    border-radius: 5px;
+    color: #000;
+    background-color: rgba(169, 244, 193, 0.8);
+    font-weight: bold;
 }
 
 .header-bottom {
