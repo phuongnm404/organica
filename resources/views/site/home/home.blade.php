@@ -1,7 +1,6 @@
 @extends("site.layouts.master")
 <!--/head-->
 @yield('css')
-
 @section('content')
 <section>
     <div class="container">
@@ -9,13 +8,13 @@
             <div class="col-sm-12 padding-right">
 
                 <!--features_items-->
-                @include('site.components.feature')
+                @include('site.home.components.feature')
 
                 <!--/category-tab-->
-                @include('site.components.categorytab')
+                @include('site.home.components.categorytab')
 
                 <!--recommenr_items-->
-                @include("site.components.recommend")
+                @include("site.home.components.recommend")
 
 
             </div>

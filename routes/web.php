@@ -156,7 +156,7 @@ Route::namespace('Admin')->group(function () {
 Route::namespace('Site')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::get('/home', 'HomeController@index')->name('home.index');
-
+    Route::get('/product', 'ProductController@index')->name('product');
 });
 
 

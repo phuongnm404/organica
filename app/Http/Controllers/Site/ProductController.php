@@ -1,25 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Site;
-use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
     //
     public function index() {
-
         $sliders = Slider::take(3)->get();
         $categorys = Category::where('parent_id', 0)->get();
         $products = Product::latest()->take(12)->get();      //lấy sản phẩm mới nhất
         $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
-
-        return view('site.home.home', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit'));
+        return view('site.product.index', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit'));
     }
-
 }
