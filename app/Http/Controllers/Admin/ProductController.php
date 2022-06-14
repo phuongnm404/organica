@@ -57,9 +57,7 @@ class ProductController extends Controller
     }
   
     public function store(ProductAddRequest $request) { 
-      
-        // try{
-        //     DB::beginTransaction();
+        $list_tags = $request->tags;
             $dataProductCreate = [
                 'name' =>$request->name,
                 'price' =>$request->price,
@@ -75,6 +73,8 @@ class ProductController extends Controller
                     $dataProductCreate['feature_image_path'] = $dataUploadFeatureImage['file_path'];
                 }
                 $product = $this->product->create($dataProductCreate);
+
+                $product->tags()->sync($list_tags);
     
     
           //Insert datta to product_image 
@@ -88,17 +88,8 @@ class ProductController extends Controller
                 ]);
                 }
             }
-
-            //Insert data to tags
-            if(!empty($request->tags)) {
-                foreach ($request->tags as $tagItem) {
-                    $tagInstance =  $this->tag->firstOrNew(['name' => $tagItem]);
-                    $tagInstance->save();
-                    $tagIds[] = $tagInstance->id;
-                 }
-            }
             
-            $product->tags()->attach($tagIds);
+
             
           //  DB::commit();
             return redirect()->route('admin.product.index');

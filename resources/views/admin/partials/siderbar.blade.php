@@ -66,7 +66,14 @@
                     <a href="{{route('admin.slider.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-sliders-h"></i>
 
-                        <p>Slide
+                        <p>Slide </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.tag.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tag"></i>
+
+                        <p>Tags
                         </p>
                     </a>
                 </li>
@@ -96,7 +103,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.permissions.create')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tag"></i>
+                        <i class="nav-icon fas fa-database"></i>
 
                         <p>Tạo dữ liệu bảng role
                         </p>

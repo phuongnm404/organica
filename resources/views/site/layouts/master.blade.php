@@ -28,7 +28,7 @@
 <!--/head-->
 
 <body>
-    @include("site.components.header")
+    @include("site.layouts.header")
 
     @include("site.components.slider")
 
@@ -36,7 +36,7 @@
 
     @yield('content')
 
-    @include("site.components.footer")
+    @include("site.layouts.footer")
 
     <script src="{{ asset('eshopper/js/jquery.js') }}"></script>
     <script src="{{ asset('eshopper/js/bootstrap.min.js') }}"></script>

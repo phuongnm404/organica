@@ -134,7 +134,20 @@ Route::namespace('Admin')->group(function () {
                 'uses'=> 'PermissionsController@store',
             ]);
         });
+        Route::prefix('tag')->group(function() {
 
+            Route::get('/','TagController@index')->name('admin.tag.index');
+            
+            Route::get('/create','TagController@create') ->name('admin.tag.create');
+            
+            Route::post('/store','TagController@store')->name('admin.tag.store');
+            
+            Route::get('/edit/{id}','TagController@edit')->name('admin.tag.edit');
+
+            Route::post('/update/{id}','TagController@update')->name( 'admin.tag.update');
+
+             Route::get('/delete/{id}','TagController@delete') ->name('admin.tag.delete');
+        });
        
     });
 
