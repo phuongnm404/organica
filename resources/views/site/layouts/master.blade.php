@@ -31,7 +31,7 @@
 <body>
     @include("site.components.header")
 
-    @include("site.home.components.slider")
+
 
 
 

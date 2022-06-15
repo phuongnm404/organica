@@ -1117,6 +1117,16 @@ h2.title {
     background: none;
 }
 
+.view-more a {
+    color: #22b24c;
+    font-weight: 300;
+}
+
+.view-more a:hover {
+    color: #22b24c;
+    font-weight: bold;
+}
+
 
 /*************************
 *******Shop CSS******

@@ -10,13 +10,15 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
     //
-    public function index() {
+    public function index($slug, $categorysId) {
         $sliders = Slider::take(3)->get();
         $categorys = Category::where('parent_id', 0)->get();
-        $products = Product::latest()->take(12)->get();      //lấy sản phẩm mới nhất
-        $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
+        $products = Product::where('category_id', $categorysId)->paginate(12);    
 
-        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
-        return view('site.product.index', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit'));
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get(); //lấy category-tab
+
+        return view('site.product.index', compact('sliders', 'categorys', 'products', 'categoryLimit'));
     }
+
+
 }

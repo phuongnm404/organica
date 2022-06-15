@@ -9,8 +9,6 @@
                     <img src="{{$product->feature_image_path}}" alt="" />
                     <b>{{$product->name}}</b>
                     <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
-
-
                 </div>
                 <div class="product-overlay">
                     <div class="overlay-content">
@@ -29,5 +27,15 @@
     </div>
     @endforeach
 
+    <div class="col-sm-12">
+        <ul class="pagination">
+
+            {{ $products->links() }}
+            <li class="active"><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">&raquo;</a></li>
+        </ul>
+    </div>
 
 </div>

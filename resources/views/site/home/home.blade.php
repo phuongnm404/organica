@@ -2,6 +2,8 @@
 <!--/head-->
 @yield('css')
 @section('content')
+@include("site.home.components.slider")
+
 <section>
     <div class="container">
         <div class="row">
