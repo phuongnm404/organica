@@ -38,8 +38,8 @@
         <h2>THƯƠNG HIỆU</h2>
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
-                @foreach ($products as $product )
-                <li><a href="#"> <span class="pull-right">(50)</span>{{$product->brand}}</a></li>
+                @foreach ($productAll as $productAllItem )
+                <li><a href="#"> <span class="pull-right">(50)</span>{{$productAllItem->brand}}</a></li>
                 @endforeach
 
             </ul>
