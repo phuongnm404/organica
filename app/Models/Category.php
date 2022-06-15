@@ -21,4 +21,9 @@ class Category extends Model
         return $this->hasMany(Product::class, 'category_id');
 
     }
+    
+   public function getCategoryType($slug)
+   {
+      return $this::where('slug', $slug)->first();
+   }
 }

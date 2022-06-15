@@ -12,6 +12,7 @@ use App\Models\Tag;
 use App\Models\ProductImage;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Brand;
 use DB;
 use App\Traits\StorageImageTrait;
 use App\Http\Requests\ProductAddRequest;
@@ -27,14 +28,16 @@ class ProductController extends Controller
     private $product;
     private $tag;
     private $productTag;
+    private $brand;
 
-    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag, ProductTag $productTag) {
+    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag, ProductTag $productTag, Brand $brand) {
    
       $this->category = $category;
       $this->product = $product;
       $this->productImage = $productImage;
       $this->tag = $tag;
       $this->productTag = $productTag;
+      $this->brand = $brand;
     }
     public function index() {
         $products = $this->product->paginate(5);
@@ -44,8 +47,8 @@ class ProductController extends Controller
     public function create() {
         $htmlOption=$this->getCategory($parent_id='');
         $list_tag = $this->tag::all();
-
-        return view('admin.product.add', compact('htmlOption', 'list_tag'));
+        $list_brand = $this->brand::all();
+        return view('admin.product.add', compact('htmlOption', 'list_tag', 'list_brand'));
     }
 
     public function getCategory($parent_id) {
@@ -57,11 +60,14 @@ class ProductController extends Controller
     }
   
     public function store(ProductAddRequest $request) { 
-        $list_tags = $request->tags;
+        // try {
+        //     DB::beginTransaction();
+            $list_tags = $request->tags;
+
             $dataProductCreate = [
                 'name' =>$request->name,
                 'price' =>$request->price,
-                'brand' => $request->brand,
+                'brand_id' => $request->brand_id,
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
                 'user_id'=> auth()->id(),
@@ -75,8 +81,8 @@ class ProductController extends Controller
                 $product = $this->product->create($dataProductCreate);
 
                 $product->tags()->sync($list_tags);
-    
-    
+             
+               
           //Insert datta to product_image 
              if ($request->hasFile('image_path')) {
                  
@@ -90,31 +96,36 @@ class ProductController extends Controller
             }
             
 
-            
-          //  DB::commit();
-            return redirect()->route('admin.product.index');
+           // dd($request->all());
+        //     DB::commit();
+             return redirect()->route('admin.product.index');
     
-        // } catch(\Exception $exception) {
-        //     DB::rollBack();
-        //     Log::error ('Message: '. $exception->getMessage(). 'Line: '. $exception->getLine());
-        // }
+        //  } catch(\Exception $exception) {
+        //      DB::rollBack();
+        //      Log::error ('Message: '. $exception->getMessage(). 'Line: '. $exception->getLine());
+        //  }
       
       
     }
+    
     public function edit($id) {
 
         $product = $this->product->find($id);
+        $brand = $this->brand->all();
         $htmlOption=$this->getCategory($product->category_id);
-       return view('admin.product.edit', compact('htmlOption', 'product'));
 
-    }
+      // dd($brand);
+
+       return view('admin.product.edit', compact('htmlOption', 'product', 'brand'));
+
+    }   
     public function update(Request $request, $id) {
         try {
             DB::beginTransaction();
             $dataProductUpdate = [
                 'name' =>$request->name,
                 'price' =>$request->price,
-                'brand' => $request->brand,
+                'brand_id' => $request->brand_id,
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
                 'user_id'=> auth()->id(),
@@ -151,6 +162,8 @@ class ProductController extends Controller
                 }
             }
             $product->tags()->sync($tagIds);
+
+        
             DB::commit();
             return redirect()->route('admin.product.index');
         } catch (\Exception $exception) {

@@ -48,8 +48,13 @@
                         </div>
                         <div class="form-group">
                             <label for="product-price">Thương hiệu</label>
-                            <input type="text" name="brand" class="form-control" id="product-brand"
-                                value="{{$product->brand}}" placeholder="Nhập tên thương hiệu">
+                            <select name="brand_id" class="form-control  select2_init_brand">
+
+                                @foreach ($brand as $brandItem)
+                                <option value="{{$brandItem->id}}" selected>{{$brandItem->name}}</option>
+                                @endforeach
+
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="product-name">Hình ảnh chủ đề</label>
@@ -103,8 +108,8 @@
                         <div class="form-group">
                             <label>Tags</label>
                             <select name="tags[]" class="form-control tags_select_choose" multiple="multiple">
-                                @if(isset($list_tag))
 
+                                @if(isset($list_tag))
                                 @foreach ($list_tag as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                 @endforeach

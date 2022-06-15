@@ -1,3 +1,7 @@
+@extends("site.layouts.product_master")
+<!--/head-->
+@yield('css')
+@section('content')
 <div class="features_items">
     <!--features_items-->
     <h2 class="title text-center">TẤT CẢ SẢN PHẨM</h2>
@@ -39,3 +43,4 @@
     </div>
 
 </div>
+@endsection

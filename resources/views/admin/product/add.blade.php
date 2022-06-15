@@ -60,9 +60,21 @@
                         </div>
                         <div class="form-group">
                             <label for="product-price">Thương hiệu</label>
-                            <input type="text" name="brand" class="form-control @error('brand') is-invalid @enderror"
-                                value="{{ old('brand') }}" id="product-brand" placeholder="Nhập tên thương hiệu">
-                            @error('brand')
+                            {{-- <input type="text" name="brand"
+                                class="form-control @error('brand') is-invalid @enderror" value="{{ old('brand') }}"
+                                id="product-brand" placeholder="Nhập tên thương hiệu"> --}}
+                            <select name="brand_id"
+                                class="form-control select2_init_brand @error('brand_id') is-invalid @enderror">
+                                <option value="">-Chọn thương hiệu-</option>
+
+                                @if(isset($list_brand))
+                                @foreach ($list_brand as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                                @endif
+
+                            </select>
+                            @error('brand_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

@@ -16,7 +16,7 @@
                         <li><a href="{{route('home.index')}}" class="active">Home</a></li>
 
                         @foreach ($categoryLimit as $categoryParent)
-                        <li class="dropdown"><a href="#">{{$categoryParent->name}}<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="">{{$categoryParent->name}}<i class="fa fa-angle-down"></i></a>
                             @include('site.components.child_menu', ['categoryParent' => $categoryParent])
                         </li>
                         @endforeach

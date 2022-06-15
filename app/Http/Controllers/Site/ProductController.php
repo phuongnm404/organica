@@ -24,7 +24,21 @@ class ProductController extends Controller
         $categorys = Category::where('parent_id', 0)->get();
         $productAll = Product::all()->shuffle();
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
-        return view('site.product.index', compact('productAll', 'categorys', 'categoryLimit'));
+        return view('site.product.productAll', compact('productAll', 'categorys', 'categoryLimit'));
+    }
+
+    public function getProduct($slug, $categorysId) {
+        $categorys = Category::where('parent_id', 0)->get();
+
+        $categoryModel = new Category();
+
+        $category_slug = $categoryModel->getCategoryType($slug);
+
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
+
+        $products = Product::where('category_id', $categorysId)->paginate(12); 
+
+        return view('site.product.productCategory', compact('categorys', 'categoryLimit', 'category_slug', 'products'));
     }
 
 

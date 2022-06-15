@@ -26,10 +26,7 @@ class TagController extends Controller
         return view('admin.tag.add');
     }
 
-    public function getTag($id) {
-        $tags = $this->tag->all();
-        return $tags;
-    }
+ 
     public function store(Request $request) {
         $this->tag->create([
             'name' => $request->name,

@@ -21,7 +21,9 @@
                 <div class="panel-body">
                     <ul>
                         @foreach($category->categoryChildren as $categoryChilren)
-                        <li><a href="#">{{ $categoryChilren->name }}</a></li>
+                        <li><a
+                                href="{{ route('productCategory',['slug' => $categoryChilren->slug, 'id' => $categoryChilren->id]) }}">{{
+                                $categoryChilren->name }}</a></li>
                         @endforeach
 
                     </ul>
@@ -38,9 +40,9 @@
         <h2>THƯƠNG HIỆU</h2>
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
-                @foreach ($productAll as $productAllItem )
-                <li><a href="#"> <span class="pull-right">(50)</span>{{$productAllItem->brand}}</a></li>
-                @endforeach
+                {{-- @foreach ($productAll as $productAllItem )
+                <li><a href="#"> <span class="pull-right">(50)</span>{{$productAllItem->brand->name}}</a></li>
+                @endforeach --}}
 
             </ul>
         </div>

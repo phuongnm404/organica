@@ -23,4 +23,8 @@ class Product extends Model
     public function productImages() {
         return $this -> hasMany(ProductImage::class, 'product_id');
     }
+    public function brands() {
+        return $this-> hasOne(Brand::class, 'brand_id');
+    }
+    
 }

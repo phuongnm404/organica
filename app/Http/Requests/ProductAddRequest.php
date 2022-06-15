@@ -27,7 +27,7 @@ class ProductAddRequest extends FormRequest
             //
             'name' => 'bail|required|unique:products|max:255|min:5',
             'price' =>'required',
-            'brand' => 'required|max:255',
+            'brand_id' => 'required|max:255',
             'weight' => 'required|max:255',
             'contents' => 'required',
             'category_id' =>'required'
@@ -40,7 +40,7 @@ class ProductAddRequest extends FormRequest
         'name.max' => 'Vui lòng nhập tên sản phẩm dưới 255 ký tự',
         'name.min' => 'Vui lòng nhập tên sản phẩm lớn hơn 5 ký tự',
         'price.required'  => 'Vui lòng nhập giá sản phẩm',
-        'brand.required'  => 'Vui lòng nhập thương hiệu sản phẩm',
+        'brand_id.required'  => 'Vui lòng chọn thương hiệu sản phẩm',
         'weight.required'  => 'Vui lòng nhập khối lượng sản phẩm',
         'contents.required'  => 'Vui lòng nhập mô tả sản phẩm',
         'category_id.required'  => 'Vui lòng chọn danh mục sản phẩm',

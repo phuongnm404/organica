@@ -30,8 +30,19 @@
 
 <body>
     @include("site.components.header")
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    @include('site.product.components.sidebar')
+                </div>
+                <div class="col-sm-9  padding-right">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+    </section>
 
-    @yield('content')
 
     @include("site.components.footer")
 

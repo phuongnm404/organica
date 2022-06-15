@@ -1,4 +1,5 @@
 @extends("site.layouts.product_master")
+
 <!--/head-->
 @yield('css')
 
@@ -10,9 +11,10 @@
                 @include('site.product.components.sidebar')
             </div>
             <div class="col-sm-9  padding-right">
-                @include('site.product.components.list_product')
+                @include('site.product.components.list_product_category')
             </div>
         </div>
     </div>
 </section>
 @endsection
+@yield('css')

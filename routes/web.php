@@ -148,7 +148,21 @@ Route::namespace('Admin')->group(function () {
 
              Route::get('/delete/{id}','TagController@delete') ->name('admin.tag.delete');
         });
-       
+        Route::prefix('brand')->group(function() {
+
+            Route::get('/','BrandController@index')->name('admin.brand.index');
+            
+            Route::get('/create','BrandController@create') ->name('admin.brand.create');
+            
+            Route::post('/store','BrandController@store')->name('admin.brand.store');
+            
+            Route::get('/edit/{id}','BrandController@edit')->name('admin.brand.edit');
+
+            Route::post('/update/{id}','BrandController@update')->name( 'admin.brand.update');
+
+             Route::get('/delete/{id}','BrandController@delete') ->name('admin.brand.delete');
+        });
+
     });
 
 });
@@ -161,6 +175,7 @@ Route::namespace('Site')->group(function () {
         'as' => 'category.product',
         'uses' => 'ProductController@index',
     ]);
+    Route::get('/{slug}/{id}', 'ProductController@getProduct')->name('productCategory');
 });
 
 
