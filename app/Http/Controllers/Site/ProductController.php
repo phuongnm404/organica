@@ -32,11 +32,11 @@ class ProductController extends Controller
         $productModel = new Product();
 
         $categoryModel = new Category();
+        $brand = Brand::all();
     
-        return view('site.product.productAll', compact('productAll', 'categorys', 'categoryLimit', 'productModel', 'categoryModel'));
+        return view('site.product.productAll', compact('productAll', 'categorys', 'categoryLimit', 'productModel', 'categoryModel', 'brand'));
     }
    
-
     public function getProductCategory($slugCategory, $categorysId) {
 
         $categorys = Category::where('parent_id', 0)->get();
@@ -49,10 +49,10 @@ class ProductController extends Controller
 
         $productModel = new Product();
        
-
+        $brand = Brand::all();
         $products = Product::where('category_id', $categorysId)->paginate(12); 
 
-        return view('site.product.productCategory', compact('categorys', 'categoryLimit', 'category_slug', 'products', 'productModel'));
+        return view('site.product.productCategory', compact('categorys', 'categoryLimit', 'category_slug', 'products', 'productModel', 'brand'));
     }
 
     public function getProductDetail($slugCategory,$slugProduct, $productId) {
@@ -72,24 +72,22 @@ class ProductController extends Controller
 
         $productTag = new ProductTag();
       
-       
-        return view('site.product.productDetail', compact('categorys', 'categoryLimit', 'product_slug', 'products', 'productBrand', 'categoryModel'));
+        $brand = Brand::all();
+        return view('site.product.productDetail', compact('categorys', 'categoryLimit', 'product_slug', 'products', 'productBrand', 'categoryModel', 'brand'));
     }
-    public function filterBrand() {
+    public function filterBrand($brandId) {
+
         $categorys = Category::where('parent_id', 0)->get();
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
-
         $categoryModel = new Category();
-       // $category_slug = $categoryModel->getCategoryType($slugCategory);
-
         $productModel = new Product();
-        //$product_slug = $productModel->getProductType($slugProduct);
-
-      //  $products = Product::where('id', $productId)->with('tags')->first();
+       
         
         $brand = Brand::all();
 
-        return view('site.product.productFilter', compact('categorys', 'categoryLimit', 'categoryModel','brand'));
+        $productBrand = Product::where('brand_id',$brandId )->paginate(12);
+
+        return view('site.product.productFilter', compact('categorys', 'categoryLimit', 'categoryModel','brand', 'productBrand'));
     }
 
 

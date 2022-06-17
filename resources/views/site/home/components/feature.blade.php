@@ -7,7 +7,8 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <a href="">
+                        <a
+                            href="  {{ route('productDetail', ['slugCategory' =>$product->category->slug, 'slugProduct' =>$product->slug, 'productId'=>$product->id]  )}}">
                             <img src="{{$product->feature_image_path}}" alt="" />
                             <b>{{$product->name}}</b>
                             <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
@@ -30,6 +31,8 @@
         @endforeach
     </div>
     <div class="col-sm-12 text-center view-more">
-        <p><a href="">Xem thêm sản phẩm <i class="fa fa-angle-double-right"> </i> </a></p>
+        <p><a href="{{route('productAll')}}">Xem
+                thêm sản phẩm <i class="fa fa-angle-double-right">
+                </i> </a></p>
     </div>
 </div>

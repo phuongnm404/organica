@@ -177,7 +177,7 @@ Route::namespace('Site')->group(function () {
     Route::get('/{slugCategory}/{slugProduct}/{id}', 'ProductController@getProductDetail')->name('productDetail'); // lấy thông tin sản phẩm của một sản phẩm
 
 
-    Route::get('/filter', 'ProductController@filterBrand')->name('filterBrand');
+    Route::get('/filter/{id}', 'ProductController@filterBrand')->name('filterBrand');
 
 
 

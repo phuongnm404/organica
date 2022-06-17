@@ -1,7 +1,8 @@
 <div class="left-sidebar">
-    <h2>Danh mục</h2>
+
     <div class="panel-group category-products" id="accordian">
         <!--category-productsr-->
+        <h2>Danh mục</h2>
         @foreach($categorys as $category)
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -32,6 +33,17 @@
 
         </div>
         @endforeach
+    </div>
+    <div class="brands_products">
+        <!--brands_products-->
+        <h2>THƯƠNG HIỆU</h2>
+        <div class="brands-name">
+            <ul class="nav nav-pills nav-stacked">
+                @foreach ($brand as $brands)
+                <li><a href="{{route('filterBrand', ['id'=>$brands->id])}}">{{$brands->name}}</a></li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 
 </div>

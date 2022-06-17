@@ -23,4 +23,5 @@
         </div>
     </div>
 </section>
+@include('site.home.components.ad')
 @endsection
