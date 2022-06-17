@@ -26,4 +26,8 @@ class Category extends Model
    {
       return $this::where('slug', $slug)->first();
    }
+   
+   public function getCategoryIdSlug($id) {
+        return $this::find($id)->slug;
+   }
 }

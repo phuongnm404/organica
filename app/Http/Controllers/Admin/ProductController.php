@@ -62,6 +62,7 @@ class ProductController extends Controller
     public function store(ProductAddRequest $request) { 
         // try {
         //     DB::beginTransaction();
+           
             $list_tags = $request->tags;
 
             $dataProductCreate = [
@@ -71,7 +72,8 @@ class ProductController extends Controller
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
                 'user_id'=> auth()->id(),
-                'category_id'=> $request->category_id
+                'category_id'=> $request->category_id,
+                'slug' => str_slug($request->name),
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
                 if (!empty($dataUploadFeatureImage)) {
@@ -129,7 +131,7 @@ class ProductController extends Controller
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
                 'user_id'=> auth()->id(),
-                'category_id'=> $request->category_id
+                'category_id'=> $request->category_id,
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
             if (!empty($dataUploadFeatureImage)) {

@@ -33,27 +33,5 @@
         </div>
         @endforeach
     </div>
-    <!--/category-products-->
-
-    <div class="brands_products">
-        <!--brands_products-->
-        <h2>THƯƠNG HIỆU</h2>
-        <div class="brands-name">
-            <ul class="nav nav-pills nav-stacked">
-                {{-- @foreach ($productAll as $productAllItem )
-                <li><a href="#"> <span class="pull-right">(50)</span>{{$productAllItem->brand->name}}</a></li>
-                @endforeach --}}
-
-            </ul>
-        </div>
-    </div>
-    <!--/brands_products-->
-
-
-    {{-- <div class="shipping text-center">
-        <!--shipping-->
-        <img src="eshopper/images/home/shipping.jpg" alt="" />
-    </div>
-    <!--/shipping--> --}}
 
 </div>

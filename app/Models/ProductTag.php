@@ -8,4 +8,8 @@ class ProductTag extends Model
 {
     //
     protected $guarded = [];
+
+    public function getTagbyId($id) {
+        return $this->find($id);
+    }
 }

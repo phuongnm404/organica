@@ -16,6 +16,8 @@ class HomeController extends Controller
         $categorys = Category::where('parent_id', 0)->get();
         $products = Product::latest()->take(12)->get();      //lấy sản phẩm mới nhất
         $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
+        
+       // $productCategory = Product::where('category_id', '')
 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
 

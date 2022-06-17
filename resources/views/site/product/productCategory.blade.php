@@ -14,18 +14,23 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{$productItem->feature_image_path}}" alt="" />
-                        <b>{{$productItem->name}}</b>
-                        <h3>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}</h3>
+
+                        <a
+                            href="{{ route('productDetail', ['slugCategory' => $category_slug->slug, 'slugProduct' => $productModel-> getProductType($productItem->slug) ->slug, 'productId'=>$productItem->id]  )}}">
+                            <img src="{{$productItem->feature_image_path}}" alt="" />
+                            <b>{{$productItem->name}}</b>
+                            <h3>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}</h3>
+                        </a>
+
                     </div>
-                    <div class="product-overlay">
+                    {{-- <div class="product-overlay">
                         <div class="overlay-content">
                             <b>{{$productItem->name}}</b><br>
                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào
                                 giỏ
                                 hàng</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="choose">
                     <ul class="nav nav-pills nav-justified">

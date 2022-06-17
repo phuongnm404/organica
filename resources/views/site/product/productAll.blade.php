@@ -5,14 +5,22 @@
 <div class="features_items">
     <!--features_items-->
     <h2 class="title text-center">TẤT CẢ SẢN PHẨM</h2>
+
     @foreach ($productAll as $productAllItem)
     <div class="col-sm-3">
         <div class="product-image-wrapper">
             <div class="single-products">
                 <div class="productinfo text-center">
-                    <img src="{{$productAllItem->feature_image_path}}" alt="" />
-                    <b>{{$productAllItem->name}}</b>
-                    <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
+                    <a
+                        href="
+                    {{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllItem->category_id), 'slugProduct' => $productAllItem->slug, 'productId'=>$productAllItem->id]  )}}">
+                        <img src="{{$productAllItem->feature_image_path}}" alt="" />
+                        <b>{{$productAllItem->name}}</b>
+                        {{-- {{ $productGetSlugCategory-> getCategoryType($productAllItem->category_id->slug) ->slug}}
+                        --}}
+                        <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
+                    </a>
+
                 </div>
                 <div class="product-overlay">
                     <div class="overlay-content">

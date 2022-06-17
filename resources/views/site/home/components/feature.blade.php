@@ -7,18 +7,16 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{$product->feature_image_path}}" alt="" />
-                        <b>{{$product->name}}</b>
-                        <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
-
+                        <a href="">
+                            <img src="{{$product->feature_image_path}}" alt="" />
+                            <b>{{$product->name}}</b>
+                            <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
+                        </a>
 
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
-                            <b>{{$product->name}}</b><br>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                giỏ
-                                hàng</a>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>

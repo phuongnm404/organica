@@ -8,7 +8,7 @@
         </ol>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                @foreach ($sliders as$key => $slider )
+                @foreach ($sliders as $key => $slider )
                 <div class="item {{$key == 0 ? 'active' : ''}}">
 
                     <img class="d-block w-100" src="{{$slider->image_path}}" alt="{{$slider->name}}">

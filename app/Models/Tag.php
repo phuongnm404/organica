@@ -12,4 +12,7 @@ class Tag extends Model
     public function products() {
         return $this -> belongsToMany(Product::class, 'product_tags');
     }
+    public function getTagName($id) {
+        return $this::find($id) ->name;
+    }
 }

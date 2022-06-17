@@ -138,7 +138,7 @@
                                 placeholder="Nhập mô tả sản phẩm" rows=5>
                                 {{ old('contents') }}
                             </textarea>
-                            @error('description')
+                            @error('contents')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

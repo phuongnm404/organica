@@ -31,10 +31,6 @@
 <body>
     @include("site.components.header")
 
-
-
-
-
     @yield('content')
 
     @include("site.components.footer")

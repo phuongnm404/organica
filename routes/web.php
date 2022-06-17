@@ -171,11 +171,17 @@ Route::namespace('Site')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::get('/product', 'ProductController@getAll')->name('productAll');
-    Route::get('/category/{slug}/{id}',[
-        'as' => 'category.product',
-        'uses' => 'ProductController@index',
-    ]);
-    Route::get('/{slug}/{id}', 'ProductController@getProduct')->name('productCategory');
+
+    Route::get('/{slugCategory}/{id}', 'ProductController@getProductCategory')->name('productCategory'); // lấy tất cả các sản phẩm thuộc 1 danh mục
+
+    Route::get('/{slugCategory}/{slugProduct}/{id}', 'ProductController@getProductDetail')->name('productDetail'); // lấy thông tin sản phẩm của một sản phẩm
+
+
+    Route::get('/filter', 'ProductController@filterBrand')->name('filterBrand');
+
+
+
+
 });
 
 

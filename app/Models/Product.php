@@ -26,5 +26,10 @@ class Product extends Model
     public function brands() {
         return $this-> hasOne(Brand::class, 'brand_id');
     }
+    public function getProductType($slug)
+    {
+       return $this::where('slug', $slug)->first();
+    }
     
+   
 }
