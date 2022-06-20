@@ -21,7 +21,7 @@
                     <form action="{{route('admin.tag.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Tên tag</label>
+                            <label>Tên tag</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên"
                                 value="{{ old('name') }}">
 

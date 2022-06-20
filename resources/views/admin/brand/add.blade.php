@@ -21,7 +21,7 @@
                     <form action="{{route('admin.brand.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Tên thương hiệu</label>
+                            <label>Tên thương hiệu</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên"
                                 value="{{ old('name') }}">
 

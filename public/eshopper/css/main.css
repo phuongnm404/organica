@@ -824,11 +824,16 @@ h2.title:before {
     padding-bottom: 20px;
 }
 
+.tag-name {
+    border: 1px solid #f7f7f0;
+    padding-bottom: 20px;
+}
+
 .brands-name .nav-stacked li a {
     background-color: #ffffff;
     color: #696763;
     font-family: "Lato", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     padding: 5px 25px;
     text-decoration: none;
     text-transform: uppercase;
@@ -836,6 +841,12 @@ h2.title:before {
 }
 
 .brands-name .nav-stacked li a:hover {
+    background-color: #22b24c;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tag-name .nav-stacked li a:hover {
     background-color: #22b24c;
     color: #ffffff;
     font-weight: bold;

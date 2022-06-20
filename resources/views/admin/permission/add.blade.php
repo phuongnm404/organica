@@ -23,7 +23,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label>Chọn tên module</label>
+                            <label>Chọn tên module</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <select class="form-control" name="module_parent">
                                 <option value="">--Chọn--</option>
 

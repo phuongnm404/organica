@@ -42,6 +42,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="product-name">Tên sản phẩm</label>
+                            <span class="must text-danger font-weight-bold">(*)</span>
 
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                 value="{{ old('name') }}" id="product-name" placeholder="Nhập tên sản phẩm">
@@ -51,7 +52,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product-price">Giá</label>
+                            <label for="product-price">Giá</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" name="price" class="form-control @error('price') is-invalid @enderror"
                                 value="{{ old('price') }}" id="product-price" placeholder="Nhập giá tiền">
                             @error('price')
@@ -59,7 +61,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product-price">Thương hiệu</label>
+                            <label for="product-price">Thương hiệu</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             {{-- <input type="text" name="brand"
                                 class="form-control @error('brand') is-invalid @enderror" value="{{ old('brand') }}"
                                 id="product-brand" placeholder="Nhập tên thương hiệu"> --}}
@@ -79,7 +82,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product-name">Hình ảnh chủ đề</label>
+                            <label for="product-name">Hình ảnh chủ đề</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <input class='form-control-file' type="file" name="feature_image_path"
                                 id="product-feature-image">
                         </div>
@@ -95,7 +99,7 @@
 
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>Chọn danh mục </label>
+                            <label>Chọn danh mục </label> <span class="must text-danger font-weight-bold">(*)</span>
                             <select class="form-control select2_init" name="category_id">
                                 <option value="">-Chọn danh mục-</option>
                                 {!!$htmlOption!!}
@@ -106,7 +110,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product-price">Trọng lượng</label>
+                            <label for="product-price">Trọng lượng</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" name="weight" class="form-control @error('weight') is-invalid @enderror"
                                 value="{{ old('weight') }}" id="product-weight" placeholder="Nhập trọng lượng">
                             @error('weight')
@@ -114,7 +119,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Tags</label>
+                            <label>Tags</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <select name="tags[]"
                                 class="form-control tags_select_choose @error('tags') is-invalid @enderror"
                                 multiple="multiple">
@@ -132,7 +137,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="product-price">Mô tả</label>
+                            <label for="product-price">Mô tả</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <textarea type="text" name="contents"
                                 class="form-control @error('contents') is-invalid @enderror" id="ckeditor1"
                                 placeholder="Nhập mô tả sản phẩm" rows=5>

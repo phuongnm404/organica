@@ -22,12 +22,14 @@
                     <form action="{{ route('admin.category.store')}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="category-name">Tên danh mục</label>
+                            <label for="category-name">Tên danh mục</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" name="name" class="form-control" id="category-name"
                                 placeholder="Nhập tên danh mục">
                         </div>
                         <div class="form-group">
-                            <label>Chọn tên danh mục cha</label>
+                            <label>Chọn tên danh mục cha</label> <span
+                                class="must text-danger font-weight-bold">(*)</span>
                             <select class="form-control" name="parent_id">
                                 <option value="0">-Chọn danh mục cha-</option>
                                 {!!$htmlOption!!}

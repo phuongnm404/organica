@@ -21,7 +21,7 @@
                     <form action="{{ route('admin.slider.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Tên slider</label>
+                            <label>Tên slider</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                 placeholder="Nhập tên" value="{{ old('name') }}">
                             @error('name')
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Hình ảnh</label>
+                            <label>Hình ảnh</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="file" class="form-control @error('image_path') is-invalid @enderror"
                                 name="image_path">
                             @error('image_path')

@@ -26,21 +26,21 @@
                     <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Tên</label>
+                            <label>Tên</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên"
                                 value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
+                            <label>Email</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control" name="email" placeholder="Nhập email"
                                 value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label>Password</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="password" class="form-control" name="password" placeholder="Nhập password">
                         </div>
                         <div class="form-group">
-                            <label>Chọn vai trò</label>
+                            <label>Chọn vai trò</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <select name="role_id[]" class="form-control select2_init" multiple>
                                 <option value=""></option>
                                 @foreach($roles as $role)

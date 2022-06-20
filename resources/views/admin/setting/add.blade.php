@@ -22,7 +22,7 @@
                     <form action="{{ route('admin.setting.store') . '?type=' . request()->type }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label>Config key</label>
+                            <label>Config key</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control @error('config_key') is-invalid @enderror"
                                 name="config_key" placeholder="Nhập config key">
                             @error('config_key')
@@ -32,7 +32,7 @@
 
                         @if(request()->type === 'Text')
                         <div class="form-group">
-                            <label>Config value</label>
+                            <label>Config value</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control @error('config_value') is-invalid @enderror"
                                 name="config_value" placeholder="Nhập config value">
                             @error('config_value')
@@ -41,7 +41,7 @@
                         </div>
                         @elseif(request()->type === 'Textarea')
                         <div class="form-group">
-                            <label>Config value</label>
+                            <label>Config value</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <textarea class="form-control @error('config_value') is-invalid @enderror"
                                 name="config_value" placeholder="Nhập config value" rows="5"></textarea>
                             @error('config_value')

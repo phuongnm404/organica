@@ -41,7 +41,7 @@
                     <div class="col-md-12">
                         @csrf
                         <div class="form-group">
-                            <label>Tên vai trò</label>
+                            <label>Tên vai trò</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên vai trò"
                                 value="{{ old('name') }}">
 

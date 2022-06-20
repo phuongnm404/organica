@@ -1,7 +1,12 @@
 @extends("site.layouts.product_master")
 <!--/head-->
 @yield('css')
+
 @section('content')
+@include("site.components.breadcrumb",[
+'name' => 'Sản phẩm',
+'key' => 'Tất cả sản phẩm'
+])
 <div class="features_items">
     <!--features_items-->
     <h2 class="title text-center">TẤT CẢ SẢN PHẨM</h2>

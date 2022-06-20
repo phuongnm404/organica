@@ -85,12 +85,7 @@
                                     @foreach($products->tags as $productTagItem)
                                     <div class="feature-tag">
                                         <a href=""> <span>{{ $productTagItem->name }}</span></a>
-
                                     </div>
-
-
-
-
                                     @endforeach
                                 </td>
                             </tr>
