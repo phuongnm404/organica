@@ -13,7 +13,7 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="{{route('home.index')}}" class="active">Home</a></li>
+                        <li><a href="{{route('home.index')}}" class="text-uppercase">Home</a></li>
                         {{--
                         <li class="dropdown" data-toggle="dropdown"><a href=""> Sản phẩm <i
                                     class="fa fa-angle-down"></i></a>
@@ -40,6 +40,10 @@
                         </li>
                         @endforeach
 
+                        <li><a href="{{route('home.index')}}" class="text-uppercase">Tin tức</a></li>
+                        <li><a href="{{route('home.index')}}" class="text-uppercase">Cửa hàng</a></li>
+                        <li><a href="{{route('home.index')}}" class="text-uppercase">Tuyển dụng</a></li>
+                        <li><a href="{{route('home.index')}}" class="text-uppercase">Liên hệ</a></li>
 
 
 

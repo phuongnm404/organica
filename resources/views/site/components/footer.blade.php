@@ -1,66 +1,79 @@
 <footer id="footer">
     <!--Footer-->
-
+    @include('site.components.banner_footer')
     <div class="footer-widget">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="single-widget">
-                        <h2>Service</h2>
+                        <h2>trang chủ</h2>
+                        <h2>Sản phẩm</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Online Help</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Order Status</a></li>
-                            <li><a href="#">Change Location</a></li>
-                            <li><a href="#">FAQ’s</a></li>
+                            <li><a href="#">Rau củ quả</a></li>
+                            <li><a href="#">Trai cây</a></li>
+                            <li><a href="#">Thức uống</a></li>
+                        </ul>
+                        <h2>Hỗ trợ khách hàng</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Chính sách giao hàng </a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Chính sách hoàn tiền</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="single-widget">
+                        <h2>Trò chuyện cùng Organica</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Hiểu hữu cơ</a></li>
+                            <li><a href="#">Ăn hữu cơ</a></li>
+                            <li><a href="#">Sống hữu cơ</a></li>
+                            <li><a href="#">Mẹ hữu cơ</a></li>
+                            <li><a href="#">Organica Blog</a></li>
+                        </ul>
+                        <h2>Về Organica</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Tầm nhìn& Sứ mệnh</a></li>
+                            <li><a href="#">Trang trại hữu cơ</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="single-widget">
-                        <h2>Quock Shop</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">T-Shirt</a></li>
-                            <li><a href="#">Mens</a></li>
-                            <li><a href="#">Womens</a></li>
-                            <li><a href="#">Gift Cards</a></li>
-                            <li><a href="#">Shoes</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Policies</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Privecy Policy</a></li>
-                            <li><a href="#">Refund Policy</a></li>
-                            <li><a href="#">Billing System</a></li>
-                            <li><a href="#">Ticket System</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>About Shopper</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Company Information</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Store Location</a></li>
-                            <li><a href="#">Affillate Program</a></li>
-                            <li><a href="#">Copyright</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-sm-offset-1">
-                    <div class="single-widget">
-                        <h2>About Shopper</h2>
+                        <h2>Đăng ký nhận khuyến mại</h2>
                         <form action="#" class="searchform">
-                            <input type="text" placeholder="Your email address" />
+                            <input type="text" placeholder="Nhận email thông tin khuyến mại" />
                             <button type="submit" class="btn btn-default"><i
                                     class="fa fa-arrow-circle-o-right"></i></button>
-                            <p>Get the most recent updates from <br />our site and be updated your self...</p>
                         </form>
+                        <p>
+                        <h3> CỬA HÀNG TẠI TP.HỒ CHÍ MINH</h3>
+                        <ol>
+                            <li> 130 Nguyễn Đình Chiểu, Phường Võ Thị Sáu, Quận 3, TP.Hồ Chí Minh- Tel: 028 6673 3350 |
+                                0902
+                                686 292</li>
+                            <li> 54 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP.Hồ Chí Minh- Tel: 028 6685 0532 | 0901
+                                81 81
+                                84</li>
+                            <li> 24 Nguyễn Quý Đức, Phường An Phú, TP.Thủ Đức, TP.Hồ Chí Minh- Tel: 028 2212 6326 | 0838
+                                153
+                                535</li>
+                            <li>60 Nguyễn Đức Cảnh, Phường Tân Phong, Quận 7, TP.Hồ Chí Minh- Tel: 028 5413 5235 | 0886
+                                776
+                                116</li>
+                            <li> Căn SH03, tòa nhà Aqua 2, Vinhomes Golden River, 02 Nguyễn Hữu Cảnh, Phường Bến Nghé,
+                                Quận
+                                1,, TP.Hồ Chí Minh- Tel: 028 2229 2535 I 088 990 3535</li>
+                        </ol>
+
+
+
+
+
+
+                        </p>
                     </div>
                 </div>
 
@@ -72,8 +85,7 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank"
-                            href="http://www.themeum.com">Themeum</a></span></p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="">PhuongNM</a></span></p>
             </div>
         </div>
     </div>

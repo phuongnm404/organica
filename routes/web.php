@@ -14,8 +14,12 @@
 // Route::get('/home', function () {
 //     return view('home');
 // });
+Route::namespace('Auth')->group(function () {
+    Route::get('/register', 'RegisterController@index')->name('register');
 
+});
 //Admin
+
 Route::namespace('Admin')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::group(['prefix' => 'admin'], function () {
