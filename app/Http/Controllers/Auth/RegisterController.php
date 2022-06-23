@@ -12,7 +12,7 @@ use App\Models\Province;
 use App\Models\District;
 use App\Models\Ward;
 use App\Models\User;
-use App\Models\Category;
+use App\Models\StaticFeature;
 use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
@@ -49,19 +49,42 @@ class RegisterController extends Controller
     }
     public function index() {
         $provinceModel = new Province;
-        $category = Category::where('parent_id', 0)->get();
+        $static = StaticFeature::all();
         $province_list = $provinceModel->orderBy('province_name','asc')->get();
-        return view('register1', compact('province_list', 'category'));
+        return view('register', compact('province_list', 'static'));
     }
 
     protected function postRegister(Request $request)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+     { 
+//  dd($request->birthday);
+            $dataUserCreate = [
+                'name' =>$request->name,
+                'gender' =>$request->gender,
+                'birthday' =>  date('d-m-y H:i:s' , strtotime($request->birthday)),
+                'phone' => $request ->phone,
+                'email' =>$request->email,
+                'password' =>Hash::make($request->password),
+                'province_id'=>$request->province_id,
+                'district_id'=> $request->district_id,
+                'ward_id'=> $request->ward_id,
+                'address'=> $request->address, 
+                'role'=>1,
+            ];
+            $user = $this->user->create($dataUserCreate);
+    
+
+            $list_feature = $request->static_feature;
+            $user->static_feature()->sync($list_feature);
+
+           
+            
+          
+            return redirect()->route('home.index') ->with('status', 'Bạn đã tạo tài khoản thành công , mời bạn đăng nhập');
+      
+
+        }
+        
+    
 
 
 

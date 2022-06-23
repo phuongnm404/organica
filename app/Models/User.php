@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
+use App\Models\StaticFeature;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
@@ -17,9 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,6 +42,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
+
+    public function static_feature() {
+        return $this -> belongsToMany(StaticFeature::class, 'user_static_feature', 'user_id', 'static_id');
+    }
+
     public function checkPermissionAccess($permissionCheck) {
         
         // Bước 1: Lấy được các quyền của user đang login hệ thống

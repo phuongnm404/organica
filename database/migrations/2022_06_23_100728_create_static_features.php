@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserStaticFeature extends Migration
+class CreateStaticFeatures extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateUserStaticFeature extends Migration
      */
     public function up()
     {
-        Schema::create('user_static_feature', function (Blueprint $table) {
+        Schema::create('static_features', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id');
-            $table->integer('static_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateUserStaticFeature extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_static_feature');
+        Schema::dropIfExists('static_features');
     }
 }

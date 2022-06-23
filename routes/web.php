@@ -32,9 +32,9 @@ Route::namespace('Admin')->group(function () {
         Route::get('/', 'AdminController@loginAdmin')->name('admin.login');
         Route::post('/', 'AdminController@postLoginAdmin')->name('admin.post-login');
         Route::get('/logout', 'AdminController@logout')->name('admin.logout');
-
         Route::get('/home', 'AdminController@index')->name('admin.index');
 
+     
 
         Route::prefix('category')->group(function() {
 
@@ -171,6 +171,20 @@ Route::namespace('Admin')->group(function () {
             Route::post('/update/{id}','BrandController@update')->name( 'admin.brand.update');
 
              Route::get('/delete/{id}','BrandController@delete') ->name('admin.brand.delete');
+        });
+        Route::prefix('static')->group(function() {
+
+            Route::get('/','StaticController@index')->name('admin.static.index');
+            
+            Route::get('/create','StaticController@create') ->name('admin.static.create');
+            
+            Route::post('/store','StaticController@store')->name('admin.static.store');
+            
+            Route::get('/edit/{id}','StaticController@edit')->name('admin.static.edit');
+
+            Route::post('/update/{id}','StaticController@update')->name( 'admin.static.update');
+
+             Route::get('/delete/{id}','StaticController@delete') ->name('admin.static.delete');
         });
 
     });

@@ -78,6 +78,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.static.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tag"></i>
+
+                        <p>Quản lý đặc trưng tĩnh
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.brand.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-dolly"></i>
 

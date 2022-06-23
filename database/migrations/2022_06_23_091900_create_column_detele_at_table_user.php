@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserDynamicFeature extends Migration
+class CreateColumnDeteleAtTableUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateUserDynamicFeature extends Migration
      */
     public function up()
     {
-        Schema::create('user_dynamic_feature', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('product_id');
-            $table->integer('dynamic_id');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +26,10 @@ class CreateUserDynamicFeature extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_dynamic_feature');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->dropColumn('deleted_at');
+        });
     }
 }
+

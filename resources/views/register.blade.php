@@ -30,13 +30,13 @@
                             <h5>Đăng ký tài khoản</h5>
                         </div>
                         <div class="card-body">
-                            <form action="route('register.post')" method="POST" class="register-form">
+                            <form method="POST" class="register-form">
                                 @csrf
                                 <div class="form-section">
                                     <div class="form-row">
                                         <label>Họ và tên <span class="must font-weight-bold">(*)</span>
                                         </label>
-                                        <input type="text" class="form-control" id="user-name" name="user-name"
+                                        <input type="text" class="form-control" id="user-name" name="name"
                                             placeholder="Nhập họ và tên của bạn" required
                                             data-parsley-required-message="Vui lòng nhập thông tin"
                                             data-parsley-length="[10,40]"
@@ -71,7 +71,7 @@
                                         <div class="col-md-3">
                                             <label class=" label" for="province">Tỉnh/
                                                 Thành <span class="must font-weight-bold">(*)</span></label>
-                                            <select class="form-select" name="province" id="province" required
+                                            <select class="form-select" name="province_id" id="province" required
                                                 data-parsley-required-message="Vui lòng chọn tỉnh/thành của bạn">
                                                 <option value="">---Chọn---</option>
                                                 @foreach ($province_list as $value)
@@ -84,7 +84,7 @@
                                         <div class="col-md-3">
                                             <label class=" label" for="district">Quận/Huyện <span
                                                     class="must font-weight-bold">(*)</span></label>
-                                            <select class="form-select" name="district" id="district" required
+                                            <select class="form-select" name="district_id" id="district" required
                                                 data-parsley-required-message="Vui lòng chọn quận/huyện của bạn">
                                                 <option value="">---Chọn---</option>
                                             </select>
@@ -93,7 +93,7 @@
                                         <div class=" col-md-3">
                                             <label class="label" for="ward">Phường/Xã <span
                                                     class="must font-weight-bold">(*)</span></label>
-                                            <select class="form-select" name="ward" id="ward" required
+                                            <select class="form-select" name="ward_id" id="ward" required
                                                 data-parsley-required-message="Vui lòng chọn phường/xã của bạn">
                                                 <option value="">---Chọn---</option>
                                             </select>
@@ -114,7 +114,7 @@
                                 <div class="form-section">
                                     <div class="form-row">
                                         <label> Email <span class="must font-weight-bold">(*)</span></label>
-                                        <input type="text" name="your_email" id="your_email" class="form-control"
+                                        <input type="text" name="email" id="email" class="form-control"
                                             pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="abc@email.com" required
                                             data-parsley-type='email'
                                             data-parsley-required-message="Vui lòng nhập thông tin"
@@ -135,7 +135,7 @@
                                             <input type="password" class="form-control" id="password" name="password"
                                                 data-parsley-length="[6,12]"
                                                 data-parsley-length-message="Vui lòng nhập mật khẩu có độ dài từ 6 tới 12 ký tự"
-                                                required data-parsley-required-message="Vui lòng nhập thông tin">>
+                                                required data-parsley-required-message="Vui lòng nhập thông tin">
                                         </div>
                                         <div class="form-row">
                                             <label>Xác nhận mật khẩu <span class="must font-weight-bold">(*)</span>
@@ -152,9 +152,9 @@
                                 </div>
                                 <div class="form-section">
                                     <label for="">Chọn lĩnh vực quan tâm <span class="must font-weight-bold">(*)</label>
-                                    @foreach ($category as $categorys)
-                                    <br><input type="checkbox" name="feature_user"
-                                        id="feature_user">{{$categorys->name}}
+                                    @foreach ($static as $staticItem)
+                                    <br><input type="checkbox" name="static_feature[]" value="{{$staticItem->id}}"
+                                        id="feature_user">{{$staticItem->name}}
                                     @endforeach
 
                                 </div>
