@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>form-v1 by Colorlib</title>
+    <title>Đăng ký tài khoản</title>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="adminlte/plugins/jquery-ui/jquery-ui.css">
@@ -27,7 +27,7 @@
                 <div class="col-md-6 offset-md-3 ">
                     <div class="card mt-5 mb-5">
                         <div class="card-header text-white" style="background: #3e4061">
-                            <h5>Đăng ký tài khoản</h5>
+                            <h5 class="text-center">Đăng ký tài khoản</h5>
                         </div>
                         <div class="card-body">
                             <form method="POST" class="register-form">
