@@ -13,218 +13,183 @@
         href="eshopper/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
     <!-- Main Style Css -->
     <link rel="stylesheet" href="eshopper/css/main.css" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <div class="page-content">
-        <div class="form-v1-content">
-            <div class="wizard-form">
-                <form class="form-register" action="#" method="post">
-                    <div id="form-total">
-                        <!-- SECTION 1 -->
-                        <h2>
-                            <p class="step-icon"><span>01</span></p>
-                            <span class="step-text">Thông tin cá nhân</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
-                                <div class="wizard-header">
-                                    <h3 class="heading">Thông tin cá nhân</h3>
-                                    <p>Vui lòng nhập thông tin của bạn và tiến hành bước tiếp theo để chúng tôi có thể
-                                        tạo tài khoản của bạn. </p>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder">
-                                        <fieldset>
-                                            <legend>Họ và tên <span class="must font-weight-bold">(*)</span>
-                                            </legend>
-                                            <input type="text" class="form-control" id="user-name" name="user-name"
-                                                placeholder="Nhập họ và tên của bạn" required>
-                                        </fieldset>
-                                    </div>
 
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-gender">
-                                        <label class="label col-md-12">Giới tính <span
-                                                class="must font-weight-bold">(*)</span>
+    <section class="page-content">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-6 offset-md-3 ">
+                    <div class="card mt-5 mb-5">
+                        <div class="card-header text-white" style="background: #3e4061">
+                            <h5>Đăng ký tài khoản</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="route('register.post')" method="POST" class="register-form">
+                                @csrf
+                                <div class="form-section">
+                                    <div class="form-row">
+                                        <label>Họ và tên <span class="must font-weight-bold">(*)</span>
                                         </label>
-                                        <div class="row">
-
-                                            <div class="form-check col-md-3">
-                                                <input type="radio" class="form-check-input" id="radio1" name="gender"
-                                                    value="Nam">
-                                                <label class="form-check-label" for="radio1">Nam</label>
-                                            </div>
-                                            <div class="form-check  col-md-3">
-                                                <input type="radio" class="form-check-input" id="radio2" name="gender"
-                                                    value="Nữ">
-                                                <label class="form-check-label" for="radio2"> Nữ</label>
-                                            </div>
-                                            <div class="form-check  col-md-3">
-                                                <input type="radio" class="form-check-input" name='gender' value="Khác">
-                                                <label class="form-check-label">Khác</label>
-                                            </div>
+                                        <input type="text" class="form-control" id="user-name" name="user-name"
+                                            placeholder="Nhập họ và tên của bạn" required
+                                            data-parsley-required-message="Vui lòng nhập thông tin"
+                                            data-parsley-length="[10,40]"
+                                            data-parsley-length-message="Vui lòng nhập tên có độ dài từ 10-40 ký tự">
+                                    </div>
+                                    <div class="form-row row">
+                                        <div class="col-md-2">
+                                            <label class="label">Giới tính <span
+                                                    class="must font-weight-bold">(*)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="radio" class="form-check-input ml-3" id="radio2" name="gender"
+                                                value="Nam" required
+                                                data-parsley-required-message="Vui lòng chọn giới tính">
+                                            <label class="form-check-label" for="radio2"> Nam</label> &ensp; &ensp;
+                                            <input type="radio" class="form-check-input" id="radio1" name="gender"
+                                                value="Nữ">
+                                            <label class="form-check-label" for="radio1">Nữ</label>
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="form-row form-row-date">
-                                    <div class="form-holder form-holder-2">
-                                        <fieldset>
-                                            <legend class="special-label">Ngày sinh <span
-                                                    class="must font-weight-bold">(*)</span></legend>
-                                            <input type="text" class="form-control" id="birthday" name="birthday"
-                                                required>
-                                        </fieldset>
+                                    <div class="form-row">
+                                        <label class="special-label">Ngày sinh <span
+                                                class="must font-weight-bold">(*)</span></label>
+                                        <input type="text" class="form-control" id="birthday" name="birthday" required
+                                            data-parsley-required-message="Vui lòng chọn ngày sinh">
+
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder row">
-                                        <div class="form-select col-md-3">
-                                            <label class="form-control-label" for="province">Tỉnh/ Thành</label>
-                                            <select name="province" id="province"></select>
+                                    <div class="form-row row">
+
+                                        <div class="col-md-3">
+                                            <label class=" label" for="province">Tỉnh/
+                                                Thành <span class="must font-weight-bold">(*)</span></label>
+                                            <select class="form-select" name="province" id="province" required
+                                                data-parsley-required-message="Vui lòng chọn tỉnh/thành của bạn">
+                                                <option value="">---Chọn---</option>
+                                                @foreach ($province_list as $value)
+                                                <option value="{{$value->id}}">{{$value->province_name}}</option>
+                                                @endforeach
+
+                                            </select>
 
                                         </div>
-                                        <div class="form-select col-md-3">
-                                            <label class="form-control-label" for="district">Quận/Huyện</label>
-                                            <select name="district" id="district"></select>
+                                        <div class="col-md-3">
+                                            <label class=" label" for="district">Quận/Huyện <span
+                                                    class="must font-weight-bold">(*)</span></label>
+                                            <select class="form-select" name="district" id="district" required
+                                                data-parsley-required-message="Vui lòng chọn quận/huyện của bạn">
+                                                <option value="">---Chọn---</option>
+                                            </select>
 
                                         </div>
-                                        <div class="form-select col-md-3">
-                                            <label class="form-control-label" for="ward">Phường/Xã</label>
-                                            <select name="ward" id="ward"></select>
+                                        <div class=" col-md-3">
+                                            <label class="label" for="ward">Phường/Xã <span
+                                                    class="must font-weight-bold">(*)</span></label>
+                                            <select class="form-select" name="ward" id="ward" required
+                                                data-parsley-required-message="Vui lòng chọn phường/xã của bạn">
+                                                <option value="">---Chọn---</option>
+                                            </select>
 
                                         </div>
+
+
+
                                     </div>
-
-
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder">
-                                        <fieldset>
-                                            <legend>Địa chỉ cụ thể <span class="must font-weight-bold">(*)</span>
-                                            </legend>
-                                            <input type="text" class="form-control" id="address" name="address"
-                                                placeholder="Nhập địa chỉ cụ thể" required>
-                                        </fieldset>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </section>
-                        <!-- SECTION 2 -->
-                        <h2>
-                            <p class="step-icon"><span>02</span></p>
-                            <span class="step-text">Thông tin đăng nhập</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
-
-                                <div class="wizard-header">
-                                    <h3 class="heading">Thông tin đăng nhập</h3>
-                                    <p>Vui lòng nhập thông tin của bạn và tiến hành bước tiếp theo để chúng tôi có thể
-                                        tạo tài khoản của bạn.</p>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <fieldset>
-                                            <legend> Email <span class="must font-weight-bold">(*)</span></legend>
-                                            <input type="text" name="your_email" id="your_email" class="form-control"
-                                                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="abc@email.com"
-                                                required>
-                                        </fieldset>
+                                    <div class="form-row">
+                                        <label>Địa chỉ cụ thể <span class="must font-weight-bold">(*)</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="address" name="address"
+                                            placeholder="Số nhà, ngõ, đường" required
+                                            data-parsley-required-message="Vui lòng nhập thông tin">
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <fieldset>
-                                            <legend>Số điện thoại <span class="must font-weight-bold">(*)</span>
-                                            </legend>
-                                            <input type="text" class="form-control" id="phone" name="phone" required>
-                                        </fieldset>
+                                <div class="form-section">
+                                    <div class="form-row">
+                                        <label> Email <span class="must font-weight-bold">(*)</span></label>
+                                        <input type="text" name="your_email" id="your_email" class="form-control"
+                                            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="abc@email.com" required
+                                            data-parsley-type='email'
+                                            data-parsley-required-message="Vui lòng nhập thông tin"
+                                            data-parsley-type-message="Vui lòng nhập đúng định dạng email">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <fieldset>
-                                            <legend>Mật khẩu <span class="must font-weight-bold">(*)</span>
-                                            </legend>
+                                    <div class="form-row">
+                                        <label>Số điện thoại <span class="must font-weight-bold">(*)</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="phone" name="phone" required
+                                            data-parsley-type="number"
+                                            data-parsley-type-message="Vui lòng nhập đúng định dạng số"
+                                            data-parsley-required-message="Vui lòng nhập thông tin">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-holder form-holder-2">
+                                            <label>Mật khẩu <span class="must font-weight-bold">(*)</span>
+                                            </label>
                                             <input type="password" class="form-control" id="password" name="password"
-                                                required>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <fieldset>
-                                            <legend>Xác nhận mật khẩu <span class="must font-weight-bold">(*)</span>
-                                            </legend>
+                                                data-parsley-length="[6,12]"
+                                                data-parsley-length-message="Vui lòng nhập mật khẩu có độ dài từ 6 tới 12 ký tự"
+                                                required data-parsley-required-message="Vui lòng nhập thông tin">>
+                                        </div>
+                                        <div class="form-row">
+                                            <label>Xác nhận mật khẩu <span class="must font-weight-bold">(*)</span>
+                                            </label>
                                             <input type="password" class="form-control" id="cf_password"
-                                                name="cf_password" required>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- SECTION 3 -->
-                        <h2>
-                            <p class="step-icon"><span>03</span></p>
-                            <span class="step-text">Lĩnh vực quan tâm</span>
-                        </h2>
-                        <section>
-                            <div class="inner">
-                                <div class="wizard-header">
-                                    <h3 class="heading">Lĩnh vực quan tâm</h3>
-                                    <p>Vui lòng nhập thông tin của bạn và tiến hành bước tiếp theo để chúng tôi có thể
-                                        tạo tài khoản của bạn.</p>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <input type="radio" class="radio" name="radio1" id="plan-1" value="plan-1">
-                                        <label class="plan-icon plan-1-label" for="plan-1">
-                                            <img src="images/form-v1-icon-2.png" alt="pay-1">
-                                        </label>
-                                        <div class="plan-total">
-                                            <span class="plan-title">Specific Plan</span>
-                                            <p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat
-                                                mauris nunc congue nisi.</p>
-                                        </div>
-                                        <input type="radio" class="radio" name="radio1" id="plan-2" value="plan-2">
-                                        <label class="plan-icon plan-2-label" for="plan-2">
-                                            <img src="images/form-v1-icon-2.png" alt="pay-1">
-                                        </label>
-                                        <div class="plan-total">
-                                            <span class="plan-title">Medium Plan</span>
-                                            <p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat
-                                                mauris nunc congue nisi.</p>
-                                        </div>
-                                        <input type="radio" class="radio" name="radio1" id="plan-3" value="plan-3"
-                                            checked>
-                                        <label class="plan-icon plan-3-label" for="plan-3">
-                                            <img src="images/form-v1-icon-3.png" alt="pay-2">
-                                        </label>
-                                        <div class="plan-total">
-                                            <span class="plan-title">Special Plan</span>
-                                            <p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat
-                                                mauris nunc congue nisi.</p>
+                                                name="cf_password" required
+                                                data-parsley-required-message="Vui lòng nhập thông tin"
+                                                data-parsley-equalto="#password"
+                                                data-parsley-equalto-message="Các mật khẩu đã nhập không trùng">
                                         </div>
                                     </div>
+
+
                                 </div>
-                            </div>
-                        </section>
+                                <div class="form-section">
+                                    <label for="">Chọn lĩnh vực quan tâm <span class="must font-weight-bold">(*)</label>
+                                    @foreach ($category as $categorys)
+                                    <br><input type="checkbox" name="feature_user"
+                                        id="feature_user">{{$categorys->name}}
+                                    @endforeach
+
+                                </div>
+                                <p class="text-muted notice">Vui lòng nhập đầy đủ thông tin những phần có dấu (*)</p>
+                                <div class="form-navigation">
+                                    <button type="button" class="previous btn btn-success float-start"><i
+                                            class="fas fa-angle-left">pre</i></button>
+                                    <button type="button" class="next btn btn-success float-end"><i
+                                            class="fas fa-angle-right">next</i></button>
+                                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="eshopper/js/jquery-3.3.1.min.js"></script>
-    <script src="eshopper/js/jquery.steps.js"></script>
+    </section>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="eshopper/js/main.js"></script>
-    <script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="adminlte/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+        integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
     <script>
         $( function() {
             $( "#birthday" ).datepicker({
@@ -233,9 +198,66 @@
                  changeYear: true,
                  yearRange:"-50:-18" })
             });
-          
+        jQuery(document).ready(function(){
+			jQuery('#province').change(function(){
+				let provinceId=jQuery(this).val();
+                jQuery('#ward').html('<option value = "">--Chọn--</option>')
+				jQuery.ajax({
+					url:'/getDistrict',
+					type:'post',
+					data:'provinceId='+provinceId+'&_token={{csrf_token()}}',
+					success:function(result){
+						jQuery('#district').html(result)
+					}
+				});
+			});
+            jQuery('#district').change(function(){
+				let districtId=jQuery(this).val();
+				jQuery.ajax({
+					url:'/getWard',
+					type:'post',
+					data:'districtId='+districtId+'&_token={{csrf_token()}}',
+					success:function(result){
+						jQuery('#ward').html(result)
+					}
+				});
+			});
+		});
+
+
+    $(function () {
+        var $sections = $('.form-section');
+        function navigateTo(index) {
+            $sections.removeClass("current").eq(index).addClass("current");
+            $('.form-navigation .previous').toggle(index>0);
+            var atTheEnd = index >= $sections.length - 1;
+            $('.form-navigation .next').toggle(!atTheEnd);
+            $('.form-navigation [type=submit]').toggle(atTheEnd);
+        }
+        function curIndex() {
+            return $sections.index($sections.filter('.current'));
+        }
+        $('.form-navigation .previous ').click(function (){
+            navigateTo(curIndex()-1);
+        });
+
+        $('.form-navigation .next').click(function (){
+            $('.register-form').parsley().whenValidate({
+                    group: 'block-' + curIndex(),
+                }).done(function () {
+                    navigateTo(curIndex()+1);
+                });
+            
+        });
     
+        $sections.each(function(index,section){
+            $(section).find(':input').attr('data-parsley-group','block-' + index);
+            
+        });
+    
+        navigateTo(0);
+    });
     </script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>

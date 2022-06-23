@@ -1,4 +1,4 @@
-INSERT INTO `huyen` (`id`, `district_name`, `type`, `province_id`) VALUES
+INSERT INTO `district` (`id`, `district_name`, `type`, `province_id`) VALUES
 ('1', 'Quận Ba Đình', 'Quận', '1'),
 ('2', 'Quận Hoàn Kiếm', 'Quận', '1'),
 ('3', 'Quận Tây Hồ', 'Quận', '1'),

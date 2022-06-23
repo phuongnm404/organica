@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Ward;
+use App\Models\User;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     /*
@@ -35,33 +41,20 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $user;
+    public function __construct(User $user)
     {
         $this->middleware('guest');
+        $this->user = $user;
+    }
+    public function index() {
+        $provinceModel = new Province;
+        $category = Category::where('parent_id', 0)->get();
+        $province_list = $provinceModel->orderBy('province_name','asc')->get();
+        return view('register1', compact('province_list', 'category'));
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
+    protected function postRegister(Request $request)
     {
         return User::create([
             'name' => $data['name'],
@@ -69,7 +62,29 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-    public function index() {
-        return view('register');
+
+
+
+
+    public function getDistrict(Request $request)
+    {
+        $provinceId=$request->post('provinceId');
+		$district=DB::table('district')->where('province_id',$provinceId)->get();
+        $html='<option value="">--Chọn--</option>';
+		foreach($district as $list){
+			$html.='<option value="'.$list->id.'">'.$list->district_name.'</option>';
+		}
+        return $html;
     }
+    public function getWard(Request $request){
+		$districtId=$request->post('districtId');
+		$ward=DB::table('ward')->where('district_id',$districtId)->get();
+        print_r($ward);
+		$html='<option value="">--Chọn--</option>';
+		foreach($ward as $list){
+			$html.='<option value="'.$list->id.'">'.$list->ward_name.'</option>';
+		}
+		return $html;
+	}
+ 
 }

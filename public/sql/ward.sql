@@ -1,4 +1,4 @@
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('1', 'Phường Phúc Xá', 'Phường', '1'),
 ('4', 'Phường Trúc Bạch', 'Phường', '1'),
 ('6', 'Phường Vĩnh Phúc', 'Phường', '1'),
@@ -1272,7 +1272,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('3577', 'Xã Bản Lang', 'Xã', '109'),
 ('3580', 'Xã Hoang Thèn', 'Xã', '109'),
 ('3583', 'Xã Khổng Lào', 'Xã', '109');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('3586', 'Xã Nậm Xe', 'Xã', '109'),
 ('3589', 'Xã Mường So', 'Xã', '109'),
 ('3592', 'Xã Sin Suối Hồ', 'Xã', '109'),
@@ -2561,7 +2561,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('7414', 'Xã Yên Mỹ', 'Xã', '217'),
 ('7417', 'Xã Tân Hưng', 'Xã', '217'),
 ('7420', 'Xã Mỹ Thái', 'Xã', '217');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('7423', 'Xã Phi Mô', 'Xã', '217'),
 ('7426', 'Xã Xương Lâm', 'Xã', '217'),
 ('7429', 'Xã Xuân Hương', 'Xã', '217'),
@@ -3859,7 +3859,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('11269', 'Xã Tứ Cường', 'Xã', '300'),
 ('11272', 'Xã Hùng Sơn', 'Xã', '300'),
 ('11275', 'Xã Ngũ Hùng', 'Xã', '300');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('11278', 'Xã Cao Thắng', 'Xã', '300'),
 ('11281', 'Xã Chi Lăng Bắc', 'Xã', '300'),
 ('11284', 'Xã Chi Lăng Nam', 'Xã', '300'),
@@ -5140,7 +5140,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('15079', 'Xã Cao Ngọc', 'Xã', '389'),
 ('15082', 'Xã Ngọc Khê', 'Xã', '389'),
 ('15085', 'Xã Quang Trung', 'Xã', '389');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('15088', 'Xã Đồng Thịnh', 'Xã', '389'),
 ('15091', 'Xã Ngọc Liên', 'Xã', '389'),
 ('15094', 'Xã Ngọc Sơn', 'Xã', '389'),
@@ -6441,7 +6441,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('18955', 'Xã Kim Hóa', 'Xã', '453'),
 ('18958', 'Xã Thanh Hóa', 'Xã', '453'),
 ('18961', 'Xã Thanh Thạch', 'Xã', '453');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('18964', 'Xã Thuận Hóa', 'Xã', '453'),
 ('18967', 'Xã Lâm Hóa', 'Xã', '453'),
 ('18970', 'Xã Lê Hóa', 'Xã', '453'),
@@ -7711,7 +7711,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('22615', 'Xã Khánh Bình', 'Xã', '573'),
 ('22618', 'Xã Khánh Trung', 'Xã', '573'),
 ('22621', 'Xã Khánh Đông', 'Xã', '573');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('22624', 'Xã Khánh Thượng', 'Xã', '573'),
 ('22627', 'Xã Khánh Nam', 'Xã', '573'),
 ('22630', 'Xã Sông Cầu', 'Xã', '573'),
@@ -9000,7 +9000,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('26080', 'Phường Xuân An', 'Phường', '732'),
 ('26083', 'Phường Xuân Hoà', 'Phường', '732'),
 ('26086', 'Phường Phú Bình', 'Phường', '732');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('26089', 'Xã Bình Lộc', 'Xã', '732'),
 ('26092', 'Xã Bảo Quang', 'Xã', '732'),
 ('26095', 'Xã Suối Tre', 'Xã', '732'),
@@ -10267,7 +10267,7 @@ INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('29794', 'Xã Mỹ Thuận', 'Xã', '863'),
 ('29797', 'Xã Tân Bình', 'Xã', '863'),
 ('29800', 'Xã Thành Lợi', 'Xã', '863');
-INSERT INTO `phuong` (`id`, `ward_name`, `type`, `district_id`) VALUES
+INSERT INTO `ward` (`id`, `ward_name`, `type`, `district_id`) VALUES
 ('29803', 'Xã Tân Quới', 'Xã', '863'),
 ('29806', 'Xã Thuận An', 'Xã', '861'),
 ('29809', 'Xã Đông Thạnh', 'Xã', '861'),

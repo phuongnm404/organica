@@ -1,4 +1,4 @@
-INSERT INTO `tinh` (`id`, `province_name`, `type`) VALUES
+INSERT INTO `province` (`id`, `province_name`, `type`) VALUES
 ('1', 'Thành phố Hà Nội', 'Thành phố Trung ương'),
 ('2', 'Tỉnh Hà Giang', 'Tỉnh'),
 ('4', 'Tỉnh Cao Bằng', 'Tỉnh'),

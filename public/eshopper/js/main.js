@@ -1,9 +1,5 @@
 /*price range*/
 
-if ($.fn.slider) {
-    $("#sl2").slider();
-}
-
 var RGBChange = function () {
     $("#RGB").css(
         "background",
@@ -33,6 +29,7 @@ $(document).ready(function () {
         });
     });
 });
+
 $(function () {
     $("#form-total").steps({
         headerTag: "h2",

@@ -1,5 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,11 @@
 //     return view('home');
 // });
 Route::namespace('Auth')->group(function () {
+
     Route::get('/register', 'RegisterController@index')->name('register');
+    Route::post('/register', 'RegisterController@postRegister')->name('register.post');
+    Route::post('/getDistrict', 'RegisterController@getDistrict')->name('register.district');
+    Route::post('/getWard', 'RegisterController@getWard')->name('register.ward');
 
 });
 //Admin
