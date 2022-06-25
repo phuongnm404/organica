@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Đăng ký tài khoản</title>
+    <title>Đăng nhập</title>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="adminlte/plugins/jquery-ui/jquery-ui.css">
@@ -31,28 +31,33 @@
                         </div>
                         <div class="card-body">
                             <div class="form-login">
-                                <form action="">
+                                <form action="" method="post">
+                                    @csrf
                                     <div class="form-row">
                                         <label>Tên đăng nhập
                                         </label>
-                                        <input type="text" class="form-control" id="user-name" name="name"
-                                            placeholder="Email hoặc số điện thoại của bạn" required
-                                            data-parsley-required-message="Vui lòng nhập thông tin"
-                                            data-parsley-length="[10,40]"
-                                            data-parsley-length-message="Vui lòng nhập tên có độ dài từ 10-40 ký tự">
+                                        <input type="text" class="form-control" id="email" name="email"
+                                            placeholder="Email" required>
                                     </div>
                                     <div class="form-row">
                                         <label>Mật khẩu
                                         </label>
-                                        <input type="text" class="form-control" id="user-name" name="name"
-                                            placeholder="Nhập mật khẩu" required
-                                            data-parsley-required-message="Vui lòng nhập thông tin"
-                                            data-parsley-length="[10,40]"
-                                            data-parsley-length-message="Vui lòng nhập tên có độ dài từ 10-40 ký tự">
+                                        <input type="password" class="form-control" name="password"
+                                            placeholder="Nhập mật khẩu" required>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Đăng nhập</button>
+                                    <div class="form-row row">
+                                        <div class="col-md-6 remember-notice">
+                                            <input type="checkbox" name="remember" id="">Nhớ mật khẩu
+                                        </div>
+                                        <div class="col-md-6" style="text-align: end;">
+                                            <p class="text-muted notice">Chưa có tài khoản? <a
+                                                    href="{{route('register')}}">Đăng ký</a></p>
+                                        </div>
+                                        <div class="col-md-12 ">
+                                            <button type="submit" class="btn btn-success w-100">Đăng nhập</button>
+                                        </div>
+                                    </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>

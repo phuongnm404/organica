@@ -14,37 +14,39 @@
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
                         <li><a href="{{route('home.index')}}" class="text-uppercase">Home</a></li>
-                        {{--
                         <li class="dropdown" data-toggle="dropdown"><a href=""> Sản phẩm <i
                                     class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="#">Rau củ quả</a></li>
-                                <li><a href="#">Trái cây trong nước</a></li>
-                                <li class="dropdown" data-toggle="dropdown"><a href="">Thức uống<i
-                                            class="fa fa-angle-right"></i></a>
-                                    <ul role="menu" class="sub-child-menu">
-                                        <li><a href="#">Thức uống trong nước</a></li>
-                                        <li><a href="#">Thức uống khác</a></li>
+                                @foreach ($categoryLimit as $categoryParent)
+                                <li class="sub-menu-child"><a href="{{route('productAll')}}">{{$categoryParent->name}}
+                                        &ensp; <i class=" fa fa-angle-right"></i></a>
+
+                                    <ul class="sub-menu-list">
+                                        @foreach ($categoryParent->categoryChildren as $categoryChild )
+                                        <li>
+                                            <a
+                                                href="{{route('productCategory', ['slugCategory'=> $categoryChild->slug, 'id'=>$categoryChild->id ])}}">{{$categoryChild->name}}</a>
+                                            @if($categoryChild->categoryChildren -> count() )
+                                            @include('site.components.child_menu', ['categoryParent' => $categoryChild])
+                                            @endif
+
+                                        </li>
+                                        @endforeach
+
                                     </ul>
+
+
+
+
                                 </li>
+                                @endforeach
+
                             </ul>
-                        </li> --}}
-
-
-
-
-                        @foreach ($categoryLimit as $categoryParent)
-                        <li class="dropdown"><a href="{{route('productAll')}}">{{$categoryParent->name}}<i
-                                    class=" fa fa-angle-down"></i></a>
-                            @include('site.components.child_menu', ['categoryParent' => $categoryParent])
                         </li>
-                        @endforeach
-
                         <li><a href="{{route('home.index')}}" class="text-uppercase">Tin tức</a></li>
                         <li><a href="{{route('home.index')}}" class="text-uppercase">Cửa hàng</a></li>
                         <li><a href="{{route('home.index')}}" class="text-uppercase">Tuyển dụng</a></li>
                         <li><a href="{{route('home.index')}}" class="text-uppercase">Liên hệ</a></li>
-
 
 
                     </ul>

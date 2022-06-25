@@ -16,11 +16,11 @@
                 Logout
             </a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('admin.login') }}" class="nav-link">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
+            <a href="" class="nav-link">
                 Login
             </a>
-        </li>
+        </li> --}}
 
     </ul>
 

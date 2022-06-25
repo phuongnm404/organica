@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColumnDeteleAtTableUser extends Migration
+class CreateDeteleAtUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,8 +28,7 @@ class CreateColumnDeteleAtTableUser extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('deleted_at');
+            $table->dropColumn('delete_at');
         });
     }
 }
-

@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $dataUserCreate = [
                 'name' =>$request->name,
                 'gender' =>$request->gender,
-                'birthday' =>  date('d-m-y H:i:s' , strtotime($request->birthday)),
+                'birthday' =>  date('Y-m-d H:i:s' , strtotime($request->birthday)),
                 'phone' => $request ->phone,
                 'email' =>$request->email,
                 'password' =>Hash::make($request->password),
@@ -77,7 +77,6 @@ class RegisterController extends Controller
             $user->static_feature()->sync($list_feature);
 
            
-            
           
             return redirect()->route('home.index') ->with('status', 'Bạn đã tạo tài khoản thành công , mời bạn đăng nhập');
       

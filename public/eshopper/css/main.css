@@ -1947,6 +1947,15 @@ h2.title {
 .form-row {
     margin-bottom: 10px;
 }
+.form-login label {
+    font-size: 14px;
+}
+.remember-notice {
+    font-size: 11px !important;
+}
+.form-login .form-control {
+    font-size: 13px;
+}
 /*************************
 *******Cart CSS******
 **************************/
@@ -2902,4 +2911,17 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #22b24c;
+}
+
+.sub-menu-child:hover .sub-menu-list {
+    display: block;
+}
+
+.sub-menu-list {
+    top: 0;
+    display: none;
+    position: absolute;
+    left: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    width: 200px;
 }

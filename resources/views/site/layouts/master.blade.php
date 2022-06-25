@@ -25,6 +25,7 @@
     <link rel="icon" type="image/x-icon" href="/public/img/favicon.png" sizes="57x57">
     @yield('css')
     @yield('title')
+
 </head>
 <!--/head-->
 

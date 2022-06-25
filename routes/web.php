@@ -18,24 +18,22 @@ use App\Http\Controllers\Auth\RegisterController;
 // });
 Route::namespace('Auth')->group(function () {
 
+    Route::get('/login', 'LoginController@login')->name('login');
+    Route::post('/login', 'LoginController@postLogin')->name('login.post');
+
     Route::get('/register', 'RegisterController@index')->name('register');
     Route::post('/register', 'RegisterController@postRegister')->name('register.post');
+
     Route::post('/getDistrict', 'RegisterController@getDistrict')->name('register.district');
     Route::post('/getWard', 'RegisterController@getWard')->name('register.ward');
-
 });
 //Admin
 
 Route::namespace('Admin')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'AdminController@loginAdmin')->name('admin.login');
-        Route::post('/', 'AdminController@postLoginAdmin')->name('admin.post-login');
         Route::get('/logout', 'AdminController@logout')->name('admin.logout');
-        Route::get('/home', 'AdminController@index')->name('admin.index');
-
-     
-
+        Route::get('/home', 'AdminController@index')->name('admin.home');
         Route::prefix('category')->group(function() {
 
             Route::get('/','CategoryController@index')->name('admin.category.index');
@@ -191,8 +189,8 @@ Route::namespace('Admin')->group(function () {
 
 });
 //Site
+
 Route::namespace('Site')->group(function () {
-    // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::get('/product', 'ProductController@getAll')->name('productAll');
 
@@ -200,12 +198,7 @@ Route::namespace('Site')->group(function () {
 
     Route::get('/{slugCategory}/{slugProduct}/{id}', 'ProductController@getProductDetail')->name('productDetail'); // lấy thông tin sản phẩm của một sản phẩm
 
-
     Route::get('/filter/{id}', 'ProductController@filterBrand')->name('filterBrand');
-
-
-
-
 });
 
 

@@ -1,6 +1,6 @@
 @extends("site.layouts.master")
 <!--/head-->
-@yield('css')
+
 @section('content')
 @include("site.home.components.slider")
 

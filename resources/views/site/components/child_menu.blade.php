@@ -1,5 +1,4 @@
 @if($categoryParent->categoryChildren -> count() )
-
 <ul role="menu" class="sub-menu">
     @foreach ($categoryParent->categoryChildren as $categoryChild )
     <li>
