@@ -37,94 +37,155 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
-                <li class="nav-item">
-                    <a href="{{route('admin.category.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-
-                        <p>Danh mục sản phẩm
-                            <span class="right badge badge-danger">New</span>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Sản phẩm
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.menu.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-compass"></i>
-                        <p>Menu</p>
-                    </a>
+                    <ul class="nav nav-treeview" style="margin-left: 20px">
+                        <li class="nav-item">
+                            <a href="{{route('admin.category.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+
+                                <p>Danh mục sản phẩm
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.product.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+
+                                <p>List sản phẩm
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.brand.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-dolly"></i>
+
+                                <p>Thương hiệu
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.tag.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-tag"></i>
+
+                                <p>Tags
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.menu.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-compass"></i>
+                                <p>Menu</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.slider.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-sliders-h"></i>
+
+                                <p>Slide </p>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('admin.product.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
 
-                        <p>Sản phẩm
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Người dùng
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.slider.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-sliders-h"></i>
+                    <ul class="nav nav-treeview" style="margin-left: 20px">
+                        <li class="nav-item">
+                            <a href="{{route('admin.user.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
 
-                        <p>Slide </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.tag.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tag"></i>
+                                <p>Danh sách người dùng
+                                </p>
+                            </a>
+                        </li>
 
-                        <p>Tags
+                        <li class="nav-item">
+                            <a href="{{route('admin.static.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-tag"></i>
+
+                                <p>Quản lý đặc trưng tĩnh
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Phân quyền
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.static.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tag"></i>
+                    <ul class="nav nav-treeview" style="margin-left: 20px">
+                        <li class="nav-item">
+                            <a href="{{route('admin.setting.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
 
-                        <p>Quản lý đặc trưng tĩnh
+                                <p>Settings
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.role.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user-tag"></i>
+
+                                <p>Danh sách vai trò
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.permissions.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-database"></i>
+
+                                <p>Tạo dữ liệu bảng role
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý layout
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.brand.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-dolly"></i>
+                    <ul class="nav nav-treeview" style="margin-left: 20px">
+                        <li class="nav-item">
+                            <a href="{{route('admin.setting.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
 
-                        <p>Thương hiệu
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.setting.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-cog"></i>
+                                <p>Home
+                                </p>
+                            </a>
+                        </li>
 
-                        <p>Settings
-                        </p>
-                    </a>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.user.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
 
-                        <p>Danh sách nhân viên
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.role.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user-tag"></i>
-
-                        <p>Danh sách vai trò
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.permissions.create')}}" class="nav-link">
-                        <i class="nav-icon fas fa-database"></i>
-
-                        <p>Tạo dữ liệu bảng role
-                        </p>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

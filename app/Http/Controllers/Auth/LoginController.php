@@ -21,18 +21,6 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -40,37 +28,25 @@ class LoginController extends Controller
 
     public function login()
     {
-        return view('login');
+        return redirect()->route('home.index');
     }
 
     public function postLogin(Request $request)
     {
-       
-        // if(auth()->attempt(['email' => $request->email, 'password' => $request->password])){
-        //     if (auth()::user()->role == 1){
-        //         dd('nguoi dung');
-        //     }
-        //     elseif (auth()::user()->role == 0) {
-        //        dd('admin');
-        //     }
-        // }
-        // else {
-        //     dd('login thất bại');
-        // }
-        // if (auth()->attempt([
-        //     'email' => $request->email,
-        //     'password' => $request->password
-        // ]))
-        // {
-        //     return redirect()->route('home.index');
-        // } else {
-        //     dd('login không thành công');
-        // }
+        if(auth()->attempt(['email' => $request->email, 'password' => $request->password])){
+            if (auth()->user()->role == 1){
+                return redirect()->back();
+            }
+            elseif (auth()->user()->role == 0) {
+                return redirect('admin/home');
+            }
+        }
+        return redirect('/home');
     }
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('home.index');;
     }
 
 }

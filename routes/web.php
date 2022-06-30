@@ -26,12 +26,17 @@ Route::namespace('Auth')->group(function () {
 
     Route::post('/getDistrict', 'RegisterController@getDistrict')->name('register.district');
     Route::post('/getWard', 'RegisterController@getWard')->name('register.ward');
+
+    Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 //Admin
 
 Route::namespace('Admin')->group(function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
+
     Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', 'AdminController@login')->name('admin.login');
+        Route::post('/', 'AdminController@postLoginAdmin');
         Route::get('/logout', 'AdminController@logout')->name('admin.logout');
         Route::get('/home', 'AdminController@index')->name('admin.home');
         Route::prefix('category')->group(function() {

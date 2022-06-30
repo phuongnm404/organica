@@ -51,7 +51,8 @@ class RegisterController extends Controller
         $provinceModel = new Province;
         $static = StaticFeature::all();
         $province_list = $provinceModel->orderBy('province_name','asc')->get();
-        return view('register', compact('province_list', 'static'));
+      
+        return view('site.register', compact('province_list', 'static'));
     }
 
     protected function postRegister(Request $request)

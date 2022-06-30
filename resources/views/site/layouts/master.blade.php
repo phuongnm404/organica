@@ -45,6 +45,17 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> --}}
 
     @yield('js')
+    <script type="text/javascript">
+        @if(session('status'))
+            alertify.set('notifier','position','top-right');
+            alertify.success("{{ session('status') }}");
+        @endif
+
+        @if(session('error'))
+            alertify.set('notifier','position','top-right');
+            alertify.error("{{ session('error') }}");
+        @endif
+    </script>
 </body>
 
 </html>
