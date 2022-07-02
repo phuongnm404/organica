@@ -1,4 +1,5 @@
 @extends("site.layouts.master")
+
 <!--/head-->
 @section('content')
 @include("site.home.components.slider")

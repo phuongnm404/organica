@@ -54,7 +54,20 @@
     <script src="{{ asset('eshopper/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('eshopper/js/main.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> --}}
-
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+    </script>
     @yield('js')
 </body>
 

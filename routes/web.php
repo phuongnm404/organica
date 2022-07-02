@@ -196,15 +196,40 @@ Route::namespace('Admin')->group(function () {
 //Site
 
 Route::namespace('Site')->group(function () {
+    
     Route::get('/home', 'HomeController@index')->name('home.index');
+    
     Route::get('/product', 'ProductController@getAll')->name('productAll');
+    
+    Route::group(['prefix' => 'user'], function () {
+        
+        Route::prefix('infor')->group(function() {
+
+            Route::get('/{id}','InforController@index')->name('user.infor.index');
+            
+            Route::post('/update/{id}','InforController@update') ->name('user.infor.update');
+
+            Route::post('/updatePass/{id}','InforController@updatePass') ->name('user.infor.updatePass');
+        });
+        
+    });
+
 
     Route::get('/{slugCategory}/{id}', 'ProductController@getProductCategory')->name('productCategory'); // lấy tất cả các sản phẩm thuộc 1 danh mục
 
     Route::get('/{slugCategory}/{slugProduct}/{id}', 'ProductController@getProductDetail')->name('productDetail'); // lấy thông tin sản phẩm của một sản phẩm
 
     Route::get('/filter/{id}', 'ProductController@filterBrand')->name('filterBrand');
+    
+    //Address
+    Route::group(['prefix' => 'address'], function () {
+        Route::post('district', 'AddressController@getDistrict')->name('site.address.district');
+
+        Route::post('ward', 'AddressController@getWard')->name('site.address.ward');
+    });
+
 });
+
 
 
 

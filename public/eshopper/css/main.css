@@ -2,30 +2,6 @@
 *******Typography******
 **************************/
 
-@font-face {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 700;
-    src: url(https://bf5ylyhwc6obj.vcdn.cloud/templates/default/themes/ecom/fonts/lato-bold-webfont.woff2)
-        format("woff2");
-}
-
-@font-face {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 500;
-    src: url(https://bf5ylyhwc6obj.vcdn.cloud/templates/default/themes/ecom/fonts/lato-light-webfont.woff2)
-        format("woff2");
-}
-
-@font-face {
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 300;
-    src: url(https://bf5ylyhwc6obj.vcdn.cloud/templates/default/themes/ecom/fonts/lato-regular-webfont.woff2)
-        format("woff2");
-}
-
 body {
     font-family: Lato, sans-serif;
     position: relative;
@@ -159,26 +135,6 @@ a#scrollUp i {
     background: #ce3c2d;
 }
 
-.header-middle {
-    background-color: #edeae6;
-}
-
-.header-middle .container .row {
-    border-bottom: 1px solid #f5f5f5;
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.header-middle .container .row .col-sm-4 {
-    padding-left: 0;
-}
-
-.header-middle .container .row .col-sm-8 {
-    padding-right: 0;
-}
-
 .usa {
     border-radius: 0;
     color: #b4b1ab;
@@ -227,7 +183,7 @@ a#scrollUp i {
 }
 
 .shop-menu ul li {
-    display: inline-block;
+    display: block;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -251,13 +207,33 @@ a#scrollUp i {
 }
 
 .shop-menu ul li a:hover {
-    border: solid 1px #696763;
     border-radius: 5px;
     color: #000;
     background-color: rgba(169, 244, 193, 0.8);
     font-weight: bold;
 }
-
+.header-middle {
+    background-color: #d2d0cd;
+}
+.header-middle ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.header-middle ul li {
+    float: right;
+}
+.header-middle ul li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.header-middle ul li a:hover:not(.active) {
+    color: #22b24c;
+    font-weight: bold;
+}
 .header-bottom {
     padding-bottom: 15px;
     padding-top: 15px;
@@ -266,7 +242,6 @@ a#scrollUp i {
 .navbar-collapse.collapse {
     padding-left: 0;
 }
-
 .mainmenu ul li {
     padding-right: 15px;
     padding-left: 15px;
@@ -373,6 +348,14 @@ ul.sub-child-menu {
 
 .fa-angle-down {
     padding-left: 5px;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 5px 5px lightblue;
+    z-index: 99;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -2922,4 +2905,40 @@ textarea {
     left: 100%;
     background: rgba(0, 0, 0, 0.6);
     width: 200px;
+}
+
+.drop {
+    position: relative;
+    display: inline-block;
+}
+ul.drop-content {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    min-width: 150px;
+    box-shadow: 0 3px 3px rgb(0 0 0 / 10%);
+    z-index: 999;
+    top: 34px;
+    left: -24px;
+}
+ul.drop-content li a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+ul.drop-content li a:hover {
+    font-weight: bold;
+    color: #22b24c;
+}
+
+.drop:hover .drop-content {
+    display: block;
+}
+/*--------------formInformation User-------------*/
+
+.form-information {
+    background-color: #edeae6;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }

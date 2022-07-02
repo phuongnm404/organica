@@ -1,4 +1,4 @@
-<div class="header-bottom">
+<div id="header-bottom" class="header-bottom">
     <!--header-bottom-->
     <div class="container">
         <div class="row">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="{{route('home.index')}}" class="text-uppercase">Home</a></li>
+                        <li><a href="{{route('home.index')}}">Home</a></li>
                         <li class="dropdown" data-toggle="dropdown"><a href=""> Sản phẩm <i
                                     class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
@@ -43,10 +43,10 @@
 
                             </ul>
                         </li>
-                        <li><a href="{{route('home.index')}}" class="text-uppercase">Tin tức</a></li>
-                        <li><a href="{{route('home.index')}}" class="text-uppercase">Cửa hàng</a></li>
-                        <li><a href="{{route('home.index')}}" class="text-uppercase">Tuyển dụng</a></li>
-                        <li><a href="{{route('home.index')}}" class="text-uppercase">Liên hệ</a></li>
+                        <li><a href="{{route('home.index')}}">Tin tức</a></li>
+                        <li><a href="{{route('home.index')}}">Cửa hàng</a></li>
+                        <li><a href="{{route('home.index')}}">Tuyển dụng</a></li>
+                        <li><a href="{{route('home.index')}}">Liên hệ</a></li>
 
 
                     </ul>
