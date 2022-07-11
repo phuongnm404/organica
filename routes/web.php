@@ -210,6 +210,8 @@ Route::namespace('Site')->group(function () {
             Route::post('/update/{id}','InforController@update') ->name('user.infor.update');
 
             Route::post('/updatePass/{id}','InforController@updatePass') ->name('user.infor.updatePass');
+
+            Route::post('/insertAddress/{id}','InforController@insertAddress') ->name('user.infor.insertAddress');
         });
         
     });

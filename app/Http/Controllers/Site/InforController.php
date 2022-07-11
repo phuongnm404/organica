@@ -21,6 +21,7 @@ class InforController extends Controller
         $provinceModel = new Province;
         $static = StaticFeature::all();
         $province_list = $provinceModel->orderBy('province_name','asc')->get();
+
         $district = new District();
         $ward = new Ward(); 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
@@ -28,7 +29,7 @@ class InforController extends Controller
         
         $user = $this->user->find($id);
 
-        return view('site.user.infor.index', compact('user', 'province_list','district', 'ward', 'static', 'categoryLimit'));
+        return view('site.user.infor.index', compact('user','provinceModel', 'province_list','district', 'ward', 'static', 'categoryLimit'));
     }
     public function update(Request $request,$id) {
         

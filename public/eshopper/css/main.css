@@ -2941,4 +2941,6 @@ ul.drop-content li a:hover {
     background-color: #edeae6;
     border-radius: 5px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
