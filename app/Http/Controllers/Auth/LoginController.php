@@ -40,6 +40,8 @@ class LoginController extends Controller
             elseif (auth()->user()->role == 0) {
                 return redirect('admin/home');
             }
+        } else {
+            dd("dang nhap ko thanh cong");
         }
         return redirect('/home');
     }

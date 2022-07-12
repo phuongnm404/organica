@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('productAll')}}">Sản phẩm</a></li>
-                    <li class="breadcrumb-item"></li>
+                    <li class="breadcrumb-item">{{$category_slug->name}}</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -18,7 +18,7 @@
     <!--features_items-->
     <div class="features_items">
         <!--features_items-->
-        <h2 class="title text-center"></h2>
+        <h2 class="title text-center">{{$category_slug->name}}</h2>
 
         @foreach ($products as $productItem)
         <div></div>

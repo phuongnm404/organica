@@ -7,34 +7,38 @@ use App\Models\Ward;
 use App\Models\District;
 use App\Models\StaticFeature;
 use App\Models\Category;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class InforController extends Controller
-{
-    public function __construct(User $user)
+{   
+    
+    public function __construct(User $user, Address $address_list)
     {
         $this->user = $user;
+        $this->address_list= $address_list;
     }
     public function index(User $user, $id) {
-        $provinceModel = new Province;
+      
         $static = StaticFeature::all();
+        $provinceModel = new Province;
         $province_list = $provinceModel->orderBy('province_name','asc')->get();
 
         $district = new District();
         $ward = new Ward(); 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
-
+        $address = Address::orderBy('id', 'desc');
         
         $user = $this->user->find($id);
 
-        return view('site.user.infor.index', compact('user','provinceModel', 'province_list','district', 'ward', 'static', 'categoryLimit'));
+        $address_list = Address::all(); 
+        return view('site.user.infor.index', compact('user','provinceModel', 'province_list','district', 'ward', 'static', 'categoryLimit', 'address_list'));
     }
     public function update(Request $request,$id) {
         
-
-
         $validator = Validator::make($request->all(),[
             'name'=>'required|min:3',
             'address'=>'required|min:3',
@@ -55,20 +59,7 @@ class InforController extends Controller
                 ->withInput();
         }
 
-         
-        // $userItem = $user::find($id);
-        // $userItem->name = $request->name;
-        // $userItem->phone = $request->phone;
-        // $userItem->birthday =  date('Y-m-d H:i:s' , strtotime($request->birthday));
-        // $userItem->gender = $request->gender;
-        // $userItem->province_id = $request->province_id;
-        // $userItem->district_id = $request->district_id;
-        // $userItem->ward_id = $request->ward_id;
-        // $userItem->address = $request->address;
-        // $userItem->email = $request->email;
-        // $userItem->save();
        
-        
         $user = new User();
 
         $this->user->find($id)->update([
@@ -87,7 +78,23 @@ class InforController extends Controller
 
        
     }
-    public function updatePass() {
-        
+    public function updatePass(Request $request) {
+
+                // $user = User::findOrFail(Auth::user()->id);
+                // $user-> password = $request->new_pass;
+                // $user->save();
+                // return redirect()->back()->with('message', 'Thay đổi mật khẩu thành công');
+
+       if(Hash::check($request->old_pass, Auth::user()->password)) {
+            $user = User::findOrFail(Auth::user()->id);
+            $user->password = $request->new_pass;
+            $user->save();
+            return redirect()->back()->with('message', 'Thay đổi mật khẩu thành công');
+        }else {
+            return redirect()->back()->with('error', 'Mật khẩu hiện tại không đúng');
+        }
+
     }
+   
+    
 }

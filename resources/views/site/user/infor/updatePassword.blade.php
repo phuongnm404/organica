@@ -3,10 +3,9 @@
     <form action="{{route('user.infor.updatePass', ['id'=>$user->id])}}" method="post">
         @csrf
         <div class="form-row">
-            <label>Mật khẩu hiện tại<span class="must font-weight-bold">(*)</span>
+            <label>Mật khẩu hiện tại <span class="must font-weight-bold">(*)</span>
             </label>
-            <input type="password" class="form-control" name="recent_pass" placeholder="Nhập họ và tên của bạn"
-                value="{{$user->password}}" required>
+            <input type="password" class="form-control" name="old_pass" required>
         </div>
         <div class="form-row">
             <label>Mật khẩu mới <span class="must font-weight-bold">(*)</span>

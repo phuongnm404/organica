@@ -163,6 +163,7 @@ class ProductController extends Controller
                     $tagIds[] = $tagInstance->id;
                 }
             }
+            dd($tagIds);
             $product->tags()->sync($tagIds);
 
         

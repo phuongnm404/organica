@@ -2944,3 +2944,12 @@ ul.drop-content li a:hover {
     margin-bottom: 20px;
     margin-top: 10px;
 }
+.address_list_item {
+    background: #e4d8d8 !important;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 15px;
+    position: relative;
+    border: 1px solid #f1f1f1;
+    font-family: Lato, sans-serif;
+}

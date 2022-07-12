@@ -75,15 +75,13 @@ class RegisterController extends Controller
     
 
             $list_feature = $request->static_feature;
+            
             $user->static_feature()->sync($list_feature);
 
             return redirect()->route('home.index')->with('message', 'Bạn đã tạo tài khoản thành công , mời bạn đăng nhập');
       
         }
         
-    
-
-
 
 
     public function getDistrict(Request $request)

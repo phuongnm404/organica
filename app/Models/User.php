@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
 use App\Models\StaticFeature;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -45,6 +46,10 @@ class User extends Authenticatable
 
     public function static_feature() {
         return $this -> belongsToMany(StaticFeature::class, 'user_static_feature', 'user_id', 'static_id');
+    }
+
+    public function address_list() {
+        return $this -> belongsToMany(Address::class, 'user_address');
     }
 
     public function checkPermissionAccess($permissionCheck) {

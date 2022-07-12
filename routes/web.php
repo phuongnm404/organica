@@ -211,7 +211,17 @@ Route::namespace('Site')->group(function () {
 
             Route::post('/updatePass/{id}','InforController@updatePass') ->name('user.infor.updatePass');
 
-            Route::post('/insertAddress/{id}','InforController@insertAddress') ->name('user.infor.insertAddress');
+           
+        });
+        Route::prefix('address')->group(function() {
+
+            Route::get('/{id}','AddressController@index')->name('user.address.index');
+            Route::post('/{id}','AddressController@insertAddress')->name('user.address.insertAddress');
+
+            Route::get('/edit/{id}','AddressController@editAddress')->name('user.address.editAddress');
+
+            Route::get('/delete/{id}','AddressController@deleteAddress')->name('user.address.deleteAddress');
+           
         });
         
     });

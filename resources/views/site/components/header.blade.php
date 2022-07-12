@@ -13,10 +13,12 @@
                     <li> <a href=""> Xin chào {{auth()->user()->name}}</a></li>
                     <li class="drop"><a href="#"><i class="fa fa-user"></i> Tài khoản</a>
                         <ul class="drop-content">
-                            <li><a href="#">Đơn hàng của tôi</a></li>
+                            <li><a href="">Đơn hàng của
+                                    tôi</a></li>
                             <li><a href="{{route('user.infor.index', ['id'=> auth()->user()->id])}}">Thông tin cá
                                     nhân</a></li>
-                            <li><a href="#">Địa chỉ giao hàng</a></li>
+                            <li><a href="{{route('user.address.index', ['id'=> auth()->user()->id])}}">Địa chỉ giao
+                                    hàng</a></li>
 
                         </ul>
                     </li>
