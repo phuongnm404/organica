@@ -15,25 +15,34 @@
     <div class="col-sm-3">
         <div class="product-image-wrapper">
             <div class="single-products">
-                <div class="productinfo text-center">
-                    <a
-                        href="
-                    {{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllItem->category_id), 'slugProduct' => $productAllItem->slug, 'productId'=>$productAllItem->id]  )}}">
-                        <img src="{{$productAllItem->feature_image_path}}" alt="" />
-                        <b>{{$productAllItem->name}}</b>
-                        {{-- {{ $productGetSlugCategory-> getCategoryType($productAllItem->category_id->slug) ->slug}}
-                        --}}
-                        <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
-                    </a>
+                <form action="{{route('saveCart')}}" method="POST">
+                    <div class="productinfo text-center">
+                        <a
+                            href="{{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllItem->category_id), 'slugProduct' => $productAllItem->slug, 'productId'=>$productAllItem->id]  )}}">
+                            <img src="{{$productAllItem->feature_image_path}}" alt="" />
+                            <b>{{$productAllItem->name}}</b>
+                            {{-- {{ $productGetSlugCategory-> getCategoryType($productAllItem->category_id->slug)
+                            ->slug}}
+                            --}}
+                            <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
 
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <b>{{$productAllItem->name}}</b><br>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ
-                            hàng</a>
+                            <input type="hidden" name="productIdHidden" class="product_id"
+                                value="{{$productAllItem->id}}">
+                            <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
+                                min="1" />
+                        </a>
+
                     </div>
-                </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <button type="submit" class="btn btn-default add-to-cart"><i
+                                    class="fa fa-shopping-cart"></i>Thêm
+                                vào
+                                giỏ
+                                hàng</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
@@ -46,8 +55,6 @@
 
     <div class="col-sm-12">
         <ul class="pagination">
-
-
             <li class="active"><a href="">1</a></li>
             <li><a href="">2</a></li>
             <li><a href="">3</a></li>
@@ -56,4 +63,5 @@
     </div>
 
 </div>
+
 @endsection

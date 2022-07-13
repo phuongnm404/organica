@@ -223,7 +223,22 @@ Route::namespace('Site')->group(function () {
             Route::get('/delete/{id}','AddressController@deleteAddress')->name('user.address.deleteAddress');
            
         });
-        
+        Route::prefix('cart')->group(function() {
+            Route::get('/delete-to-cart/{rowId}','CartController@deleteCart')->name('deleteCart');
+            Route::get('/index','CartController@index')->name('indexCart');
+
+            Route::post('/save-cart','CartController@saveCart')->name('saveCart');
+            Route::get('/show-cart','CartController@showCart')->name('showCart');
+
+           
+
+            // Route::get('/add/{id}','CartController@addToCart')->name('addToCart');
+
+            // Route::get('/update','CartController@updateCart')->name('updateCart');
+
+            // Route::get('/delete','CartController@deleteCart')->name('deleteCart');
+          
+        });
     });
 
 

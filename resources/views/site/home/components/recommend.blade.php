@@ -12,13 +12,23 @@
                     <div class="product-image-wrapper">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <img src="{{$productRecommendItem->feature_image_path }}" alt="" />
-                                <h3>{{ number_format($productRecommendItem->price) }}
-                                    <sup>đ</sup>/{{$productRecommendItem->weight}}
-                                </h3>
-                                <b>{{ $productRecommendItem->name }}</b>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm
-                                    vào giỏ hàng</a>
+                                <form action="{{route('saveCart')}}" method="post">
+                                    <img src="{{$productRecommendItem->feature_image_path }}" alt="" />
+                                    <h3>{{ number_format($productRecommendItem->price) }}
+                                        <sup>đ</sup>/{{$productRecommendItem->weight}}
+                                    </h3>
+                                    <b>{{ $productRecommendItem->name }}</b>
+                                    <input type="hidden" name="productIdHidden" class="product_id"
+                                        value="{{$productRecommendItem->id}}">
+                                    <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
+                                        min="1" />
+                                    <button type="submit" class="btn btn-default add-to-cart"><i
+                                            class="fa fa-shopping-cart"></i>Thêm
+                                        vào
+                                        giỏ
+                                        hàng</button>
+                                </form>
+
                             </div>
 
                         </div>

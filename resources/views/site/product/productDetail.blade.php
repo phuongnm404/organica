@@ -28,29 +28,37 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class=" row product-information">
-                            <!--/product-information-->
-                            <h1>
-                                {{$products->name}}
-                            </h1>
-                            <div class="product-detail col-sm-12">
-                                <h3>{{number_format($products->price)}}<sup>đ</sup> &ensp;/&ensp;{{$products->weight}}
-                                </h3>
-                            </div>
-                            <div class="product-number col-sm-12">
-                                <p class="form-label col-sm-6" for="typeNumber">SỐ LƯỢNG</p>
-                                <div class="num col-sm-6">
-                                    <input type="number" id="typeNumber" class="form-control" value="1" min="1" />
+                    <div class="col-sm-6">\
+                        <form action="{{route('saveCart')}}" method="POST">
+                            @csrf
+                            <div class=" row product-information">
+                                <!--/product-information-->
+                                <h1>
+                                    {{$products->name}}
+                                </h1>
+                                <div class="product-detail col-sm-12">
+                                    <h3>{{number_format($products->price)}}<sup>đ</sup>
+                                        &ensp;/&ensp;{{$products->weight}}
+                                    </h3>
                                 </div>
+                                <div class="product-number col-sm-12">
+                                    <p class="form-label col-sm-6" for="typeNumber">SỐ LƯỢNG</p>
+                                    <div class="num col-sm-6">
+                                        <input type="number" name="quantity" id="typeNumber" class="form-control"
+                                            value="1" min="1" />
+                                        <input type="hidden" name="productIdHidden" class="product_id"
+                                            value="{{$products->id}}" />
+                                    </div>
 
+                                </div>
+                                <a href="{{route('saveCart')}}">
+                                    <button type="submit" class="btn btn-fefault cart">
+                                        <i class="fa fa-shopping-cart"></i> &ensp;Thêm vào giỏ hàng
+                                    </button>
+                                </a>
                             </div>
-                            <a href="">
-                                <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i> &ensp;Thêm vào giỏ hàng
-                                </button>
-                            </a>
-                        </div>
+                        </form>
+
                         <!--/product-information-->
                     </div>
                 </div>

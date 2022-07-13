@@ -2036,7 +2036,7 @@ h2.title {
 
 #cart_items .cart_info .cart_total_price {
     color: #22b24c;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .cart_product {
@@ -2952,4 +2952,13 @@ ul.drop-content li a:hover {
     position: relative;
     border: 1px solid #f1f1f1;
     font-family: Lato, sans-serif;
+}
+.box-notice {
+    background: #edeae6;
+    padding: 15px 20px;
+    margin: 30px 0 0 0;
+}
+.text-notice {
+    padding: 35px 0;
+    text-align: center;
 }

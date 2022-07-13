@@ -6,21 +6,35 @@
         <div class="col-sm-2">
             <div class="product-image-wrapper">
                 <div class="single-products">
-                    <div class="productinfo text-center">
-                        <a
-                            href="  {{ route('productDetail', ['slugCategory' =>$product->category->slug, 'slugProduct' =>$product->slug, 'productId'=>$product->id]  )}}">
-                            <img src="{{$product->feature_image_path}}" alt="" />
-                            <b>{{$product->name}}</b>
-                            <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
-                        </a>
+                    <form action="{{route('saveCart')}}" method="POST">
+                        @csrf
+                        <div class="productinfo text-center">
 
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                            <a
+                                href="  {{ route('productDetail', ['slugCategory' =>$product->category->slug, 'slugProduct' =>$product->slug, 'productId'=>$product->id]  )}}">
+                                <img src="{{$product->feature_image_path}}" alt="" />
+                                <b>{{$product->name}}</b>
+                                <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
+
+
+                                <input type="hidden" name="productIdHidden" class="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
+                                    min="1" />
+                            </a>
+
                         </div>
-                    </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <button type="submit" class="btn btn-default add-to-cart"><i
+                                        class="fa fa-shopping-cart"></i>Thêm
+                                    vào
+                                    giỏ
+                                    hàng</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="choose">
                     <ul class="nav nav-pills nav-justified">
                         <li><a href="#"><i class="fa fa-heart"></i>Yêu thích</a></li>

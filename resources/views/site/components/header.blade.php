@@ -22,7 +22,7 @@
 
                         </ul>
                     </li>
-                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                    <li><a href="{{route('indexCart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                     <li><a href="cart.html"><i class="fa fa-heart"></i> Sản phẩm yêu thích</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-lock"></i>
                             Logout</a></li>

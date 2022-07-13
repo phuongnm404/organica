@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
 
             ['name' => 'Rau ăn lá', 'parent_id' => '1', 'slug' => 'rau-an-la', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
             ['name' => 'Rau ăn củ', 'parent_id' => '1', 'slug' => 'rau-an-cu', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
-            ['name' => 'Rau ăn quả', 'parent_id' => '1', 'slug' => 'rau-an-cu', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['name' => 'Rau ăn quả', 'parent_id' => '1', 'slug' => 'rau-an-qua', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
             ['name' => 'Rau ăn hoa', 'parent_id' => '1', 'slug' => 'rau-an-hoa', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
             ['name' => 'Rau gia vị', 'parent_id' => '1', 'slug' => 'rau-gia-vi', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
             ['name' => 'Nấm', 'parent_id' => '1', 'slug' => 'nam', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],

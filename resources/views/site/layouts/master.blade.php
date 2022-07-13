@@ -46,7 +46,7 @@
 
   @yield('content')
 
-  {{-- @include("site.components.footer") --}}
+  @include("site.components.footer")
 
   <script src="{{ asset('eshopper/js/jquery.js') }}"></script>
   <script src="{{ asset('eshopper/js/bootstrap.min.js') }}"></script>
@@ -155,6 +155,85 @@
 			      });
 		      });
     });
+  </script>
+  {{-- <script>
+    function cartUpdate(event) {
+        event.preventDefault();
+        let urlUpdate = $('.update_card_url').data('url');
+        let id = $(this).data('id');
+        let quantity = $(this).parents('tr').find('input.quantity').val();
+
+
+        $.ajax({
+          type: "GET",
+          url: urlUpdate,
+          data: {id: id, quantity:quantity},
+
+          success: function (data) {
+            if(data.code === 200) {
+
+              // $('.cart_wrapper').html(data.cart_component);
+              // toastr.success("Cập nhật số lượng thành công", "Success")
+            }
+          }, error: function() {
+
+          }
+
+        }); 
+    }
+    function cartDelete(event) {
+      event.preventDefault();
+
+      let urlDelete = $('.cart-list').data('url');
+      let id = $(this).data('id');
+
+      $.ajax({
+        type: "GET",
+        url: urlDelete,
+        data: {id: id},
+        success: function (data) {
+          if(data.code === 200) {
+            $('.cart_wrapper').html(data.cart_component);
+            toastr.success("Xóa thành công", "Success")
+          }
+        }, error: function() {
+
+        }
+
+      }); 
+    }
+
+    $(function(){
+     $(document).on('click', '.cart_delete', cartDelete);
+      $(document).on('click', '.cart_update', cartUpdate);
+    });
+     
+  </script> --}}
+  <script>
+    // function addToCart(event) {
+    //     event.preventDefault();
+    //    // let urlCart = $(this).data('url');
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{{route('saveCart')}}",
+    //         data: {
+    //         "_token": "{{ csrf_token() }}",
+            
+    //         }
+    //         success: function (data) {
+    //           console.log(data);
+    //             if(data.code === 200) {
+    //               toastr.success('Thêm vào giỏ hàng thành công', 'Success');
+    //             }
+    //         },
+    //         error: function() {
+    //             toastr.error('Thêm vào giỏ hàng thất bại', 'Error');
+    //         }
+
+    //     });
+    // }
+    
+    // $('.add-to-cart').on('click', addToCart);
   </script>
 </body>
 

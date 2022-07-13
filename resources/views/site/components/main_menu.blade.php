@@ -3,22 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
                         <li><a href="{{route('home.index')}}">Home</a></li>
-                        <li class="dropdown" data-toggle="dropdown"><a href=""> Sản phẩm <i
+                        <li class="dropdown"><a href="{{route('productAll')}}"> Sản phẩm <i
                                     class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 @foreach ($categoryLimit as $categoryParent)
-                                <li class="sub-menu-child"><a href="{{route('productAll')}}">{{$categoryParent->name}}
+                                <li class="sub-menu-child"><a
+                                        href="{{route('productCategory', ['slugCategory' => $categoryParent->slug, 'id' => $categoryParent->id ])}}">{{$categoryParent->name}}
                                         &ensp; <i class=" fa fa-angle-right"></i></a>
 
                                     <ul class="sub-menu-list">
