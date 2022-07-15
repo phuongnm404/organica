@@ -33,11 +33,9 @@
                                 Thành <span class="must font-weight-bold">(*)</span></label>
                             <select class="form-select" name="other_province_id" id="province_other_id" required>
                                 @foreach ($province_list as $value)
-                                @if ($value->id == $user->province_id)
-                                <option value="{{ $value->id }}" selected>{{ $value->province_name }}</option>
-                                @else
+
                                 <option value="{{$value->id}}">{{$value->province_name}}</option>
-                                @endif
+
                                 @endforeach
 
 
@@ -47,12 +45,10 @@
                         <div class="col-md-4">
                             <label for="district">Quận/Huyện <span class="must font-weight-bold">(*)</span></label>
                             <select class="form-select" name="other_district_id" id="district_other_id" required>
-                                @foreach ($district->getDistrict($user->district_id) as $value)
-                                @if ($value->id == $user->district_id)
-                                <option value="{{ $value->id }}" selected>{{ $value->district_name }}</option>
-                                @else
+                                @foreach ($district->getDistrict($user_id_address[0]->district_id) as $value)
+
                                 <option value="{{ $value->id }}">{{ $value->district_name }}</option>
-                                @endif
+
                                 @endforeach
                             </select>
 
@@ -60,12 +56,10 @@
                         <div class=" col-md-4">
                             <label for="ward">Phường/Xã <span class="must font-weight-bold">(*)</span></label>
                             <select class="form-select" name="other_ward_id" id="ward_other_id" required>
-                                @foreach ($ward->getWard($user->ward_id) as $value)
-                                @if ($value->id == $user->ward_id)
-                                <option value="{{ $value->id }}" selected>{{ $value->ward_name }}</option>
-                                @else
+                                @foreach ($ward->getWard($user_id_address[0]->ward_id) as $value)
+
                                 <option value="{{ $value->id }}">{{ $value->ward_name }}</option>
-                                @endif
+
                                 @endforeach
                             </select>
 

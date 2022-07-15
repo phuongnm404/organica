@@ -10,7 +10,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="/public/img/img_badge01.png" alt="">
+                    {{-- <img src="/public/img/img_badge01.png" alt=""> --}}
                 </div>
             </div>
         </div>

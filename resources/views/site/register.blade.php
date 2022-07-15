@@ -189,7 +189,7 @@
 				let provinceId=jQuery(this).val();
                 jQuery('#ward').html('<option value = "">--Chọn--</option>')
 				jQuery.ajax({
-					url:'/getDistrict',
+					url:'/getDistrict/',
 					type:'post',
 					data:'provinceId='+provinceId+'&_token={{csrf_token()}}',
 					success:function(result){

@@ -6,14 +6,156 @@
 <div class="container ">
   <div class="row ">
 
-    <div class="col-md-12 d-flex justify-content-center ">
+    @php
+    $content = Cart::content();
+    @endphp
+    @if(isset($content) && count($content)>0)
+
+    <div class="col-md-12 form-information d-flex justify-content-center ">
       <div class="cart-wrapper">
-        @include('site.user.cart.components.cart_component1')
+        <section id="cart_items">
+          <div class="table-cart_info">
+
+            <h5> <b>GIỎ HÀNG CỦA BẠN</b> </h5>
+            <table class="table cart-menu">
+              <thead>
+                <tr>
+                  <td>Ảnh</td>
+                  <td>Tên sản phẩm</td>
+                  <td>Giá</td>
+                  <td>Số lượng</td>
+                  <td>Tổng giá</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($content as $value)
+                <tr>
+                  <td>
+                    <a href=""><img src="{{ URL::to($value->options->image)}}" alt="" style="width: 100px;"></a>
+                  </td>
+                  <td>
+                    <h5><b>{{$value->name}}</b> </h5>
+
+                  </td>
+                  <td>
+                    <p>{{number_format($value->price)}} <sup>đ</sup></p>
+                  </td>
+
+                  <td>
+                    <div class="cart_quantity_button">
+                      <form action="{{route('updateQty', ['rowId'=> $value->rowId])}}" method="POST">
+                        @csrf
+                        <input class="cart_quantity_input" style="width: 50px;" type="number" name="cart_quantity"
+                          value="{{$value->qty}}" size="2" min="1" max="10">
+
+                        <input type="hidden" value="{{$value->rowId}}}" name="rowId_cart">
+                        <input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default small">
+                      </form>
+
+                    </div>
+                  </td>
+
+                  </td>
+                  <td>
+                    <p class="cart_total_price"><b>{{number_format($value->price * $value->qty)}}
+                        <sup>đ</sup></b>
+                    </p>
+                  </td>
+                  <td>
+                    <a class="cart_quantity_delete" href="{{URL::to('/user/cart/delete-to-cart/'.$value->rowId)}}"><i
+                        class="fa fa-times"></i></a>
+                  </td>
+                </tr>
+
+                @endforeach
+                {{--
+                <tr>
+                  <td></td>
+                  <td>
+                  <td></td>
+                  </td>
+
+                  <td>Tạm tính</td>
+                  <td style=" border-top: 1px solid green;">
+                    <h4 class="cart_total_price">{{Cart::subtotal()}} <sup>đ</sup></h4>
+                  </td>
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                  <td></td>
+                  </td>
+
+                  <td>Phí vận chuyển</td>
+                  <td>
+                    <h4>30.000<sup>đ</sup></h4>
+                  </td>
+
+                </tr> --}}
+                <tr>
+                  <td></td>
+                  <td>
+                  <td></td>
+                  </td>
+
+                  <td>Tổng tiền</td>
+                  <td style=" border-top: 1px solid green;">
+                    <h4 class="cart_total_price">{{Cart::subtotal()}} <sup>đ</sup></h4>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+        </section>
+        <!--/#cart_items-->
       </div>
     </div>
+
+    <div class="col-md-12">
+      <div class=" col-md-6 box-note">
+        <div class="text-notice">
+          <p>
+            Organica chỉ áp dụng giao hàng cho đơn hàng trên 200.000 VNĐ. Đơn hàng sẽ được giao từ
+            <b>9:00</b>
+            đến <b>18:00</b> và ít nhất 3 tiếng sau khi chúng tôi tiếp nhận đơn hàng. Những đơn hàng
+            được đặt
+            sau <b>4:30</b> sẽ được giao vào ngày hôm sau. Vui lòng xem thêm Chính sách giao hàng của
+            Organica.
+          </p>
+          <b>Phí vận chuyển mỗi đơn hàng là 30.000 VNĐ sẽ được cộng vào tổng hóa đơn thanh toán.</b>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <a href="{{route('checkout.index')}}" type='submit' class=" btn btn-fefault cart"
+          style="width: 150px; float:right;"> MUA HÀNG</a>
+
+      </div>
+
+    </div>
+    @else
+
+    <div class="box-notice" style="margin: 20px;">
+      <div class="text-notice text-center">
+        <p> Rất tiếc quý khách chưa có sản phẩm trong giỏ hàng.
+          Hãy tiếp tục mua sắm cùng Organica nhé. Xin cám ơn.</p>
+        <a href="{{route('home.index')}}">
+          <button class="btn btn-fefault cart" style="width: 400px;">TIẾP TỤC MUA HÀNG</button> </a>
+      </div>
+    </div>
+
+
+    @endif
+
     <div class="sugesst-product">
       @include('site.home.components.feature')
     </div>
+
   </div>
 
 
@@ -62,30 +204,6 @@
 		      });
     });
 </script>
-<script>
-  function checkStore() {
-     $checkStore = document.getElementById("delivery_store");
-     if($checkStore.checked) {
-        toastr.success('Nhân viên hỗ trợ sẽ gọi điện tư vấn cửa hàng gần nhất với bạn!', 'Success');
-     }
-  }
-  const radioButtons = document.querySelectorAll('input[id="delivery_cod"]');
-        for(const radioButton of radioButtons){
-            radioButton.addEventListener('change', showSelected);
-        }        
-        
-        function showSelected(e) {
-            console.log(e);
-            if (this.checked) {
-                document.querySelector('#output').innerText = `You selected ${this.value}`;
-            }
-        }
-  function checkCod() {
-     $checkStore = document.getElementById("delivery_cod");
-     if($checkStore.checked) {
-        toastr.success('Load khung chọn địa chỉ', 'Success');
-     }
-  }
-</script>
+
 
 @endsection

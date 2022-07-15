@@ -216,6 +216,7 @@ Route::namespace('Site')->group(function () {
         Route::prefix('address')->group(function() {
 
             Route::get('/{id}','AddressController@index')->name('user.address.index');
+            
             Route::post('/{id}','AddressController@insertAddress')->name('user.address.insertAddress');
 
             Route::get('/edit/{id}','AddressController@editAddress')->name('user.address.editAddress');
@@ -230,14 +231,19 @@ Route::namespace('Site')->group(function () {
             Route::post('/save-cart','CartController@saveCart')->name('saveCart');
             Route::get('/show-cart','CartController@showCart')->name('showCart');
 
-           
+            Route::post('/update-qty/{rowId}','CartController@updateQty')->name('updateQty');
+
 
             // Route::get('/add/{id}','CartController@addToCart')->name('addToCart');
 
             // Route::get('/update','CartController@updateCart')->name('updateCart');
 
-            // Route::get('/delete','CartController@deleteCart')->name('deleteCart');
-          
+            // Route::get('/delete','CartController@deleteCart')->name('deleteCart');        
+        });
+        Route::prefix('checkout')->group(function() {
+
+            Route::get('/index', 'CheckoutController@index')->name('checkout.index');
+            Route::post('/index/{id}', 'CheckoutController@checkout')->name('checkout.checkout');
         });
     });
 

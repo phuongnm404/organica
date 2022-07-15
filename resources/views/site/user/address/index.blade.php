@@ -12,7 +12,7 @@
                 <label>Địa chỉ giao hàng hiện tại</span>
                 </label>
                 <div class="address_list">
-                    <div class="address_list_item">
+                    {{-- <div class="address_list_item">
                         <p style="float:right;"><i class="fa fa-pencil"><a data-toggle="modal" data-target="#EditModal">
                                     Sửa
                                 </a></i></p>
@@ -23,19 +23,24 @@
                                 $district->getDistrictName($user->district_id).',
                                 '.$provinceModel->getProvinceName($user->province_id)}}</i></p>
                         <p><i class="fa fa-check"> Mặc định</i></p>
-                    </div>
-                    @foreach ($user_address->address_list as $address_listItem)
+                    </div> --}}
+                    @foreach ( $user_id_address as $address_listItem)
                     <div class="address_list_item">
                         <p style="float:right;"><i class="fa fa-pencil"><a data-toggle="modal" data-target="#EditModal">
                                     Sửa
                                 </a></i></p>
 
-                        <p><i class="fa fa-user">&ensp;{{$address_listItem->other_name}}</i></p>
-                        <p><i class="fa fa-phone">&ensp;{{$address_listItem->other_phone}}</i></p>
-                        <p><i class="fa fa-map-marker"> &ensp;{{$address_listItem->other_address_id.',
-                                '.$ward->getWardName($address_listItem->other_ward_id).', '.
-                                $district->getDistrictName($address_listItem->other_district_id).',
-                                '.$provinceModel->getProvinceName($address_listItem->other_province_id)}}</i></p>
+                        <p><i class="fa fa-user">&ensp;{{$address_listItem->name}}</i></p>
+                        <p><i class="fa fa-phone">&ensp;{{$address_listItem->phone}}</i></p>
+                        <p><i class="fa fa-map-marker"> &ensp;{{$address_listItem->address_detail.',
+                                '.$ward->getWardName($address_listItem->ward_id).', '.
+                                $district->getDistrictName($address_listItem->district_id).',
+                                '.$provinceModel->getProvinceName($address_listItem->province_id)}}</i></p>
+                        @if ($address_listItem->default == 1 )
+                        <p><i class="fa fa-check">&ensp;Mặc định</i></p>
+                        @endif
+
+
                         <p style="float:right;"><i class="fa fa-ban"><a href=""
                                     data-url="{{ route('user.address.deleteAddress', ['id' => $address_listItem->id]) }}"
                                     class="action_delete">
@@ -60,8 +65,11 @@
     </div>
 
 </div>
+
 @include('site.user.address.insertAddress')
-@include('site.user.address.editAddress')
+{{--
+@include('site.user.address.editAddress') --}}
+
 @endsection
 
 @section('js')

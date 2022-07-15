@@ -382,7 +382,7 @@ ul.sub-child-menu {
     margin-top: 10px;
 }
 .txt-quote {
-    background: url(/public/img/ico_qoute.png);
+    /* background: url(/public/img/ico_qoute.png); */
     color: #fff;
     font-size: 20px;
     line-height: 30px;
@@ -2034,9 +2034,8 @@ h2.title {
     font-size: 18px;
 }
 
-#cart_items .cart_info .cart_total_price {
-    color: #22b24c;
-    font-size: 20px;
+.cart-menu {
+    text-align: center;
 }
 
 .cart_product {
@@ -2058,9 +2057,9 @@ h2.title {
 }
 
 .cart_quantity_input {
+    height: 32px;
     color: #696763;
-    float: left;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
     font-family: "Lato", sans-serif;
 }
@@ -2961,4 +2960,22 @@ ul.drop-content li a:hover {
 .text-notice {
     padding: 35px 0;
     text-align: center;
+}
+.cart-menu thead {
+    text-decoration: underline;
+}
+.cart-menu h4 {
+    color: #22b24c;
+    font-weight: bold;
+}
+.cart-note {
+    margin: 30px;
+}
+.box-note {
+    width: 500px;
+    background: #fde1e1;
+    padding: 15px 20px;
+    text-align: left;
+    border: 1px dotted #f58972;
+    margin-top: 10px;
 }

@@ -13,6 +13,9 @@ use App\Models\District;
 use App\Models\Ward;
 use App\Models\User;
 use App\Models\StaticFeature;
+use Auth;
+use App\Models\Address;
+use App\Models\UserAddress;
 use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
@@ -42,10 +45,12 @@ class RegisterController extends Controller
      * @return void
      */
     private $user;
-    public function __construct(User $user)
+    private $address;
+    public function __construct(User $user, Address $address)
     {
         $this->middleware('guest');
         $this->user = $user;
+        $this->address= $address;
     }
     public function index() {
         $provinceModel = new Province;
@@ -65,14 +70,24 @@ class RegisterController extends Controller
                 'phone' => $request ->phone,
                 'email' =>$request->email,
                 'password'=> $request->password,
-                'province_id'=>$request->province_id,
-                'district_id'=> $request->district_id,
-                'ward_id'=> $request->ward_id,
-                'address'=> $request->address, 
                 'role'=>1,
             ];
             $user = $this->user->create($dataUserCreate);
     
+
+            $dataAddressListDefault = [
+                'user_id'=> $user->id,
+                'name' =>$request->name,
+                'phone' =>$request->phone,
+                'province_id' => $request->province_id,
+                'district_id' => $request->district_id,
+                'ward_id' => $request->ward_id,
+                'address_detail'=> $request->address, 
+                'default'=> 1,     
+            ];
+            $address_list = $this->address->create($dataAddressListDefault);
+
+
 
             $list_feature = $request->static_feature;
             

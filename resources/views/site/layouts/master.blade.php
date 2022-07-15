@@ -18,17 +18,7 @@
   <link href="{{ asset('eshopper/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('eshopper/css/main.css') }}" rel="stylesheet">
 
-  {{--
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> --}}
-  <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 
-  <link rel="shortcut icon" href="public/img/favicon.png">
-  <link rel="icon" type="image/x-icon" href="/public/img/favicon.png" sizes="57x57">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
-  alpha/css/bootstrap.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -60,6 +50,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
     integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -156,85 +147,7 @@
 		      });
     });
   </script>
-  {{-- <script>
-    function cartUpdate(event) {
-        event.preventDefault();
-        let urlUpdate = $('.update_card_url').data('url');
-        let id = $(this).data('id');
-        let quantity = $(this).parents('tr').find('input.quantity').val();
 
-
-        $.ajax({
-          type: "GET",
-          url: urlUpdate,
-          data: {id: id, quantity:quantity},
-
-          success: function (data) {
-            if(data.code === 200) {
-
-              // $('.cart_wrapper').html(data.cart_component);
-              // toastr.success("Cập nhật số lượng thành công", "Success")
-            }
-          }, error: function() {
-
-          }
-
-        }); 
-    }
-    function cartDelete(event) {
-      event.preventDefault();
-
-      let urlDelete = $('.cart-list').data('url');
-      let id = $(this).data('id');
-
-      $.ajax({
-        type: "GET",
-        url: urlDelete,
-        data: {id: id},
-        success: function (data) {
-          if(data.code === 200) {
-            $('.cart_wrapper').html(data.cart_component);
-            toastr.success("Xóa thành công", "Success")
-          }
-        }, error: function() {
-
-        }
-
-      }); 
-    }
-
-    $(function(){
-     $(document).on('click', '.cart_delete', cartDelete);
-      $(document).on('click', '.cart_update', cartUpdate);
-    });
-     
-  </script> --}}
-  <script>
-    // function addToCart(event) {
-    //     event.preventDefault();
-    //    // let urlCart = $(this).data('url');
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "{{route('saveCart')}}",
-    //         data: {
-    //         "_token": "{{ csrf_token() }}",
-            
-    //         }
-    //         success: function (data) {
-    //           console.log(data);
-    //             if(data.code === 200) {
-    //               toastr.success('Thêm vào giỏ hàng thành công', 'Success');
-    //             }
-    //         },
-    //         error: function() {
-    //             toastr.error('Thêm vào giỏ hàng thất bại', 'Error');
-    //         }
-
-    //     });
-    // }
-    
-    // $('.add-to-cart').on('click', addToCart);
-  </script>
 </body>
 
 </html>

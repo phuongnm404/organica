@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeteleAtUsersTable extends Migration
+class CreateDeleteAtUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,7 @@ class CreateDeteleAtUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->softDeletes();
+
         });
     }
 

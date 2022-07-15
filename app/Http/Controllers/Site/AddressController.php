@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 use App\Models\Address;
 use App\Models\User;
-use App\Models\UserAddress;
 use App\Models\Province;
 use App\Models\Category;
 use App\Models\Ward;
@@ -18,13 +17,12 @@ class AddressController extends Controller
 {
     //
     use DeleteModelTrait;
-    private $address_list;
-    private $user_address;
-    public function __construct(User $user, Address $address_list, UserAddress $user_address)
+    private $address;
+    public function __construct(User $user, Address $address)
     {
         $this->user = $user;
-        $this->user_address= $user_address;
-        $this->address_list= $address_list;
+
+        $this->address= $address;
     }
     public function getDistrict(Request $request)
     {
@@ -55,7 +53,7 @@ class AddressController extends Controller
 
         $address_list = Address::all();
 
-        $user_address = User::where('id', $id)->with('address_list')->first();
+       // $user_address = User::where('id', $id)->with('address')->first();
         
 
         $provinceModel = new Province;
@@ -63,26 +61,36 @@ class AddressController extends Controller
 
         $district = new District();
         $ward = new Ward(); 
+
         $user = $this->user->find($id);
-        return view('site.user.address.index', compact('categoryLimit','user','address_list', 'provinceModel','province_list','district', 'ward', 'user_address'));
+
+        $user_id_address = Address::where('user_id', $id)->get();
+
+        $user_address = User::where('id', $id)->with('address')->first();
+
+        //   dd($user_address);
+
+        return view('site.user.address.index', compact('categoryLimit','user','address_list', 'provinceModel','province_list','district', 'ward', 'user_id_address','user_address'));
     }
 
     public function insertAddress(Request $request, $id) {
 
         $dataAddressNewInsert = [
-            'other_name' =>$request->other_name,
-            'other_phone' =>$request->other_phone,
-            'other_province_id' => $request->other_province_id,
-            'other_district_id' => $request -> other_district_id,
-            'other_ward_id' =>$request->other_ward_id,
-            'other_address_id'=> $request->other_address_detail,
+            'user_id'=>$id,
+            'name' =>$request->other_name,
+            'phone' =>$request->other_phone,
+            'province_id' => $request->other_province_id,
+            'district_id' => $request -> other_district_id,
+            'ward_id' =>$request->other_ward_id,
+            'address_detail'=> $request->other_address_detail,
+            'default'=>0,
            
         ];
-        $address_list = $this->address_list->create($dataAddressNewInsert);
+        $address_list = $this->address->create($dataAddressNewInsert);
 
-        $list_address = [];
-        array_push($list_address, (int)$id);
-        $address_list->user()->sync($list_address);
+        // $list_address = [];
+        // array_push($list_address, (int)$id);
+        // $address_list->user()->sync($list_address);
        
        return redirect()->back()->with('message', 'Thêm địa chỉ thành công');
     }

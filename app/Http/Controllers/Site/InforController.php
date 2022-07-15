@@ -19,7 +19,7 @@ class InforController extends Controller
     public function __construct(User $user, Address $address_list)
     {
         $this->user = $user;
-        $this->address_list= $address_list;
+        $this->address= $address;
     }
     public function index(User $user, $id) {
       
@@ -74,6 +74,7 @@ class InforController extends Controller
                 'address'=> $request->address, 
         ]);
         $user = $user::find($id);
+        
         return redirect('user/infor/'.$user->id)->with('message', 'Thay đổi thông tin cá nhân thành công!');
 
        

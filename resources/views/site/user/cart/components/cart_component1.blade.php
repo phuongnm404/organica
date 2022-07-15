@@ -1,83 +1,84 @@
 <section id="cart_items">
-    <div class="container">
-        <div class="table-responsive cart_info">
-            @php
-            $content = Cart::content();
-            @endphp
-            @if(isset($content) && count($content)>0)
-            <table class="table table-condensed">
-                <thead>
-                    <tr class="cart_menu">
-                        <td class="image">Ảnh</td>
-                        <td class="description">Tên sản phẩm</td>
-                        <td class="price">Giá</td>
-                        <td class="quantity">Số lượng</td>
-                        <td class="total">Tổng giá</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($content as $value)
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="{{ URL::to($value->options->image)}}" alt="" style="width: 100px;"></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><b><a href="">{{$value->name}}</a></b> </h4>
+    <div class="table-cart_info">
+        @php
+        $content = Cart::content();
+        @endphp
+        @if(isset($content) && count($content)>0)
 
-                        </td>
-                        <td class="cart_price">
-                            <p>{{number_format($value->price)}} <sup>đ</sup></p>
-                        </td>
+        <table class="table cart-menu">
+            <thead>
+                <tr>
+                    <td>Ảnh</td>
+                    <td>Tên sản phẩm</td>
+                    <td>Giá</td>
+                    <td>Số lượng</td>
+                    <td>Tổng giá</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($content as $value)
+                <tr>
+                    <td>
+                        <a href=""><img src="{{ URL::to($value->options->image)}}" alt="" style="width: 100px;"></a>
+                    </td>
+                    <td>
+                        <h5><b>{{$value->name}}</b> </h5>
 
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="{{$value->qty}}"
-                                    autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
+                    </td>
+                    <td>
+                        <p>{{number_format($value->price)}} <sup>đ</sup></p>
+                    </td>
 
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">{{number_format($value->price * $value->qty)}} <sup>đ</sup></p>
-                        </td>
-                        <td class="">
-                            <a class="cart_quantity_delete"
-                                href="{{URL::to('/user/cart/delete-to-cart/'.$value->rowId)}}"><i
-                                    class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                    <td>
+                        <div class="cart_quantity_button">
 
-                    @endforeach
+                            <input class="cart_quantity_input" style="width: 50px;" type="number" name="quantity"
+                                value="{{$value->qty}}" autocomplete="off" size="2">
 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Tạm tính</td>
-                        <td>
-                            <h3 class="cart_total_price">{{Cart::subtotal()}} <sup>đ</sup></h3>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
 
-                </tbody>
-            </table>
-            @else
+                    </td>
+                    <td>
+                        <p class="cart_total_price"><b>{{number_format($value->price * $value->qty)}} <sup>đ</sup></b>
+                        </p>
+                    </td>
+                    <td>
+                        <a class="cart_quantity_delete"
+                            href="{{URL::to('/user/cart/delete-to-cart/'.$value->rowId)}}"><i
+                                class="fa fa-times"></i></a>
+                    </td>
+                </tr>
 
-            <div class="box-notice" style="margin: 20px;">
-                <div class="text-notice text-center">
-                    <p> Rất tiếc quý khách chưa có sản phẩm trong giỏ hàng.
-                        Hãy tiếp tục mua sắm cùng Organica nhé. Xin cám ơn.</p>
-                    <a href="{{route('home.index')}}">
-                        <button class="btn btn-fefault cart" style="width: 400px;">TIẾP TỤC MUA HÀNG</button> </a>
-                </div>
+                @endforeach
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Tạm tính</td>
+                    <td>
+                        <h4 class="cart_total_price">{{Cart::subtotal()}} <sup>đ</sup></h4>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        @else
+
+        <div class="box-notice" style="margin: 20px;">
+            <div class="text-notice text-center">
+                <p> Rất tiếc quý khách chưa có sản phẩm trong giỏ hàng.
+                    Hãy tiếp tục mua sắm cùng Organica nhé. Xin cám ơn.</p>
+                <a href="{{route('home.index')}}">
+                    <button class="btn btn-fefault cart" style="width: 400px;">TIẾP TỤC MUA HÀNG</button> </a>
             </div>
-
-
-            @endif
         </div>
+
+
+        @endif
     </div>
+
 </section>
 <!--/#cart_items-->

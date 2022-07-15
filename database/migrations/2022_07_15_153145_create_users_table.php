@@ -22,11 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('gender');
             $table->date('birthday');
-            $table->bigInteger('province_id');
-            $table->bigInteger('district_id');
-            $table->bigInteger('ward_id');
-            $table->string('address');
-            $table->integer('role');
+            $table->integer('role')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

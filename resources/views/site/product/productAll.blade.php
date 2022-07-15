@@ -16,14 +16,13 @@
         <div class="product-image-wrapper">
             <div class="single-products">
                 <form action="{{route('saveCart')}}" method="POST">
+                    @csrf
                     <div class="productinfo text-center">
                         <a
                             href="{{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllItem->category_id), 'slugProduct' => $productAllItem->slug, 'productId'=>$productAllItem->id]  )}}">
                             <img src="{{$productAllItem->feature_image_path}}" alt="" />
                             <b>{{$productAllItem->name}}</b>
-                            {{-- {{ $productGetSlugCategory-> getCategoryType($productAllItem->category_id->slug)
-                            ->slug}}
-                            --}}
+
                             <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
 
                             <input type="hidden" name="productIdHidden" class="product_id"
@@ -40,6 +39,7 @@
                                 vào
                                 giỏ
                                 hàng</button>
+                            {{-- <a href="{{route('saveCart')}}">thêm</a> --}}
                         </div>
                     </div>
                 </form>

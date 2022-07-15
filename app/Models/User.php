@@ -48,8 +48,8 @@ class User extends Authenticatable
         return $this -> belongsToMany(StaticFeature::class, 'user_static_feature', 'user_id', 'static_id');
     }
 
-    public function address_list() {
-        return $this -> belongsToMany(Address::class, 'user_address');
+    public function address() {
+        return $this -> hasMany(Address::class, 'user_id');
     }
 
     public function checkPermissionAccess($permissionCheck) {
