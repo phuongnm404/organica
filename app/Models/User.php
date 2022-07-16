@@ -51,6 +51,10 @@ class User extends Authenticatable
     public function address() {
         return $this -> hasMany(Address::class, 'user_id');
     }
+    public function cart() {
+        return $this -> hasMany(Cart::class, 'user_id');
+    }
+
 
     public function checkPermissionAccess($permissionCheck) {
         

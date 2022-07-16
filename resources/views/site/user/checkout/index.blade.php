@@ -17,6 +17,18 @@
                             value="Đến lấy tại cửa hàng"> Đến lấy tại
                         cửa
                         hàng
+                        <div class="address_list_item" hidden>
+                            <p style="float:right;"><input type="radio" name="address_id_default"
+                                    id="address_id_default" value="{{$address_default[0]->id}}"
+                                    onclick="getAddressDefaultId()" checked /></p>
+                            <p><i class="fa fa-user">&ensp;{{$address_default[0]->name}}</i></p>
+                            <p><i class="fa fa-phone">&ensp;{{$address_default[0]->phone}}</i></p>
+                            <p><i class="fa fa-map-marker"> &ensp;{{$address_default[0]->address_detail.',
+                                    '.$ward->getWardName($address_default[0]->ward_id).', '.
+                                    $district->getDistrictName($address_default[0]->district_id).',
+                                    '.$provinceModel->getProvinceName($address_default[0]->province_id)}}</i></p>
+                        </div>
+
                     </div>
                     <div class="col-md-3">
                         <input type="radio" name="delivery" id="delivery_cod" onclick="checkCod()" value="Giao hàng">
@@ -84,7 +96,9 @@
                                       '.$ward->getWardName($address_listItem->ward_id).', '.
                                       $district->getDistrictName($address_listItem->district_id).',
                                       '.$provinceModel->getProvinceName($address_listItem->province_id)}}</i></p>
-
+                                @if ($address_listItem->default == 1 )
+                                <p><i class="fa fa-check">&ensp;Mặc định</i></p>
+                                @endif
                           </div>
                           @endforeach
                           
@@ -106,21 +120,31 @@
         var delivery = document.querySelector('input[name="delivery"]:checked').value;
         return delivery;
     }
+    function getAddressDefaultId() {     
+        var id = document.querySelector('input[name="address_id_default"]:checked').value;
+        return id;
+    }
+
 
     $('#checkout').click(function(){
-  
-     let address_id;
+       
+      let address_id;
      let delivery = getMethodDelivery();
      let note = $('textarea#note').val();
-     let status =  $('input#status').val()
+     let status =  $('input#status').val();
+    
         
 
      if(delivery == "Đến lấy tại cửa hàng") {
-        address_id = 100;
+        address_id = getAddressDefaultId();
+        console.log(getAddressDefaultId());
      } else {
         address_id = getAddressId();
+        console.log(getAddressId());
      }
+     
     
+
      $.ajax({
          url:'/user/checkout/index/' + address_id,
          type:'post',
@@ -132,11 +156,11 @@
             "_token": "{{ csrf_token() }}",
         }) , 
          success:function(data){
-            toastr.success('OK', 'Success');
+            toastr.success('Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.', 'Success');
          },
   
      });
- });
+    });
 </script>
 
 @endsection

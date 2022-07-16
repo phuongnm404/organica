@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Validator;
 class InforController extends Controller
 {   
     
-    public function __construct(User $user, Address $address_list)
+    public function __construct(User $user, Address $address)
     {
         $this->user = $user;
         $this->address= $address;
@@ -33,9 +33,11 @@ class InforController extends Controller
         $address = Address::orderBy('id', 'desc');
         
         $user = $this->user->find($id);
+        $user_address = Address::where('user_id', $id)->where('default', 1)->get();
+        //dd( $user_address[0]->province_id);
 
         $address_list = Address::all(); 
-        return view('site.user.infor.index', compact('user','provinceModel', 'province_list','district', 'ward', 'static', 'categoryLimit', 'address_list'));
+        return view('site.user.infor.index', compact('user','provinceModel', 'province_list','district', 'ward', 'static', 'categoryLimit', 'address_list', 'user_address'));
     }
     public function update(Request $request,$id) {
         

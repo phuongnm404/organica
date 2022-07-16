@@ -40,7 +40,7 @@
                     Thành <span class="must font-weight-bold">(*)</span></label>
                 <select class="form-select" name="province_id" id="province_user_id" required>
                     @foreach ($province_list as $value)
-                    @if ($value->id == $user->province_id)
+                    @if ($value->id == $user_address[0]->province_id)
                     <option value="{{ $value->id }}" selected>{{ $value->province_name }}</option>
                     @else
                     <option value="{{$value->id}}">{{$value->province_name}}</option>
@@ -54,8 +54,8 @@
             <div class="col-md-3">
                 <label for="district">Quận/Huyện <span class="must font-weight-bold">(*)</span></label>
                 <select class="form-select" name="district_id" id="district_user_id" required>
-                    @foreach ($district->getDistrict($user->district_id) as $value)
-                    @if ($value->id == $user->district_id)
+                    @foreach ($district->getDistrict($user_address[0]->district_id) as $value)
+                    @if ($value->id == $user_address[0]->district_id)
                     <option value="{{ $value->id }}" selected>{{ $value->district_name }}</option>
                     @else
                     <option value="{{ $value->id }}">{{ $value->district_name }}</option>
@@ -67,8 +67,8 @@
             <div class=" col-md-3">
                 <label for="ward">Phường/Xã <span class="must font-weight-bold">(*)</span></label>
                 <select class="form-select" name="ward_id" id="ward_user_id" required>
-                    @foreach ($ward->getWard($user->ward_id) as $value)
-                    @if ($value->id == $user->ward_id)
+                    @foreach ($ward->getWard($user_address[0]->ward_id) as $value)
+                    @if ($value->id == $user_address[0]->ward_id)
                     <option value="{{ $value->id }}" selected>{{ $value->ward_name }}</option>
                     @else
                     <option value="{{ $value->id }}">{{ $value->ward_name }}</option>
@@ -85,7 +85,7 @@
             <label>Địa chỉ cụ thể <span class="must font-weight-bold">(*)</span>
             </label>
             <input type="text" class="form-control" id="address" name="address" placeholder="Số nhà, ngõ, đường"
-                value="{{$user->address}}">
+                value="{{$user_address[0]->address_detail}}">
         </div>
         <div class="form-row">
             <label> Email <span class="must font-weight-bold">(*)</span></label>

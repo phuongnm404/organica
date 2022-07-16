@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\User;
-use App\Models\UserAddress;
+
 use App\Models\Province;
 use App\Models\Category;
 use App\Models\Ward;
@@ -28,14 +28,15 @@ class CheckoutController extends Controller
     public function __construct(User $user, Address $address)
     {
         $this->user = $user;
-       
         $this->address= $address;
     }
+
     public function index() {
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
         $products = Product::latest()->take(6)->get();  
 
-        $id = auth()->user()->id;
+        $id = Auth::user()->id;
+
         $address_list = Address::all();
         $user_address = User::where('id', $id)->with('address')->first();
         $provinceModel = new Province;
@@ -45,12 +46,12 @@ class CheckoutController extends Controller
         $ward = new Ward(); 
         $user = $this->user->find($id);
 
-        return view('site.user.checkout.index', compact('categoryLimit', 'products','user','address_list', 'provinceModel','province_list','district', 'ward', 'user_address'));
+        $address_default = Address::where('user_id', $id )->where('default', 1)->get();
+      
+
+        return view('site.user.checkout.index', compact('categoryLimit', 'products','user','address_list', 'provinceModel','province_list','district', 'ward', 'user_address', 'address_default'));
     }
     public function checkout(Request $request, $id) {
-
-       // dd( $request->delivery);
-       // response()->json(dd($request->all()));
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
         $products = Product::latest()->take(6)->get(); 
 
@@ -66,29 +67,45 @@ class CheckoutController extends Controller
         $provinceModel = new Province;
         $province_list = $provinceModel->orderBy('province_name','asc')->get();
         $province_name =  $provinceModel->getProvinceName($address->province_id);
-
         $district = new District();
         $district_name = $district->getDistrictName($address->district_id);
         $ward = new Ward(); 
         $ward_name = $ward->getWardName($address->ward_id);
 
-        $user_address_default = Address::()
-
         $address_detail = $address->address_detail.','.$ward_name.','.$province_name.','.$district_name ;
-        // dd( $address_detail );
+      
+
+        $address_default = Address::where('user_id', $user_id)->where('default', 1)->get();
+        
+        $cart = Cart::content();
+       
+      
 
         $bill = new Bill();
         $bill->user_id = Auth::user()->id;
-        $bill->order_username = $address->other_name ;
-        $bill->order_phone =  $address->other_phone ;
+        $bill->order_username = $address->name ;
+        $bill->order_phone =  $address->phone ;
         $bill->order_address =  $address_detail;
         $bill->order_note = $request->note;
         $bill->order_status = $request->status;
         $bill->method_delivery = $request->delivery;
+        $bill->total_price = Cart::subtotal();
         $bill->save();
-
     
+        Cart::destroy(); // xóa sản phẩm trong đơn hàng cũ
 
-        return view('site.user.checkout.checkout', compact('categoryLimit', 'products','address_list', 'user'));
+        foreach ($cart as $value)  {
+            $bill_detail = new BillDetail();
+            $bill_detail->cart_id = $bill->id;
+            $bill_detail->product_id = $value->id;
+            $bill_detail->quantity = $value->qty;
+            $bill_detail->price =$value->price * $value->qty;
+            $bill_detail->img =$value->options->image;
+            $bill_detail->save();
+        }
+       
+        
+
+        return redirect('/user/order/index/')->with("success", "Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.");
     }
 }

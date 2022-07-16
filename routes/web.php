@@ -245,6 +245,10 @@ Route::namespace('Site')->group(function () {
             Route::get('/index', 'CheckoutController@index')->name('checkout.index');
             Route::post('/index/{id}', 'CheckoutController@checkout')->name('checkout.checkout');
         });
+        Route::prefix('order')->group(function() {
+            Route::get('/index', 'OrderController@index')->name('order.index');
+            Route::get('/detail/{id}', 'OrderController@detail')->name('order.detail');
+        });
     });
 
 
