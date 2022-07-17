@@ -18,7 +18,7 @@ class TagController extends Controller
         $this->tag = $tag;
     }
     public function index() {
-        $tags = $this->tag->paginate(5);
+        $tags = $this->tag->paginate(8);
         return view('admin.tag.index', compact('tags'));
     }
     public function create() {

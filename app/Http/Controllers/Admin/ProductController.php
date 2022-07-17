@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Components\Recusive;
 use Storage;
 use App\Models\ProductTag;
+use App\Models\ProductProvince;
 use App\Models\Tag;
+use App\Models\Menu;
 use App\Models\ProductImage;
 use App\Models\Category;
 use App\Models\Product;
@@ -27,16 +29,20 @@ class ProductController extends Controller
     private $category;
     private $product;
     private $tag;
+    private $menu;
     private $productTag;
+    private $productProvince;
     private $brand;
 
-    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag, ProductTag $productTag, Brand $brand) {
+    public function __construct(Category $category, Product $product, ProductImage $productImage, Tag $tag, ProductTag $productTag,ProductProvince $productProvince, Brand $brand, Menu $menu) {
    
       $this->category = $category;
       $this->product = $product;
       $this->productImage = $productImage;
       $this->tag = $tag;
+      $this->menu = $menu;
       $this->productTag = $productTag;
+      $this->productProvince = $productProvince;
       $this->brand = $brand;
     }
     public function index() {
@@ -46,9 +52,10 @@ class ProductController extends Controller
     }
     public function create() {
         $htmlOption=$this->getCategory($parent_id='');
+        $list_menu = $this->menu::all();
         $list_tag = $this->tag::all();
         $list_brand = $this->brand::all();
-        return view('admin.product.add', compact('htmlOption', 'list_tag', 'list_brand'));
+        return view('admin.product.add', compact('htmlOption', 'list_tag', 'list_brand', 'list_menu'));
     }
 
     public function getCategory($parent_id) {
@@ -60,14 +67,16 @@ class ProductController extends Controller
     }
   
     public function store(ProductAddRequest $request) { 
-        // try {
-        //     DB::beginTransaction();
+        try {
+            DB::beginTransaction();
            
-            $list_tags = $request->tags;
+          //  $list_tags = $request->tags;
+          //  $list_menu= $request->menu;
 
             $dataProductCreate = [
                 'name' =>$request->name,
                 'price' =>$request->price,
+                'sale_price' =>$request->sale_price,
                 'brand_id' => $request->brand_id,
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
@@ -83,7 +92,29 @@ class ProductController extends Controller
                 }
                 $product = $this->product->create($dataProductCreate);
 
-                $product->tags()->sync($list_tags);
+             // Insert tags for product
+             $tagIds = [];
+             
+            //  dd($request->tags);
+
+             if (!empty($request->tags)) {
+                foreach ($request->tags as $tagItem) {
+                    // Insert to tags
+                    $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
+                    $tagIds[] = $tagInstance->id;
+                }
+            }
+            $product->tags()->sync($tagIds);
+
+            $menuIds = [];
+            if (!empty($request->menu)) {
+                foreach ($request->menu as $menuItem) {
+                    // Insert to tags
+                    $menuInstance = $this->menu->firstOrCreate(['name' =>$menuItem]);
+                     $menuIds[] = $menuInstance->id;
+                }
+            }
+            $product->province()->sync($menuIds);
              
                
           //Insert datta to product_image 
@@ -99,14 +130,14 @@ class ProductController extends Controller
             }
             
 
-           // dd($request->all());
-        //     DB::commit();
+         //dd($request->all());
+            DB::commit();
              return redirect()->route('admin.product.index');
     
-        //  } catch(\Exception $exception) {
-        //      DB::rollBack();
-        //      Log::error ('Message: '. $exception->getMessage(). 'Line: '. $exception->getLine());
-        //  }
+         } catch(\Exception $exception) {
+             DB::rollBack();
+             Log::error ('Message: '. $exception->getMessage(). 'Line: '. $exception->getLine());
+         }
       
       
     }
@@ -114,12 +145,18 @@ class ProductController extends Controller
     public function edit($id) {
 
         $product = $this->product->find($id);
+
         $brand = $this->brand->all();
+
+    
+        $list_tag = $this->tag->all();
+        $list_menu = $this->menu->all();
+
         $htmlOption=$this->getCategory($product->category_id);
 
       // dd($brand);
 
-       return view('admin.product.edit', compact('htmlOption', 'product', 'brand'));
+       return view('admin.product.edit', compact('htmlOption', 'product', 'brand', 'list_menu', 'list_tag'));
 
     }   
     public function update(Request $request, $id) {
@@ -128,6 +165,7 @@ class ProductController extends Controller
             $dataProductUpdate = [
                 'name' =>$request->name,
                 'price' =>$request->price,
+                'sale_price' =>$request->sale_price,
                 'brand_id' => $request->brand_id,
                 'weight' => $request -> weight,
                 'description' =>$request->contents,
@@ -155,7 +193,30 @@ class ProductController extends Controller
                 }
             }
 
-            // Insert tags for product
+           
+            // $tagIds = [];
+            // if (!empty($request->tags)) {
+            //     foreach ($request->tags as $tagItem) {
+            //         // Insert to tags
+            //         $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
+            //         $tagIds[] = $tagInstance->id;
+            //     }
+            // }
+           
+            // $product->tags()->sync($tagIds);
+
+            $menuIds = [];
+            if (!empty($request->menu)) {
+                foreach ($request->menu as $menuItem) {
+                    // Insert to tags
+                    $menuInstance = $this->menu->firstOrCreate(['name' => $menuItem]);
+                    $menuIds[] = $menuInstance->id;
+                }
+            }
+           
+            $product->province()->sync($menuIds);
+
+
             $tagIds = [];
             if (!empty($request->tags)) {
                 foreach ($request->tags as $tagItem) {
@@ -164,16 +225,15 @@ class ProductController extends Controller
                     $tagIds[] = $tagInstance->id;
                 }
             }
-            dd($tagIds);
             $product->tags()->sync($tagIds);
 
-        
             DB::commit();
             return redirect()->route('admin.product.index');
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
         }
+
 
     }
     public function delete($id) {

@@ -8,11 +8,16 @@ use App\Models\Brand;
 use App\Models\Tag;
 use App\Models\ProductTag;
 use Illuminate\Http\Request;
+use DB;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
     //
+    private $product;
+    public function __contruct(Product $product) {
+        $this->product = $product;
+    }
     public function index($slug, $categorysId) {
         $sliders = Slider::take(3)->get();
         $categorys = Category::where('parent_id', 0)->get();
@@ -25,7 +30,8 @@ class ProductController extends Controller
     }
     public function getAll() {
         $categorys = Category::where('parent_id', 0)->get();
-        $productAll = Product::all()->shuffle();
+
+        $productAll =  DB::table('products')->paginate(12);
 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
 
@@ -36,6 +42,8 @@ class ProductController extends Controller
         $brand = Brand::all();
 
         $tag = Tag::all();
+
+
 
         return view('site.product.productAll', compact('productAll', 'categorys', 'categoryLimit', 'productModel', 'categoryModel', 'brand', 'tag'));
     }
@@ -54,7 +62,8 @@ class ProductController extends Controller
        
         $brand = Brand::all();
         $tag = Tag::all();
-        $products = Product::where('category_id', $categorysId)->paginate(12); 
+
+        $products =DB::table('products')->where('category_id', $categorysId)->paginate(9); 
        
 
         return view('site.product.productCategory', compact('categorys', 'categoryLimit', 'category_slug', 'products', 'productModel', 'brand', 'tag'));
@@ -77,6 +86,10 @@ class ProductController extends Controller
         $productTag = new ProductTag();
       
         $brand = Brand::all();
+
+        $products->view = $products->view+1;
+        $products->save();
+
        
         return view('site.product.productDetail', compact('categorys', 'categoryLimit', 'product_slug', 'products', 'productBrand', 'categoryModel', 'brand'));
     }

@@ -23,8 +23,16 @@
                             <img src="{{$productAllItem->feature_image_path}}" alt="" />
                             <b>{{$productAllItem->name}}</b>
 
+                            @if($productAllItem->sale_price !=0)
+                            <strike>
+                                <h6>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}
+                                </h6>
+                            </strike>
+                            <h3>{{number_format($productAllItem->sale_price)}}<sup>đ</sup>/{{$productAllItem->weight}}
+                            </h3>
+                            @else
                             <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
-
+                            @endif
                             <input type="hidden" name="productIdHidden" class="product_id"
                                 value="{{$productAllItem->id}}">
                             <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
@@ -53,13 +61,8 @@
     </div>
     @endforeach
 
-    <div class="col-sm-12">
-        <ul class="pagination">
-            <li class="active"><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">&raquo;</a></li>
-        </ul>
+    <div class="col-sm-12 pull-right">
+        {{ $productAll->links() }}
     </div>
 
 </div>

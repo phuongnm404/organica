@@ -189,6 +189,20 @@ Route::namespace('Admin')->group(function () {
 
              Route::get('/delete/{id}','StaticController@delete') ->name('admin.static.delete');
         });
+        Route::prefix('order')->group(function() {
+
+            Route::get('/','OrderController@index')->name('admin.order.index');
+            
+            Route::get('/create','OrderController@create') ->name('admin.order.create');
+            
+            Route::post('/store','OrderController@store')->name('admin.order.store');
+            
+             Route::get('/edit/{id}','OrderController@edit')->name('admin.order.edit');
+
+            // Route::post('/update/{id}','OrderController@update')->name( 'admin.order.update');
+
+            //  Route::get('/delete/{id}','OrderController@delete') ->name('admin.order.delete');
+        });
 
     });
 

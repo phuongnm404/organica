@@ -27,13 +27,13 @@
                             <input type="text" name="name" class="form-control" id="category-name"
                                 placeholder="Nhập tên menu">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Chọn menu cha</label> <span class="must text-danger font-weight-bold">(*)</span>
                             <select class="form-control" name="parent_id">
                                 <option value="0">-Chọn menu cha-</option>
                                 {!!$optionSelect!!}
                             </select>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary float-right">Thêm</button>
                     </form>
                 </div>

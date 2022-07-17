@@ -51,15 +51,30 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="product-price">Giá</label> <span
-                                class="must text-danger font-weight-bold">(*)</span>
-                            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror"
-                                value="{{ old('price') }}" id="product-price" placeholder="Nhập giá tiền">
-                            @error('price')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="product-price">Giá</label> <span
+                                    class="must text-danger font-weight-bold">(*)</span>
+                                <input type="text" name="price"
+                                    class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
+                                    id="product-price" placeholder="Nhập giá tiền">
+                                @error('price')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="product-price">Giá khuyến mãi</label> <span
+                                    class="must text-danger font-weight-bold">(*)</span>
+                                <input type="text" name="sale_price"
+                                    class="form-control @error('sale_price') is-invalid @enderror"
+                                    value="{{ old('sale_price') }}" id="product-sale-price"
+                                    placeholder="Nhập giá tiền khuyến mãi">
+                                @error('sale_price')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="product-price">Thương hiệu</label> <span
                                 class="must text-danger font-weight-bold">(*)</span>
@@ -78,6 +93,23 @@
 
                             </select>
                             @error('brand_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Thuộc kho</label> <span class="must text-danger font-weight-bold">(*)</span>
+                            <select name="menu[]"
+                                class="form-control menu_select_choose @error('menu') is-invalid @enderror"
+                                multiple="multiple">
+
+                                @if(isset($list_menu))
+                                @foreach ($list_menu as $menus)
+                                <option value="{{ $menus->name }}">{{ $menus->name }}</option>
+                                @endforeach
+                                @endif
+
+                            </select>
+                            @error('menu')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -124,11 +156,10 @@
                                 class="form-control tags_select_choose @error('tags') is-invalid @enderror"
                                 multiple="multiple">
 
-                                @if(isset($list_tag))
+
                                 @foreach ($list_tag as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                 @endforeach
-                                @endif
 
                             </select>
                             @error('tags')

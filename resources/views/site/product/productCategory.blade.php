@@ -33,7 +33,19 @@
                                 href="{{ route('productDetail', ['slugCategory' => $category_slug->slug, 'slugProduct' => $productModel-> getProductType($productItem->slug) ->slug, 'productId'=>$productItem->id]  )}}">
                                 <img src="{{$productItem->feature_image_path}}" alt="" />
                                 <b>{{$productItem->name}}</b>
-                                <h3>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}</h3>
+                                @if($productItem->sale_price !=0)
+                                <strike>
+                                    <h6>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}
+                                    </h6>
+                                </strike>
+                                <h3>{{$productItem->sale_price}}<sup>đ</sup>/{{$productItem->weight}}
+                                </h3>
+                                @else
+                                <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}
+                                </h3>
+                                @endif
+
+
 
                                 <input type="hidden" name="productIdHidden" class="product_id"
                                     value="{{$productItem->id}}">
@@ -63,13 +75,8 @@
         </div>
 
         @endforeach
-        <div class="col-sm-12">
-            <ul class="pagination">
-                <li class="active"><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">&raquo;</a></li>
-            </ul>
+        <div class="col-sm-12 pull-right">
+            {{$products->links()}}
         </div>
         @else
         <div class="col-sm-12">

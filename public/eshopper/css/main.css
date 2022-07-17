@@ -924,14 +924,73 @@ h2.title {
     top: 0;
     right: 0;
 }
+.product_discount .icon_discount {
+    background: #e31616;
+    padding: 2px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    display: block;
+    max-width: 207px;
+    border-radius: 99px;
+}
+.ribbon3 {
+    width: 100px;
+    height: 20px;
+    line-height: 50px;
+    padding-left: 15px;
+    position: absolute;
+    left: -14px;
+    top: 11px;
+    background: #f8463f;
+    z-index: 99;
+}
 
+.ribbon3:before,
+.ribbon3:after {
+    content: "";
+    position: absolute;
+}
+
+.ribbon3:before {
+    height: 0;
+    width: 0;
+    top: -8.5px;
+    left: 15.1px;
+    border-bottom: 9px solid #f8463f;
+    border-left: 9px solid transparent;
+}
+/* 
+.ribbon3:after {
+    height: 0;
+    width: 0;
+    right: -14.5px;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 15px solid #f8463f;
+} */
+a .price {
+    display: block;
+    font-family: latobold, sans-serif;
+    color: #22b24c;
+    padding: 15px 15px 0;
+    font-size: 18px;
+    height: 60px;
+}
+strike {
+    font-size: 13px;
+    color: #767876;
+}
 .productinfo h3 {
     color: #22b24c;
     font-family: "Lato", sans-serif;
     font-size: 17px;
     font-weight: 700;
 }
-
+.productinfo h6 {
+    color: #767876;
+    font-family: "Lato", sans-serif;
+}
 .product-overlay h2 {
     color: #fff;
     font-family: "Lato", sans-serif;

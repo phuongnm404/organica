@@ -12,14 +12,19 @@ class HomeController extends Controller
     public function index() {
         $sliders = Slider::take(3)->get();
         $categorys = Category::where('parent_id', 0)->get();
-        $products = Product::latest()->take(12)->get();      //lấy sản phẩm mới nhất
+
+        $products = Product::orderBy('view', 'desc')->take(12)->get();      //lấy sản phẩm nổi bật có nhiều view
+
+        $productDiscount = Product::where('sale_price', '>', 0)->get();  //lấy các sản phẩm đang khuyến mãi
+        
         $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
         
        // $productCategory = Product::where('category_id', '')
-
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
 
-        return view('site.home.home', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit'));
+        //dd($productDiscount);
+
+        return view('site.home.home', compact('sliders', 'categorys', 'products', 'productRecommends', 'categoryLimit', 'productDiscount'));
     }
 
 }

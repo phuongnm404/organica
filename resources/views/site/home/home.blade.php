@@ -8,6 +8,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 padding-right">
+                <!--discount item-->
+                @include('site.home.components.discount')
 
                 <!--features_items-->
                 @include('site.home.components.feature')

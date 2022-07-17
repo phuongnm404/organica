@@ -35,6 +35,7 @@
                                 <th scope="col">Giá</th>
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Danh mục</th>
+                                <th scope="col">Lượt xem</th>
                                 <th scope="col">Thao tác</th>
 
                             </tr>
@@ -50,7 +51,7 @@
                                     <img class="product_image" src="{{$productItem->feature_image_path}}" alt="">
                                 </td>
                                 <td>{{optional($productItem->category)->name}}</td>
-
+                                <td>{{$productItem->view}}</td>
                                 <td>
                                     <a href="{{route('admin.product.edit', ['id' => $productItem->id])}}"
                                         class="btn btn-primary">Sửa</a>
@@ -65,7 +66,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-12" class="float-right">
+                <div class="col-lg-12" class="pull-right">
                     {{ $products->links() }}
                 </div>
             </div>

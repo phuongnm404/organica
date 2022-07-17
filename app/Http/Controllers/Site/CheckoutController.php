@@ -72,7 +72,7 @@ class CheckoutController extends Controller
         $ward = new Ward(); 
         $ward_name = $ward->getWardName($address->ward_id);
 
-        $address_detail = $address->address_detail.','.$ward_name.','.$province_name.','.$district_name ;
+        $address_detail = $address->address_detail.', '.$ward_name.', '.$district_name.', '.$province_name ;
       
 
         $address_default = Address::where('user_id', $user_id)->where('default', 1)->get();

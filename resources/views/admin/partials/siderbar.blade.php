@@ -116,6 +116,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.order.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+
+                                <p>Đơn hàng
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="{{route('admin.static.index')}}" class="nav-link">

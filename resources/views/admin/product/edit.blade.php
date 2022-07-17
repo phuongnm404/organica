@@ -41,20 +41,59 @@
                             <input type="text" name="name" class="form-control" id="product-name"
                                 value="{{$product->name}}" placeholder="Nhập tên sản phẩm">
                         </div>
-                        <div class="form-group">
-                            <label for="product-price">Giá</label>
-                            <input type="text" name="price" class="form-control" id="product-price"
-                                value="{{$product->price}}" placeholder="Nhập giá tiền">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="product-price">Giá</label> <span
+                                    class="must text-danger font-weight-bold">(*)</span>
+                                <input type="text" name="price"
+                                    class="form-control @error('price') is-invalid @enderror"
+                                    value="{{$product->price}}" id="product-price" placeholder="Nhập giá tiền">
+
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="product-price">Giá khuyến mãi</label> <span
+                                    class="must text-danger font-weight-bold">(*)</span>
+                                <input type="text" name="sale_price"
+                                    class="form-control @error('sale_price') is-invalid @enderror"
+                                    value="{{$product->sale_price}}" id="product-sale-price"
+                                    placeholder="Nhập giá tiền khuyến mãi">
+
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label for="product-price">Thương hiệu</label>
                             <select name="brand_id" class="form-control  select2_init_brand">
 
                                 @foreach ($brand as $brandItem)
-                                <option value="{{$brandItem->id}}" selected>{{$brandItem->name}}</option>
+                                <option value="{{$brandItem->id}}">{{$brandItem->name}}</option>
                                 @endforeach
 
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Thuộc kho</label> <span class="must text-danger font-weight-bold">(*)</span>
+                            <select name="menu[]"
+                                class="form-control menu_select_choose @error('menu') is-invalid @enderror"
+                                multiple="multiple">
+
+                                @foreach ($list_menu as $menuItem)
+                                <option value="{{$menuItem->name}}">{{$menuItem->name}}</option>
+                                @endforeach
+
+                                {{-- @if(isset($list_menu))
+                                @foreach ($list_menu as $province)
+                                <option value="{{ $province->name }}">{{ $province->name }}</option>
+                                @endforeach
+                                @else
+                                @foreach ($product->province as $provinceItem)
+                                <option value="{{$provinceItem->name}}" selected>{{$provinceItem->name}}</option>
+                                @endforeach
+                                @endif --}}
+
+
+                            </select>
+
                         </div>
                         <div class="form-group">
                             <label for="product-name">Hình ảnh chủ đề</label>
@@ -109,18 +148,23 @@
                             <label>Tags</label>
                             <select name="tags[]" class="form-control tags_select_choose" multiple="multiple">
 
-                                @if(isset($list_tag))
+                                @foreach ($list_tag as $tagItem)
+                                <option value="{{$tagItem->name}}">{{$tagItem->name}}</option>
+                                @endforeach
+
+                                {{-- @if(isset($list_tag))
                                 @foreach ($list_tag as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
                                 @endforeach
 
                                 @else
 
                                 @foreach ($product->tags as $tagItem)
-                                <option value="{{$tagItem->id}}" selected>{{$tagItem->name}}</option>
+                                <option value="{{$tagItem->name}}" selected>{{$tagItem->name}}</option>
                                 @endforeach
 
-                                @endif
+                                @endif --}}
+
 
                             </select>
                         </div>
@@ -135,6 +179,7 @@
                 </div>
 
             </form>
+
         </div>
 
     </div>
