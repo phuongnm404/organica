@@ -197,13 +197,23 @@ Route::namespace('Admin')->group(function () {
             
             Route::post('/store','OrderController@store')->name('admin.order.store');
             
-             Route::get('/edit/{id}','OrderController@edit')->name('admin.order.edit');
+            Route::get('/edit/{id}','OrderController@edit')->name('admin.order.edit');
+
+            Route::post('/updateStatus/{id}','OrderController@updateStatus')->name('admin.order.updateStatus');
 
             // Route::post('/update/{id}','OrderController@update')->name( 'admin.order.update');
 
             //  Route::get('/delete/{id}','OrderController@delete') ->name('admin.order.delete');
         });
+        Route::prefix('inbox')->group(function() {
 
+            Route::get('/','InboxController@index')->name('admin.inbox.index');
+            
+            Route::post('/store','InboxController@store')->name('admin.inbox.store');
+            
+            Route::get('/delete/{id}','InboxController@edit')->name('admin.inbox.edit');
+ 
+        });
     });
 
 });

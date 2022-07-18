@@ -960,6 +960,9 @@ h2.title {
     border-bottom: 9px solid #f8463f;
     border-left: 9px solid transparent;
 }
+.status a {
+    color: white;
+}
 /* 
 .ribbon3:after {
     height: 0;

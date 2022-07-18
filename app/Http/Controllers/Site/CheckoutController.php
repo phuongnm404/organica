@@ -105,7 +105,12 @@ class CheckoutController extends Controller
         }
        
         
+        return response()->json([
+            'code' =>200,
+            'message'=> 'success'
+        ], 200);
 
-        return redirect('/user/order/index/')->with("success", "Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.");
+        //return redirect('/user/order/index/')->with("success", "Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.");
     }
 }
+

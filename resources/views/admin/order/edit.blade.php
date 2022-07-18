@@ -19,13 +19,41 @@
             </div>
 
             <div class="col-md-12">
-                <div>
-                    <strong>Tình trạng đơn hàng</strong>
-                    <button class="btn">
-                        <span class="badge badge-info"> {{$bill->order_status}} </span>
-                    </button>
-                    <br><br>
-                </div>
+
+                <div class="row">
+                    <div class="col-md-2"><strong>Tình trạng đơn hàng</strong></div>
+                    @if($bill->order_status==2)
+                    <div class="status col-md-3">
+                        <select class=" form-control" name="status" id="" disabled>
+                            <option value="">Giao hàng thành công</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-warning" disabled>
+                            <span style="color: black; text-decoration: none;" disabled>Lưu</span>
+                        </button>
+                    </div>
+                    @else
+                    <form action="{{route('admin.order.updateStatus', ['id' => $bill->id])}}" method="POST">
+                        @csrf
+                        <div class="status col-md-3">
+                            <select class="form-control" name="order_status" id="">
+                                <option value="0" selected>Đang chờ xác nhận</option>
+                                <option value="1">Đang giao hàng</option>
+                                <option value="2">Giao hàng thành công</option>
+                                <option value="3">Hủy đơn</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-warning" type="submit">
+                                <a style="color: black; text-decoration: none;">Lưu</a>
+                            </button>
+                        </div>
+                    </form>
+
+                    @endif
+                </div><br>
+
             </div>
             <div class="col-md-6">
                 <div>
@@ -57,9 +85,15 @@
             <div class="col-md-12">
                 <address>
                     <strong>Tình trạng đơn hàng</strong>
-                    <button class="btn">
-                        <span class="badge badge-info"> {{$bill->order_status}} </span>
-                    </button>
+                    @if($bill->order_status==0)
+                    <span class="badge badge-secondary"> Đang chờ xác nhận</span>
+                    @elseif($bill->order_status==1)
+                    <span class="badge badge-warning"> Đang giao hàng</span>
+                    @elseif($bill->order_status==2)
+                    <span class="badge badge-success"> Giao hàng thành công</span>
+                    @else
+                    <span class="badge badge-danger"> Hủy đơn</span>
+                    @endif
                     <br><br>
                 </address>
 

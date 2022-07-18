@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BillDetail extends Model
+class Inbox extends Model
 {
     //
     protected $guarded = [];
-    protected $table = "order_detail";
+    protected $table = "inbox_from_user";
 }

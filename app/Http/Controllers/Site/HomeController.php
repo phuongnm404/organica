@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $products = Product::orderBy('view', 'desc')->take(12)->get();      //lấy sản phẩm nổi bật có nhiều view
 
-        $productDiscount = Product::where('sale_price', '>', 0)->get();  //lấy các sản phẩm đang khuyến mãi
+        $productDiscount = Product::where('sale_price', '>', 0)->take(6)->get();  //lấy các sản phẩm đang khuyến mãi
         
         $productRecommends = Product::latest('view')->take(6)->get();   //lấy sản phẩm theo view
         

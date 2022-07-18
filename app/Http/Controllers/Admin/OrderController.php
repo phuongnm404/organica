@@ -32,4 +32,11 @@ class OrderController extends Controller
 
         return view('admin.order.edit', compact('bill', 'orderDetailList'));
     }
+    public function updateStatus(Request $request,$id) {
+        $this->order->find($id)->update([
+            'order_status' => $request->order_status,
+        ]);
+        return  redirect()->route('admin.order.edit', ['id'=>$id]);
+
+    }
 }

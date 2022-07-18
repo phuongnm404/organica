@@ -15,7 +15,7 @@
                 @include('site.home.components.feature')
 
                 <!--/category-tab-->
-                @include('site.home.components.categorytab')
+                {{-- @include('site.home.components.categorytab') --}}
 
                 <!--recommenr_items-->
                 @include("site.home.components.recommend")
@@ -27,5 +27,30 @@
 </section>
 @include('site.home.components.ad')
 
+@section('js')
+<script>
+    $('#request').click(function(){
+            let cart_id =  $('input#cart_id').val();
+            let user_id =  $('input#user_id').val();
 
+           ;
+            $.ajax({
+                url:'/admin/inbox/store',
+                type:'post',
+                data: jQuery.param({ 
+                    user_id : user_id, 
+                    cart_id: cart_id, 
+                    "_token": "{{ csrf_token() }}",
+                }),
+                 
+                //console.log(data);
+                success:function(data){
+                    //console.log(data)
+                    toastr.success('Cảm ơn bạn đã đóng góp ý kiến!', 'Success');
+                },
+            });
+    });
+</script>
+
+@endsection
 @endsection

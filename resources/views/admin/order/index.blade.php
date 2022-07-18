@@ -41,7 +41,15 @@
                                 <th scope="row">{{$value->id}}</th>
                                 <td>{{$value->order_username}}</td>
                                 <td>{{$value->method_delivery}}</td>
-                                <td><span class="badge badge-info"> {{$value->order_status}}</span></td>
+                                @if($value->order_status==0)
+                                <td><span class="badge badge-secondary"> Đang chờ xác nhận</span></td>
+                                @elseif($value->order_status==1)
+                                <td><span class="badge badge-warning"> Đang giao hàng</span></td>
+                                @elseif($value->order_status==2)
+                                <td><span class="badge badge-success"> Giao hàng thành công</span></td>
+                                @else
+                                <td><span class="badge badge-danger"> Hủy đơn</span></td>
+                                @endif
                                 <td>{{$value->total_price}}</td>
 
                                 <td>

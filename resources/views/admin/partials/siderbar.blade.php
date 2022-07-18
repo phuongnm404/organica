@@ -16,7 +16,7 @@
                     alt="User Image">
             </div>
             <div class="info">
-                {{-- <a href="#" class="d-block">{{ auth()->user()->name }}</a> --}}
+                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
@@ -124,7 +124,13 @@
                                 </p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{route('admin.inbox.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Tin nhắn từ người dùng
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{route('admin.static.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tag"></i>

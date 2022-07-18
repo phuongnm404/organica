@@ -62,10 +62,7 @@ class CartController extends Controller
         }
         session()->put('cart', $cart);
 
-        return response()->json([
-            'code' =>200,
-            'message'=> 'success'
-        ],200);
+    
 
        
     }
@@ -80,7 +77,7 @@ class CartController extends Controller
         $product_infor = Product::where('id', $productId) -> first();
 
         // Cart::add('293ad', 'Product 1', 1, 9.99, 550);
-        //Cart::destroy();
+       // Cart::destroy();
 
         $data['id'] = $product_infor->id;
         $data['qty'] = $quantity;
@@ -88,9 +85,16 @@ class CartController extends Controller
         $data['name'] = $product_infor->name;
         $data['weight'] = $product_infor->price;
         
-        $data['price'] = $product_infor->price;
+        if(isset($product_infor->sale_price)) {
+            $data['price'] = $product_infor->sale_price;    
+        } else {
+            $data['price'] = $product_infor->price; 
+        }
+    
         $data['options']['image'] = $product_infor->feature_image_path;
+      
 
+        //dd($data);
         Cart:: add($data);
     
          return redirect()->back()->with('message','Thêm vào giỏ hàng thành công');

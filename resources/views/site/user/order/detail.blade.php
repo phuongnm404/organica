@@ -77,6 +77,11 @@
         background: #1266f1;
     }
 
+    #progressbar-1 li.active0:before,
+        {
+        background: red;
+    }
+
     .card-stepper {
         z-index: 0
     }
@@ -126,13 +131,35 @@
             </div>
         </div>
         <div class="status_order col-md-8" style="margin-bottom: 20px;">
+
             <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
+                @if ($billDetail->order_status== 0)
                 <li class="step0 active" id="step1"><span style="margin-left: 22px; margin-top: 12px;">Đang chờ xác
-                        nhận</span>
-                </li>
+                        nhận</span></li>
                 <li class="step0 text-center" id="step2"><span>Đang giao hàng</span></li>
                 <li class="step0 text-muted text-right" id="step3"><span style="margin-right: 5px;">Đã nhận hàng</span>
                 </li>
+                @elseif($billDetail->order_status== 1)
+                <li class="step0 active" id="step1"><span style="margin-left: 22px; margin-top: 12px;">Đang chờ xác
+                        nhận</span>
+                </li>
+                <li class="step0 text-center active" id="step2"><span>Đang giao hàng</span></li>
+                <li class="step0 text-muted text-right" id="step3"><span style="margin-right: 5px;">Đã nhận hàng</span>
+                </li>
+                @elseif($billDetail->order_status== 2)
+                <li class="step0 active" id="step1"><span style="margin-left: 22px; margin-top: 12px;">Đang chờ xác
+                        nhận</span>
+                </li>
+                <li class="step0 text-center active" id="step2"><span>Đang giao hàng</span></li>
+                <li class="step0 text-muted text-right active" id="step3"><span style="margin-right: 5px;">Đã nhận
+                        hàng</span>
+                </li>
+                @else
+                <div>
+                    <p>Trạng thái đơn hàng</p>
+                    <span class="label label-danger">Đơn đã hủy</span>
+                </div>
+                @endif
             </ul>
         </div>
         <div class="col-md-8">
@@ -192,14 +219,50 @@
                     <p class="pull-right"><a href="{{route('order.index')}}"><button class="btn btn-primary">Quay
                                 lại</button>
                         </a></p>
-                    <p class="pull-left"><a href="{{route('order.index')}}"><button class="btn btn-danger">Yêu cầu hủy
-                                đơn
-                                hàng</button>
-                        </a></p>
+                    @if($billDetail->order_status ==0)
+                    <p class="pull-left"><button id="cancel" class="btn btn-danger">Yêu cầu hủy
+                            đơn
+                            hàng</button>
+                    </p>
+                    <input type="hidden" name="cart_id" id="cart_id" value="{{$billDetail->id}}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
+
+
+                    @else
+                    <p class="pull-left"><button class="btn btn-danger" disabled> Yêu cầu hủy
+                            đơn
+                            hàng</button>
+                    </p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+@section('js')
+<script>
+    $('#cancel').click(function(){
+            let cart_id =  $('input#cart_id').val();
+            let user_id =  $('input#user_id').val();
+
+           ;
+            $.ajax({
+                url:'/admin/inbox/store',
+                type:'post',
+                data: jQuery.param({ 
+                    user_id : user_id, 
+                    cart_id: cart_id, 
+                    "_token": "{{ csrf_token() }}",
+                }),
+                 
+                //console.log(data);
+                success:function(data){
+                    //console.log(data)
+                    toastr.success('Nhận yêu cầu thành công! Vui lòng chờ xác nhận của chúng tôi.', 'Success');
+                },
+            });
+    });
+</script>
+@endsection
 @endsection

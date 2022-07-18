@@ -44,9 +44,13 @@
                     <div class="single-widget">
                         <h2>Đăng ký nhận khuyến mại</h2>
                         <form action="#" class="searchform">
-                            <input type="text" placeholder="Nhận email thông tin khuyến mại" />
-                            <button type="submit" class="btn btn-default"><i
-                                    class="fa fa-arrow-circle-o-right"></i></button>
+                            <textarea name="message" id="" cols="30" rows="10"
+                                placeholder="Góp ý của bạn về trang web"></textarea>
+                            <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
+                            <input type="hidden" name="cart_id" id="cart_id" value="0">
+                            <p class="pull-left"><button id="request" class="btn btn-success">Gửi ý kiến</button>
+                            </p>
+
                         </form>
                         <p>
                         <h3> CỬA HÀNG TẠI TP.HỒ CHÍ MINH</h3>

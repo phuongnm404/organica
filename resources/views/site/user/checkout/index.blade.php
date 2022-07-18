@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            <input id="status" type="hidden" value="Đang chờ xác nhận" name="status">
+            <input id="status" type="hidden" value="0" name="status">
         </div>
 
     </div>
@@ -156,7 +156,10 @@
             "_token": "{{ csrf_token() }}",
         }) , 
          success:function(data){
-            toastr.success('Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.', 'Success');
+            if(data.code == 200) {
+                window.location.replace("http://127.0.0.1:8000/user/order/index");
+                toastr.success('Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.', 'Success');
+            }
          },
   
      });
