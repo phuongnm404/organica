@@ -46,7 +46,7 @@
                         <form action="#" class="searchform">
                             <textarea name="message" id="" cols="30" rows="10"
                                 placeholder="Góp ý của bạn về trang web"></textarea>
-                            <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
+                            {{-- <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}"> --}}
                             <input type="hidden" name="cart_id" id="cart_id" value="0">
                             <p class="pull-left"><button id="request" class="btn btn-success">Gửi ý kiến</button>
                             </p>

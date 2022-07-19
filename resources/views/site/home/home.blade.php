@@ -12,7 +12,7 @@
                 @include('site.home.components.discount')
 
                 <!--features_items-->
-                @include('site.home.components.feature')
+                {{-- @include('site.home.components.feature') --}}
 
                 <!--/category-tab-->
                 {{-- @include('site.home.components.categorytab') --}}

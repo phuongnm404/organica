@@ -151,19 +151,15 @@
                                 @foreach ($list_tag as $tagItem)
                                 <option value="{{$tagItem->name}}">{{$tagItem->name}}</option>
                                 @endforeach
-
-                                {{-- @if(isset($list_tag))
+                                {{--
+                                @if(isset($list_tag))
                                 @foreach ($list_tag as $tag)
-                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                 @endforeach
-
-                                @else
-
+                                @endif
                                 @foreach ($product->tags as $tagItem)
-                                <option value="{{$tagItem->name}}" selected>{{$tagItem->name}}</option>
-                                @endforeach
-
-                                @endif --}}
+                                <option value="{{$tagItem->id}}" selected>{{$tagItem->name}}</option>
+                                @endforeach --}}
 
 
                             </select>

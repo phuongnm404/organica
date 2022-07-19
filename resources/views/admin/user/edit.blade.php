@@ -38,17 +38,36 @@
 
                             <input class="form-control @error('email') is-invalid @enderror" name="email"
                                 placeholder="Nhập email" value="{{ $users->email }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Điện thoại</label>
+                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="name"
+                                placeholder="Nhập điện thoại" value="{{ $users->phone}}">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Giới tính</label>
+
+                            <input class="form-control @error('gender') is-invalid @enderror" name="gender"
+                                placeholder="Nhập giới tính" value="{{ $users->gender }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Sinh nhật</label>
+                            <input type="text" class="form-control @error('birthday') is-invalid @enderror"
+                                name="birthday" placeholder="Nhập sinh nhật" value="{{ $users->birthday}}">
 
                         </div>
 
 
-                        <div class="form-group">
+
+                        {{-- <div class="form-group">
                             <label>Password</label>
 
                             <input class="form-control @error('password') is-invalid @enderror" name="password"
                                 placeholder="Nhập password">
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        {{-- <div class="form-group">
                             <label>Chọn vai trò</label>
                             <select name="role_id[]"
                                 class="form-control select2_init @error('role_id') is-invalid @enderror"
@@ -68,7 +87,7 @@
 
 
                         <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

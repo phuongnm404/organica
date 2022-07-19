@@ -41,6 +41,8 @@
                         <li><a href="{{route('home.index')}}">Cửa hàng</a></li>
                         <li><a href="{{route('home.index')}}">Tuyển dụng</a></li>
                         <li><a href="{{route('home.index')}}">Liên hệ</a></li>
+                        <li><a href="{{route('home.index')}}">Hà Nội</a></li>
+                        <li><a href="{{route('home.index')}}">Liên hệ</a></li>
 
 
                     </ul>

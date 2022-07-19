@@ -23,6 +23,7 @@ class ProductController extends Controller
         $categorys = Category::where('parent_id', 0)->get();
 
         $products = Product::where('category_id', $categorysId)->paginate(12); 
+        
 
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get(); //lấy category-tab
 
@@ -107,6 +108,9 @@ class ProductController extends Controller
 
 
         return view('site.product.productFilter', compact('categorys', 'categoryLimit', 'categoryModel','brand', 'productBrand', 'products'));
+    }
+    public function filterProvince($province_id) {
+       
     }
 
 

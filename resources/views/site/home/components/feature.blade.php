@@ -16,13 +16,11 @@
                                 <b>{{$product->name}}</b>
 
                                 @if($product->sale_price !=0)
-                                <strike>
-                                    <h6>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}
-                                    </h6>
-                                </strike>
+
                                 <h3>{{number_format($product->sale_price)}}<sup>đ</sup>/{{$product->weight}}
                                 </h3>
                                 @else
+
                                 <h3>{{number_format($product->price)}}<sup>đ</sup>/{{$product->weight}}</h3>
                                 @endif
 

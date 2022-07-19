@@ -18,7 +18,7 @@ class Product extends Model
         return $this -> belongsToMany(Tag::class, 'product_tags');
     }
     public function province() {
-        return $this -> belongsToMany(Menu::class, 'product_province');
+        return $this -> belongsToMany(Menu::class, 'product_province','product_id','menu_id');
     }
     public function category() {
         return $this-> belongsTo(Category::class, 'category_id');

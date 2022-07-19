@@ -39,4 +39,7 @@ class OrderController extends Controller
         return  redirect()->route('admin.order.edit', ['id'=>$id]);
 
     }
+    public function delete($id) {
+        
+    }
 }

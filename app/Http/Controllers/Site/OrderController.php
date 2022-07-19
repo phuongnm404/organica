@@ -52,4 +52,5 @@ class OrderController extends Controller
        
         return view('site.user.order.detail', compact('categoryLimit', 'products', 'billDetail','user', 'orderDetailList'));
     }
+    
 }

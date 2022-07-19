@@ -69,9 +69,6 @@ class ProductController extends Controller
     public function store(ProductAddRequest $request) { 
         try {
             DB::beginTransaction();
-           
-          //  $list_tags = $request->tags;
-          //  $list_menu= $request->menu;
 
             $dataProductCreate = [
                 'name' =>$request->name,
@@ -115,8 +112,7 @@ class ProductController extends Controller
                 }
             }
             $product->province()->sync($menuIds);
-             
-               
+                      
           //Insert datta to product_image 
              if ($request->hasFile('image_path')) {
                  
@@ -128,8 +124,7 @@ class ProductController extends Controller
                 ]);
                 }
             }
-            
-
+    
          //dd($request->all());
             DB::commit();
              return redirect()->route('admin.product.index');
@@ -193,17 +188,6 @@ class ProductController extends Controller
                 }
             }
 
-           
-            // $tagIds = [];
-            // if (!empty($request->tags)) {
-            //     foreach ($request->tags as $tagItem) {
-            //         // Insert to tags
-            //         $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
-            //         $tagIds[] = $tagInstance->id;
-            //     }
-            // }
-           
-            // $product->tags()->sync($tagIds);
 
             $menuIds = [];
             if (!empty($request->menu)) {
