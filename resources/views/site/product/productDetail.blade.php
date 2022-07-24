@@ -37,9 +37,17 @@
                                     {{$products->name}}
                                 </h1>
                                 <div class="product-detail col-sm-12">
+                                    @if(isset($products->sale_price))
+                                    <h3>{{number_format($products->sale_price)}}<sup>đ</sup>
+                                        &ensp;/&ensp;{{$products->weight}}
+                                    </h3><br><br>
+                                    <h4 class="text-muted">Giá cũ: {{number_format($products->price)}}</h4>
+
+                                    @else
                                     <h3>{{number_format($products->price)}}<sup>đ</sup>
                                         &ensp;/&ensp;{{$products->weight}}
                                     </h3>
+                                    @endif
                                 </div>
                                 <div class="product-number col-sm-12">
                                     <p class="form-label col-sm-6" for="typeNumber">SỐ LƯỢNG</p>
@@ -56,6 +64,12 @@
                                         <i class="fa fa-shopping-cart"></i> &ensp;Thêm vào giỏ hàng
                                     </button>
                                 </a>
+                                @if(isset($products->sale_price))
+                                <p class="promotion-logo">
+                                    <span class="percent">{{($products->sale_price/$products->price)*100}}%</span>
+                                    <span class="promotion-text">tiết kiệm</span>
+                                </p>
+                                @endif
                             </div>
                         </form>
 

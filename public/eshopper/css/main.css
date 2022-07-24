@@ -963,6 +963,35 @@ h2.title {
 .status a {
     color: white;
 }
+.promotion {
+    background: url(/storage/bg_promotion.png) no-repeat 0 0;
+    background-size: 91px;
+    width: 91px;
+    height: 27px;
+    color: #fff;
+    padding: 4px 0 0 55px;
+    font-family: latobold, sans-serif;
+    position: absolute;
+    right: -1px;
+    bottom: 93px;
+    z-index: 10;
+}
+.promotion-logo .percent {
+    background: url(/storage/ico_promotion.png) no-repeat center 0;
+    width: 86px;
+    background-size: 86px;
+    padding: 35px 0 0 0;
+    font-size: 30px;
+    font-family: latolight, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+}
+.promotion-logo .promotion-text {
+    font-family: latoregular, sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
 /* 
 .ribbon3:after {
     height: 0;

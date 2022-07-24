@@ -62,13 +62,14 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="form-group col-6">
                                 <label for="product-price">Giá khuyến mãi</label> <span
                                     class="must text-danger font-weight-bold">(*)</span>
+
                                 <input type="text" name="sale_price"
-                                    class="form-control @error('sale_price') is-invalid @enderror"
-                                    value="{{ old('sale_price') }}" id="product-sale-price"
-                                    placeholder="Nhập giá tiền khuyến mãi">
+                                    class="form-control @error('sale_price') is-invalid @enderror" value=""
+                                    id="product-sale-price" placeholder="Nhập giá tiền khuyến mãi">
                                 @error('sale_price')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

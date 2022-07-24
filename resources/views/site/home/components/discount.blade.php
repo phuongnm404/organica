@@ -21,14 +21,10 @@
                                         </strike>
                                     </h3>
 
-                                    {{-- <span class="icon_discount"><i class="fa fa-gift"></i>Khuyến mãi</span>
-                                    </span> --}}
 
-                                    <div class="ribbon">
-                                        <span class="ribbon3">
-
-                                        </span>
-                                    </div>
+                                    <span class="promotion">
+                                        {{($product->sale_price/$product->price)*100}}%
+                                    </span>
 
                                     <input type="hidden" name="productIdHidden" class="product_id"
                                         value="{{$product->id}}">

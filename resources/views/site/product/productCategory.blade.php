@@ -34,14 +34,17 @@
                                 <img src="{{$productItem->feature_image_path}}" alt="" />
                                 <b>{{$productItem->name}}</b>
                                 @if($productItem->sale_price !=0)
-                                <strike>
-                                    <h6>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}
-                                    </h6>
-                                </strike>
-                                <h3>{{$productItem->sale_price}}<sup>đ</sup>/{{$productItem->weight}}
+                                <h3>{{number_format($productItem->sale_price)}}<sup>đ</sup>
+                                    <strike>
+                                        {{number_format($productItem->price)}}
+                                    </strike>
                                 </h3>
+
+                                <span class="promotion">
+                                    {{($productItem->sale_price/$productItem->price)*100}}%
+                                </span>
                                 @else
-                                <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}
+                                <h3>{{number_format($productItem->price)}}<sup>đ</sup>/{{$productItem->weight}}
                                 </h3>
                                 @endif
 
