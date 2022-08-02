@@ -22,11 +22,18 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-404KE59PGM"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
     @yield('css')
     @yield('title')
+    <script>
+        window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-404KE59PGM');
+    </script>
 </head>
 <!--/head-->
 
@@ -120,6 +127,9 @@
             }
     </script>
     @yield('js')
+    <script>
+
+    </script>
 </body>
 
 </html>

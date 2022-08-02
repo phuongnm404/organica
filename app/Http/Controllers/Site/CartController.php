@@ -63,8 +63,6 @@ class CartController extends Controller
         session()->put('cart', $cart);
 
     
-
-       
     }
   
     public function saveCart(Request $request) {
@@ -135,4 +133,10 @@ class CartController extends Controller
         return redirect('/user/cart/show-cart')->with('message','Bạn đã cập nhật số lượng sản phẩm');
     }
     
+    // public function tangQty(Request $request, $rowId) {
+
+    // }
+    // public function giamQty(Request $request, $rowId) {
+        
+    // }
 }

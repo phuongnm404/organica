@@ -1055,10 +1055,10 @@ strike {
     top: 0;
     display: none;
     height: 0;
-    left: -10px;
+    right: -112px;
     position: absolute;
     -webkit-transition: height 1000ms ease 0s;
-    transition: left 500ms ease 0s;
+    transition: right 500ms ease 0s;
     display: block;
 }
 
@@ -1074,12 +1074,34 @@ strike {
     text-align: center;
     width: 100%;
 }
+.product-overlay1 {
+    top: 0;
+    display: none;
+    height: 0;
+    left: -10px;
+    position: absolute;
+    -webkit-transition: height 1000ms ease 0s;
+    transition: left 500ms ease 0s;
+    display: block;
+}
 
+.single-products:hover .product-overlay1 {
+    display: block;
+    height: 50%;
+    left: 0;
+}
+
+.product-overlay1 .overlay-content {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
 .product-overlay .add-to-cart {
-    background: #fff;
-    border: 0 none;
-    border-radius: 0;
-    color: #22b24c;
+    background: #22b24c;
+    border: #22b24c solid 1px;
+    border-radius: 10px;
+    color: #fff;
     font-family: "Lato", sans-serif;
     font-size: 15px;
     margin-bottom: 25px;
@@ -1088,8 +1110,26 @@ strike {
 .product-overlay .add-to-cart:hover {
     background: #fff;
     color: #22b24c;
+    border: #22b24c solid 1px;
+    border-radius: 10px;
+}
+.product-overlay1 .add-to-favorite {
+    background: #22b24c;
+    border: #22b24c solid 1px;
+    border-radius: 100%;
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    margin-bottom: 25px;
 }
 
+.product-overlay1 .add-to-favorite:hover {
+    background: #22b24c;
+    border: #22b24c solid 1px;
+    border-radius: 100%;
+    color: #fff;
+    border-radius: 100%;
+}
 .product-overlay p {
     font-family: "Lato", sans-serif;
     font-size: 14px;
@@ -2135,15 +2175,14 @@ strike {
 }
 
 .cart_quantity_button a {
-    background: #f0f0e9;
-    color: #696763;
+    background: #fff;
+    color: black;
     display: inline-block;
     font-size: 16px;
     height: 28px;
     overflow: hidden;
     text-align: center;
     width: 35px;
-    float: left;
     line-height: 28px;
 }
 

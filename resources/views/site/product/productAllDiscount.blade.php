@@ -1,19 +1,19 @@
 @extends("site.layouts.product_master")
 <!--/head-->
 @section('title')
-<title>Tất cả sản phẩm</title>
+<title>Sản phẩm khuyến mại</title>
 
 
 @section('content')
 @include("site.components.breadcrumb",[
 'name' => 'Sản phẩm',
-'key' => 'Tất cả sản phẩm'
+'key' => 'Sản phẩm khuyến mại'
 ])
 <div class="features_items">
     <!--features_items-->
-    <h2 class="title text-center">TẤT CẢ SẢN PHẨM</h2>
+    <h2 class="title text-center">SẢN PHẨM KHUYẾN MẠI</h2>
 
-    @foreach ($productAll as $productAllItem)
+    @foreach ($productAllDiscount as $productAllDiscountItem)
     <div class="col-sm-3">
         <div class="product-image-wrapper">
             <div class="single-products">
@@ -21,15 +21,20 @@
                     @csrf
                     <div class="productinfo text-center">
                         <a
-                            href="{{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllItem->category_id), 'slugProduct' => $productAllItem->slug, 'productId'=>$productAllItem->id]  )}}">
-                            <img src="{{$productAllItem->feature_image_path}}" alt="" />
-                            <b>{{$productAllItem->name}}</b>
+                            href="{{ route('productDetail', ['slugCategory' => $categoryModel->getCategoryIdSlug($productAllDiscountItem->category_id), 'slugProduct' => $productAllDiscountItem->slug, 'productId'=>$productAllDiscountItem->id]  )}}">
+                            <img src="{{$productAllDiscountItem->feature_image_path}}" alt="" />
+                            <b>{{$productAllDiscountItem->name}}</b>
 
 
-                            <h3>{{number_format($productAllItem->price)}}<sup>đ</sup>/{{$productAllItem->weight}}</h3>
+                            <h3>{{$productAllDiscountItem->sale_price}}<sup>đ</sup>/{{$productAllDiscountItem->weight}}
+                            </h3>
+
+                            <span class="promotion">
+                                {{(1-($productAllDiscountItem->sale_price/$productAllDiscountItem->price))*100}}%
+                            </span>
 
                             <input type="hidden" name="productIdHidden" class="product_id"
-                                value="{{$productAllItem->id}}">
+                                value="{{$productAllDiscountItem->id}}">
                             <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
                                 min="1" />
                         </a>
@@ -57,7 +62,7 @@
     @endforeach
 
     <div class="col-sm-12 pull-right">
-        {{ $productAll->links() }}
+        {{-- {{ $productAllDiscount->links() }} --}}
     </div>
 
 </div>

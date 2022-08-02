@@ -10,6 +10,7 @@
             @if(Auth::check())
             <div class="col-md-9">
                 <ul>
+
                     <li> <a href=""> Xin chào {{auth()->user()->name}}</a></li>
                     <li class="drop"><a href="#"><i class="fa fa-user"></i> Tài khoản</a>
                         <ul class="drop-content">
@@ -19,11 +20,10 @@
                                     nhân</a></li>
                             <li><a href="{{route('user.address.index', ['id'=> auth()->user()->id])}}">Địa chỉ giao
                                     hàng</a></li>
-
                         </ul>
                     </li>
                     <li><a href="{{route('indexCart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                    <li><a href="cart.html"><i class="fa fa-heart"></i> Sản phẩm yêu thích</a></li>
+                    <li><a href="{{route('productFavorite')}}"><i class="fa fa-heart"></i> Sản phẩm yêu thích</a></li>
                     <li><a href="{{route('logout')}}"><i class="fa fa-lock"></i>
                             Logout</a></li>
                 </ul>

@@ -22,26 +22,21 @@
                 <div class="col-lg-12">
                     <a href="{{route('admin.menu.create')}}" class="btn btn-success float-right m-2">Thêm</a>
                 </div>
-                {{-- <form action="{{route('admin.order.filterStatus', ['id'=> $bill->order_status])}}"
-                    class="col-md-10"> --}}
-                    {{-- @csrf --}}
+                <div class="col-lg-3 mb-2">
+                    <select class="form-control" name="order_status" id="">
+                        <option value="0">Đang chờ xác nhận</option>
+                        <option value="1">Đang giao hàng</option>
+                        <option value="2">Giao hàng thành công</option>
+                        <option value="3">Hủy đơn</option>
+                        <option value="4">Giao hàng thất bại</option>
+                        <option value="5">Đang chờ xử lý hủy</option>
+                    </select>
+                </div>
+                <div class="col-lg-1 mb-2">
+                    <button type="submit" class="btn btn-outline-primary form-control"> <i class="fa fa-search"></i>
+                    </button>
+                </div>
 
-                    <div class="col-lg-3 mb-2">
-                        <select class="form-control" name="order_status" id="">
-                            <option value="0">Đang chờ xác nhận</option>
-                            <option value="1">Đang giao hàng</option>
-                            <option value="2">Giao hàng thành công</option>
-                            <option value="3">Hủy đơn</option>
-                            <option value="4">Giao hàng thất bại</option>
-                            <option value="5">Đang chờ xử lý hủy</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-1 mb-2">
-                        <button type="submit" class="btn btn-outline-primary form-control"> <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                    {{--
-                </form> --}}
 
                 <div class="col-lg-12">
                     <table class="table">
@@ -57,7 +52,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bill as $value)
+                            @foreach ($bill_fill as $value)
                             <tr>
                                 <th scope="row">{{$value->id}}</th>
                                 <td>{{$value->order_username}}</td>
@@ -85,7 +80,7 @@
                     </table>
                 </div>
                 <div class="col-lg-12 float-right m-2">
-                    {{ $bill->links() }}
+                    {{ $bill_fill->links() }}
                 </div>
             </div>
             <!-- /.row -->

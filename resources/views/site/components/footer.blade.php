@@ -52,7 +52,7 @@
                             </p>
 
                         </form>
-                        <p>
+                        <p><br><br> <br> <br>
                         <h3> CỬA HÀNG TẠI TP.HỒ CHÍ MINH</h3>
                         <ol>
                             <li> 130 Nguyễn Đình Chiểu, Phường Võ Thị Sáu, Quận 3, TP.Hồ Chí Minh- Tel: 028 6673 3350 |
@@ -70,6 +70,17 @@
                             <li> Căn SH03, tòa nhà Aqua 2, Vinhomes Golden River, 02 Nguyễn Hữu Cảnh, Phường Bến Nghé,
                                 Quận
                                 1,, TP.Hồ Chí Minh- Tel: 028 2229 2535 I 088 990 3535</li>
+                        </ol>
+                        <h3> CỬA HÀNG TẠI ĐÀ NẴNG</h3>
+                        <ol>
+                            <li> 63 Nguyễn Du, Quận Hải Châu, Đà Nẵng- Tel: 0236 366 4646</li>
+                        </ol>
+                        <h3> CỬA HÀNG TẠI HÀ NỘI</h3>
+                        <ol>
+                            <li> 6A Lý Đạo Thành, Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội- Tel: 024 3201 3235 | 089
+                                899 1535</li>
+                            <li> 454 Bạch Đằng, Chương Dương, Hoàn Kiếm, Hà Nội</li>
+
                         </ol>
 
 

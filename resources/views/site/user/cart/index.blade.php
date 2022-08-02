@@ -1,6 +1,6 @@
 @extends('site.layouts.master')
 @section('title')
-<title>User Address</title>
+<title>Giỏ hàng</title>
 
 @section('content')
 <div class="container ">
@@ -46,6 +46,13 @@
                     <div class="cart_quantity_button">
                       <form action="{{route('updateQty', ['rowId'=> $value->rowId])}}" method="POST">
                         @csrf
+
+                        {{-- <div class="cart_quantity_button">
+                          <a class="cart_quantity_up" href="{{route('tangQty', ['rowId'=> $value->rowId])}}"> + </a>
+                          <input class="cart_quantity_input" style="width: 50px;" type="number" name="cart_quantity"
+                            value="{{$value->qty}}" size="2" min="1" max="10">
+                          <a class="cart_quantity_down" href="{{route('giamQty', ['rowId'=> $value->rowId])}}"> - </a>
+                        </div> --}}
                         <input class="cart_quantity_input" style="width: 50px;" type="number" name="cart_quantity"
                           value="{{$value->qty}}" size="2" min="1" max="10">
 
@@ -152,9 +159,9 @@
 
     @endif
 
-    <div class="sugesst-product">
+    {{-- <div class="sugesst-product">
       @include('site.home.components.feature')
-    </div>
+    </div> --}}
 
   </div>
 

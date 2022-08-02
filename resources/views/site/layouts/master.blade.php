@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Home | E-Shopper</title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
 
@@ -25,13 +25,21 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-404KE59PGM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-404KE59PGM');
+  </script>
   @yield('css')
   @yield('title')
-
 </head>
 <!--/head-->
 
-<body>
+<body id=body>
   @include("site.components.header")
 
   @yield('content')
@@ -51,6 +59,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.js"
+    integrity="sha512-bFcPkAswt+U0D+vptu6ikBDiXGAJI/JoROHHtYAy3jgvfKTsy22xRA1NHvmhjLKLAkKSFTdwf1YvcMzckIeYuQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
     integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -147,6 +158,7 @@
 		      });
     });
   </script>
+  <!-- Hotjar Tracking Code for my site -->
 
 </body>
 

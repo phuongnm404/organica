@@ -1,8 +1,9 @@
 @extends("site.layouts.master")
 
 <!--/head-->
-@section('css')
-@endsection
+@section('title')
+<title>Chi tiết sản phẩm</title>
+
 
 @section('content')
 <section>

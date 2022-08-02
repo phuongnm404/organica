@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="form-row row">
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label class=" label" for="province">Tỉnh/
                                             Thành <span class="must font-weight-bold">(*)</span></label>
                                         <select class="form-select" name="province_id" id="province" required
@@ -73,7 +73,7 @@
                                         </select>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label class=" label" for="district">Quận/Huyện <span
                                                 class="must font-weight-bold">(*)</span></label>
                                         <select class="form-select" name="district_id" id="district" required
@@ -82,7 +82,7 @@
                                         </select>
 
                                     </div>
-                                    <div class=" col-md-3">
+                                    <div class=" col-md-4">
                                         <label class="label" for="ward">Phường/Xã <span
                                                 class="must font-weight-bold">(*)</span></label>
                                         <select class="form-select" name="ward_id" id="ward" required
@@ -138,9 +138,8 @@
                                             data-parsley-equalto-message="Các mật khẩu đã nhập không trùng">
                                     </div>
                                 </div>
-
-
                             </div>
+
                             <div class="form-section">
                                 <label for="">Chọn lĩnh vực quan tâm <span class="must font-weight-bold">(*)</label>
                                 @foreach ($static as $staticItem)
@@ -152,10 +151,10 @@
                             <p class="text-muted notice">Vui lòng nhập đầy đủ thông tin những phần có dấu (*)</p>
                             <div class="form-navigation">
                                 <button type="button" class="previous btn btn-success float-start"><i
-                                        class="fas fa-angle-left">pre</i></button>
+                                        class="fas fa-angle-left">trước</i></button>
                                 <button type="button" class="next btn btn-success float-end"><i
-                                        class="fas fa-angle-right">next</i></button>
-                                <button type="submit" class="btn btn-success float-right">Submit</button>
+                                        class="fas fa-angle-right">tiếp tục</i></button>
+                                <button type="submit" class="btn btn-success pull-right">Xác nhận</button>
                             </div>
                         </form>
                     </div>

@@ -39,6 +39,7 @@ Route::namespace('Admin')->group(function () {
         Route::post('/', 'AdminController@postLoginAdmin');
         Route::get('/logout', 'AdminController@logout')->name('admin.logout');
         Route::get('/home', 'AdminController@index')->name('admin.home');
+
         Route::prefix('category')->group(function() {
 
             Route::get('/','CategoryController@index')->name('admin.category.index');
@@ -201,6 +202,8 @@ Route::namespace('Admin')->group(function () {
 
             Route::post('/updateStatus/{id}','OrderController@updateStatus')->name('admin.order.updateStatus');
 
+            Route::post('/filter/{id}','OrderController@filterStatus')->name('admin.order.filterStatus');
+
             // Route::post('/update/{id}','OrderController@update')->name( 'admin.order.update');
 
             //  Route::get('/delete/{id}','OrderController@delete') ->name('admin.order.delete');
@@ -222,9 +225,11 @@ Route::namespace('Admin')->group(function () {
 Route::namespace('Site')->group(function () {
     
     Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::post('/home/{id}', 'HomeController@filter');
     
     Route::get('/product', 'ProductController@getAll')->name('productAll');
-    
+    Route::get('/product/discount', 'ProductController@getAllDiscount')->name('productAllDiscount');
+    Route::get('/product/favorite', 'ProductController@getFavorite')->name('productFavorite');
     Route::group(['prefix' => 'user'], function () {
         
         Route::prefix('infor')->group(function() {

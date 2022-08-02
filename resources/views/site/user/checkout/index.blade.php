@@ -1,6 +1,6 @@
 @extends('site.layouts.master')
 @section('title')
-<title>User Address</title>
+<title>Thanh toán</title>
 
 @section('content')
 <div class="container ">
@@ -158,7 +158,7 @@
          success:function(data){
             if(data.code == 200) {
                 window.location.replace("http://127.0.0.1:8000/user/order/index");
-                toastr.success('Mua hàng thành công! Vui lòng chờ xác nhận của chúng tôi.', 'Success');
+               
             }
          },
   

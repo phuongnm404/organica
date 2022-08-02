@@ -1,7 +1,7 @@
 @extends('site.layouts.master')
 
 @section('title')
-<title>User Profile</title>
+<title>Thông tin cá nhân</title>
 
 @section('content')
 <div class="container">

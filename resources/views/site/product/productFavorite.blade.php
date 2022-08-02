@@ -1,7 +1,7 @@
 @extends("site.layouts.product_master")
 <!--/head-->
 @section('title')
-<title>{{$category_slug->name}}</title>
+<title>Sản phẩm yêu thích</title>
 
 @section('content')
 <div class="content-header">
@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('productAll')}}">Sản phẩm</a></li>
-                    <li class="breadcrumb-item">{{$category_slug->name}}</li>
+                    <li class="breadcrumb-item">Sản phẩm yêu thích</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -20,7 +20,7 @@
     <!--features_items-->
     <div class="features_items">
         <!--features_items-->
-        <h2 class="title text-center">{{$category_slug->name}}</h2>
+        <h2 class="title text-center">Sản phẩm yêu thích</h2>
         @if (isset($products) && count($products) > 0)
         @foreach ($products as $productItem)
 
@@ -62,23 +62,14 @@
                             <div class="overlay-content">
                                 <button type="submit" class="btn btn-default add-to-cart"><i
                                         class="fa fa-shopping-cart"></i></button>
-
-                            </div>
-                        </div>
-                        <div class="product-overlay1">
-                            <div class="overlay-content">
-                                <button type="submit" class="btn btn-default add-to-favorite"><i
-                                        class="fa fa-heart"></i></button>
+                                <button type="button" class="btn btn-default add-to-favorite"><i
+                                        class="fa fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </form>
 
                 </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-heart"></i>Yêu thích</a></li>
-                    </ul>
-                </div>
+
             </div>
         </div>
 
@@ -93,7 +84,6 @@
             </div>
         </div>
         @endif
-
 
 
     </div>

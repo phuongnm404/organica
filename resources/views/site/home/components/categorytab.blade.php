@@ -34,10 +34,7 @@
                                 <input type="hidden" name="quantity" id="typeNumber" class="form-control" value="1"
                                     min="1" />
                                 <button type="submit" class="btn btn-default add-to-cart"><i
-                                        class="fa fa-shopping-cart"></i>Thêm
-                                    vào
-                                    giỏ
-                                    hàng</button>
+                                        class="fa fa-shopping-cart">Thêm vào giỏ hàng</i></button>
                             </form>
 
                         </div>

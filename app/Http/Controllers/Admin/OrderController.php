@@ -17,7 +17,7 @@ class OrderController extends Controller
         $this->order_detail = $order_detail;
     }
     public function index() {
-        $bill = $this->order->paginate(5);
+        $bill = $this->order->orderBy('order_status','asc')->paginate(5);
         return view('admin.order.index', compact('bill'));
     }
     public function edit($id) {
@@ -42,4 +42,5 @@ class OrderController extends Controller
     public function delete($id) {
         
     }
+   
 }

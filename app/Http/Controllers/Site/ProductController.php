@@ -76,7 +76,7 @@ class ProductController extends Controller
         $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
 
         $categoryModel = new Category();
-        $category_slug = $categoryModel->getCategoryType($slugCategory);
+       // $category_slug = $categoryModel->getCategoryType($slugCategory);
 
         $productModel = new Product();
         $product_slug = $productModel->getProductType($slugProduct);
@@ -109,9 +109,39 @@ class ProductController extends Controller
 
         return view('site.product.productFilter', compact('categorys', 'categoryLimit', 'categoryModel','brand', 'productBrand', 'products'));
     }
-    public function filterProvince($province_id) {
-       
+    public function getAllDiscount() {
+        $categorys = Category::where('parent_id', 0)->get();
+
+        $productAllDiscount =  DB::table('products')->where('sale_price', '>', 0)->get();
+
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
+
+     
+        $productModel = new Product();
+
+        $categoryModel = new Category();
+        $brand = Brand::all();
+
+        $tag = Tag::all();
+
+        return view('site.product.productAllDiscount', compact('productAllDiscount', 'categorys', 'categoryLimit', 'productModel', 'categoryModel', 'brand', 'tag'));
     }
 
+    public function getFavorite() {
+        $categorys = Category::where('parent_id', 0)->get();
 
+        $productAllDiscount =  DB::table('products')->where('sale_price', '>', 0)->get();
+
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
+
+     
+        $productModel = new Product();
+
+        $categoryModel = new Category();
+        $brand = Brand::all();
+
+        $tag = Tag::all();
+
+        return view('site.product.productFavorite', compact('productAllDiscount', 'categorys', 'categoryLimit', 'productModel', 'categoryModel', 'brand', 'tag'));
+    }
 }

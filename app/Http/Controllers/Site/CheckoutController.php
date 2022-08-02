@@ -59,8 +59,8 @@ class CheckoutController extends Controller
         $user = $this->user->find($user_id);
 
         $address_list = Address::all();
+
         $address = Address::find($id);
-       
         
         $user_address = User::where('id', $user_id)->with('address')->first();
 

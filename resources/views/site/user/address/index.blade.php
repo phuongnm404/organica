@@ -1,6 +1,6 @@
 @extends('site.layouts.master')
 @section('title')
-<title>User Address</title>
+<title>Địa chỉ giao hàng</title>
 
 @section('content')
 <div class="container">

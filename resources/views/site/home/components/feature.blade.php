@@ -1,8 +1,9 @@
 <div class="row">
+    <h2 class="title text-center">SẢN PHẨM NỔI BẬT</h2>
+
     <div class="features_items col-sm-12">
         <!--features_items-->
-        <h2 class="title text-center">SẢN PHẨM NỔI BẬT</h2>
-        @foreach ($products as $product)
+        @foreach ($productView as $product)
         <div class="col-sm-2">
             <div class="product-image-wrapper">
                 <div class="single-products">
@@ -35,10 +36,7 @@
                         <div class="product-overlay">
                             <div class="overlay-content">
                                 <button type="submit" class="btn btn-default add-to-cart"><i
-                                        class="fa fa-shopping-cart"></i>Thêm
-                                    vào
-                                    giỏ
-                                    hàng</button>
+                                        class="fa fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </form>

@@ -46,7 +46,7 @@
                                 <th scope="row">{{$productItem->id}}</th>
 
                                 <td>{{$productItem->name}}</td>
-                                <td>{{$productItem->price}}</td>
+                                <td>{{number_format($productItem->price)}}</td>
                                 <td>
                                     <img class="product_image" src="{{$productItem->feature_image_path}}" alt="">
                                 </td>
